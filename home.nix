@@ -7,7 +7,7 @@
   programs.zsh = {
     enable = true;
     enableCompletion = false;
-    initExtraBeforeCompInit = builtins.readFile ../configs/zsh/.zshrc;
+    initExtra = builtins.readFile ../configs/zsh/.zshrc;
   };
 
   programs.direnv = {
@@ -16,7 +16,7 @@
     nix-direnv.enable = true;
   };
 
-  home.file.".config/nix/nix.conf".text = ''
+  xdg.configFile."nix/nix.conf".text = ''
     experimental-features = nix-command flakes
   '';
 
