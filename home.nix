@@ -1,9 +1,6 @@
 { pkgs, ... }:
 
 {
-  home.username = "sofi";
-  home.homeDirectory = "/home/sofi";
-
   programs.zsh = {
     enable = true;
     enableCompletion = false;
