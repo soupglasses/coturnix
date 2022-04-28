@@ -19,7 +19,9 @@
 
   home.packages = with pkgs; [
     comma
-    niv
+    glow
+    home-manager
+    nixUnstable
   ];
 
   home.stateVersion = "21.11";
