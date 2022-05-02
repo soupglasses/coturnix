@@ -15,6 +15,7 @@
 
   xdg.configFile."nix/nix.conf".text = ''
     experimental-features = nix-command flakes
+    warn-dirty = false
   '';
 
   home.packages = with pkgs; [
