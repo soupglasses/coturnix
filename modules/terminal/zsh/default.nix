@@ -2,12 +2,15 @@
 {
   imports = [
     ./history.nix
-    ./grc.nix
+
+    ./plugins/fasd
+    ./plugins/grc
   ];
 
+  # Integrations
   programs.starship.enableZshIntegration = true;
-
-  # TODO: Fzf, Kitty, Fasd, Dircolors, Bat
+  programs.dircolors.enableZshIntegration = true;
+  programs.fzf.enableZshIntegration = true;
 
   programs.zsh = {
     enable = true;
@@ -19,17 +22,15 @@
       unsetopt EXTENDEDGLOB
 
       # Simple customized zsh prompt.
-      source ${./zsh-files/prompt.zsh}
-      # TODO: Fully remove old configuration.
-      source ${../../../../configs/zsh/.zshrc}
+      source ${./extras/prompt.zsh}
     '';
     initExtra = ''
       # Run ls after every cd command.
-      source ${./zsh-files/autols.zsh}
+      source ${./extras/autols.zsh}
       # Window-system independent copy/paste functions.
-      source ${./zsh-files/copypaste.zsh}
+      source ${./extras/copypaste.zsh}
       # Dynamic window title that changes on directory/command.
-      source ${./zsh-files/xterm-title-hook.zsh}
+      source ${./extras/xterm-title-hook.zsh}
     '';
     shellGlobalAliases = {
       # Multi-dot expansion
