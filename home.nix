@@ -1,6 +1,9 @@
-{ pkgs, ... }:
-
+{ pkgs, inputs, ... }:
 {
+  imports = [
+    ./modules/nix-settings.nix
+  ];
+
   programs.zsh = {
     enable = true;
     enableCompletion = false;
@@ -13,16 +16,11 @@
     nix-direnv.enable = true;
   };
 
-  xdg.configFile."nix/nix.conf".text = ''
-    experimental-features = nix-command flakes
-    warn-dirty = false
-  '';
-
   home.packages = with pkgs; [
+    asciinema
     comma
     glow
     home-manager
-    nixUnstable
   ];
 
   home.stateVersion = "21.11";
