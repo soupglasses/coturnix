@@ -6,7 +6,8 @@
     # Configure
     ./modules/terminal
     # Tools
-    ./modules/comma.nix
+    ./modules/tools/comma.nix
+    ./modules/tools/git.nix
   ];
 
   # To manage `.profile` for session variables.

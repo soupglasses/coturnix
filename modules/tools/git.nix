@@ -1,0 +1,58 @@
+{ pkgs, ... }:
+{
+  programs.git = {
+    enable = true;
+    package = pkgs.gitFull;
+
+    userEmail = "sofi+git@mailbox.org";
+    userName = "Sofi";
+    signing.key = "1B2722AF";
+
+    signing = {
+      signByDefault = true;
+    };
+
+    delta = {
+      enable = true;
+      options = {
+        navigate = "true";
+        line-numbers = "true";
+        light = "false";
+        theme = "ansi";
+        features = "interactive";
+      };
+    };
+
+    extraConfig = {
+      # Delta
+      merge = { conflictstyle = "diff3"; };
+      diff = { colorMoved = "default"; };
+
+      blame = { coloring = "highlightRecent"; date = "relative"; };
+      branch = { autosetupmerge = "true"; };
+      credential = { helper = "cache --timeout 3600"; };
+      color = { ui = "true"; };
+      init = { defaultbranch = "main"; };
+      pull = { rebase = "true"; };
+      tag = { gpgsign = "true"; forcesignannotated = "true"; };
+
+      sendemail = {
+        smtpserver = "/usr/bin/msmtp";
+        smtpserveroption = "--account git";
+        annotate = "yes";
+      };
+    };
+
+    aliases = {
+      # QoL
+      hist = "log --pretty='%C(auto)%h - %s %C(green)(%ar) %C(bold blue)<%an>%C(auto)%d' --graph";
+      last = "log -1 HEAD";
+      unstage = "reset HEAD --";
+      # Shorthands
+      co = "checkout";
+      br = "branch";
+      ci = "commit";
+      st = "status";
+    };
+  };
+}
