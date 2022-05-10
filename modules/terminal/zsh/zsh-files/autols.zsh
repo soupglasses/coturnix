@@ -2,5 +2,5 @@
 
 ## Make ls run after cd
 function cd {
-    builtin cd "$@" && ls
+    builtin cd "$@" && ls --group --color=auto
 }

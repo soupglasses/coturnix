@@ -39,5 +39,7 @@
     py = "python";
     ipy = "ipython";
     lg = "lazygit";
+    hm = "home-manager --flake .";
+    hms = "hm switch";
   };
 }
