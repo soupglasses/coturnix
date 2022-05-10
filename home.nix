@@ -3,6 +3,8 @@
   imports = [
     # Setup
     ./modules/nix-settings.nix
+    # Configure
+    ./modules/terminal
     # Tools
     ./modules/comma.nix
   ];
@@ -12,12 +14,6 @@
     profileExtra = ''
       export XDG_DATA_DIRS="$HOME/.nix-profile/share:$XDG_DATA_DIRS"
     '';
-  };
-
-  programs.zsh = {
-    enable = true;
-    enableCompletion = false;
-    initExtra = builtins.readFile ../configs/zsh/.zshrc;
   };
 
   programs.direnv = {
