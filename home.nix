@@ -9,6 +9,7 @@
     ./modules/comma.nix
   ];
 
+  # To manage `.profile` for session variables.
   programs.bash = {
     enable = true;
     profileExtra = ''
