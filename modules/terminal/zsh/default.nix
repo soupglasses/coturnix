@@ -18,9 +18,6 @@
     enableCompletion = true;
     defaultKeymap = "emacs";
     initExtraFirst = ''
-      # WORKAROUND: https://github.com/nix-community/home-manager/issues/2751
-      export EDITOR="$VISUAL";
-
       unsetopt AUTOCD
       unsetopt BEEP
       unsetopt EXTENDEDGLOB

@@ -1,4 +1,9 @@
-{ pkgs, inputs, ... }:
+{ lib, pkgs, inputs, ... }:
+let
+  NIX_PATH = lib.concatStringsSep ":" [
+    "nixpkgs=${inputs.nixpkgs}"
+  ];
+in
 {
   nix = {
     enable = true;
@@ -11,4 +16,8 @@
       warn-dirty = false;
     };
   };
+
+  home.sessionVariablesExtra = ''
+    export NIX_PATH="${NIX_PATH}''${NIX_PATH:+:}$NIX_PATH"
+  '';
 }

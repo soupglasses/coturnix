@@ -2,15 +2,12 @@
 {
   programs.git = {
     enable = true;
-    package = pkgs.gitFull;
 
     userEmail = "sofi+git@mailbox.org";
     userName = "Sofi";
     signing.key = "1B2722AF";
 
-    signing = {
-      signByDefault = true;
-    };
+    signing.signByDefault = true;
 
     delta = {
       enable = true;

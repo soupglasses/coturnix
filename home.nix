@@ -1,22 +1,15 @@
-{ pkgs, inputs, ... }:
+{ lib, pkgs, inputs, ... }:
 {
   imports = [
     # Setup
     ./modules/nix-settings.nix
+    ./modules/generic-linux
     # Configure
     ./modules/terminal
     # Tools
     ./modules/tools/comma.nix
     ./modules/tools/git.nix
   ];
-
-  # To manage `.profile` for session variables.
-  programs.bash = {
-    enable = true;
-    profileExtra = ''
-      export XDG_DATA_DIRS="$HOME/.nix-profile/share:$XDG_DATA_DIRS"
-    '';
-  };
 
   programs.direnv = {
     enable = true;
