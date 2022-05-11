@@ -22,8 +22,14 @@
       unsetopt BEEP
       unsetopt EXTENDEDGLOB
 
-      # Simple customized zsh prompt.
+      # Customized zsh prompt.
       source ${./extras/prompt.zsh}
+    '';
+    initExtraBeforeCompInit = ''
+      # Colored tab completion.
+      source ${./extras/comp-init/colored-tab-complete.zsh}
+      # Case insensitive path-completion.
+      source ${./extras/comp-init/case-insensitive-search.zsh}
     '';
     initExtra = ''
       # Run ls after every cd command.
