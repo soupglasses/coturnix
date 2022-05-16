@@ -22,6 +22,7 @@
     home-manager
     # Cli
     asciinema
+    ferium
     glow
     # Gui
     apache-directory-studio
