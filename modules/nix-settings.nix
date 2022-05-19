@@ -17,12 +17,12 @@ in
 
       builders-use-substitutes = true;
       extra-substituters = [
-        "https://imsofi.cachix.org"
         "https://nix-community.cachix.org"
+        "https://imsofi.cachix.org"
       ];
       extra-trusted-public-keys = [
-        "imsofi.cachix.org-1:KsqZ5nGoUfMHwzCGFnmTLMukGp7Emlrz/OE9Izq/nEM="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "imsofi.cachix.org-1:KsqZ5nGoUfMHwzCGFnmTLMukGp7Emlrz/OE9Izq/nEM="
       ];
     };
   };
