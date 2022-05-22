@@ -9,6 +9,7 @@
     # Tools
     ./modules/tools/comma.nix
     ./modules/tools/git.nix
+    ./modules/tools/navi
   ];
 
   programs.direnv = {

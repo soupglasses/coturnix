@@ -1,0 +1,4 @@
+% nix
+
+# Update only one dependency of a flake.lock file
+nix flake lock --update-input=<dependency>
