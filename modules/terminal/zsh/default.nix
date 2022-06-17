@@ -37,7 +37,7 @@
       # Window-system independent copy/paste functions.
       source ${./extras/copypaste.zsh}
       # Dynamic window title that changes on directory/command.
-      source ${./extras/xterm-title-hook.zsh}
+      source ${./extras/set-title-hook.zsh}
     '';
     shellGlobalAliases = {
       # Multi-dot expansion
