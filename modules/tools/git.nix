@@ -2,6 +2,7 @@
 {
   programs.git = {
     enable = true;
+    package = pkgs.gitAndTools.gitFull;
 
     userEmail = "sofi+git@mailbox.org";
     userName = "Sofi";
@@ -22,16 +23,18 @@
 
     extraConfig = {
       # Delta
-      merge = { conflictstyle = "diff3"; };
-      diff = { colorMoved = "default"; };
+      merge.conflictstyle = "diff3";
+      diff.colorMoved = "default";
 
-      blame = { coloring = "highlightRecent"; date = "relative"; };
-      branch = { autosetupmerge = "true"; };
-      credential = { helper = "cache --timeout 3600"; };
-      color = { ui = "true"; };
-      init = { defaultbranch = "main"; };
-      pull = { rebase = "true"; };
-      tag = { gpgsign = "true"; forcesignannotated = "true"; };
+      blame.coloring = "highlightRecent";
+      blame.date = "relative";
+      branch.autosetupmerge = "true";
+      credential.helper = "cache --timeout 3600";
+      color.ui = "true";
+      init.defaultbranch = "main";
+      pull.rebase = "true";
+      tag.gpgsign = "true";
+      tag.forcesignannotated = "true";
 
       sendemail = {
         smtpserver = "/usr/bin/msmtp";
