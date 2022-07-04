@@ -11,6 +11,8 @@
     ./modules/tools/git.nix
     ./modules/tools/gpg.nix
     ./modules/tools/navi
+    # Gui
+    ./modules/gnome
   ];
 
   programs.direnv = {
