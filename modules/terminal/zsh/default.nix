@@ -11,6 +11,7 @@
   programs.starship.enableZshIntegration = true;
   programs.dircolors.enableZshIntegration = true;
   programs.fzf.enableZshIntegration = true;
+  services.gpg-agent.enableZshIntegration = true;
 
   programs.zsh = {
     enable = true;
