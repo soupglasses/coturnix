@@ -28,9 +28,15 @@
     asciinema
     ferium
     glow
+    tree
     # Gui
     apache-directory-studio
     geogebra
+    kitty # TODO
+    # Games
+    polymc
+    # Social
+    signal-desktop
   ];
 
   home.stateVersion = "21.11";
