@@ -1,0 +1,1 @@
+import ./hardware-configuration.nix
