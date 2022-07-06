@@ -5,12 +5,32 @@
 { config, pkgs, lib, ... }:
 
 {
+  #nix = {
+  #  package = pkgs.nixUnstable;
+  #  extraOptions = ''
+  #    experimental-features = nix-command flakes
+  #  '';
+  #};
   nix = {
+    enable = true;
     package = pkgs.nixUnstable;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-   };
+
+    checkConfig = true;
+    settings = {
+      extra-experimental-features = [ "nix-command" "flakes" ];
+      warn-dirty = false;
+
+      builders-use-substitutes = true;
+      extra-substituters = [
+        "https://nix-community.cachix.org"
+        "https://imsofi.cachix.org"
+      ];
+      extra-trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "imsofi.cachix.org-1:KsqZ5nGoUfMHwzCGFnmTLMukGp7Emlrz/OE9Izq/nEM="
+      ];
+    };
+  };
 
   # INTERCEPTION
   environment.etc."interception/ibm.yaml".text = ''
@@ -79,17 +99,11 @@
     style= "adwaita-dark";
   };
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "nvidia-x11"
-    "nvidia-settings"
-    "steam"
-    "steam-original"
-    "steam-runtime"
-  ];
-
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.enable = true;
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+  programs.gamemode.enable = true;
 
   # For suspend/resume:
   hardware.nvidia.powerManagement.enable = true;
@@ -143,6 +157,8 @@
     openssh
     neofetch
     wget
+		spotify
+    wineWowPackages.stagingFull
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -159,8 +175,8 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 25565 ];
+  networking.firewall.allowedUDPPorts = [ 25565 ];
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
 
