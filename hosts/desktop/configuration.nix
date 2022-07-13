@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   #nix = {
@@ -21,16 +21,31 @@
       warn-dirty = false;
 
       builders-use-substitutes = true;
-      extra-substituters = [
+      substituters = [
         "https://nix-community.cachix.org"
         "https://imsofi.cachix.org"
+        "https://nix-gaming.cachix.org"
       ];
-      extra-trusted-public-keys = [
+      trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "imsofi.cachix.org-1:KsqZ5nGoUfMHwzCGFnmTLMukGp7Emlrz/OE9Izq/nEM="
+        "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
       ];
     };
   };
+
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+
+  boot.kernelModules = [ "bfq" ];
+
+  services.udev.extraRules = ''
+      # set scheduler for NVMe
+      ACTION=="add|change", KERNEL=="nvme[0-9]*", ATTR{queue/scheduler}="mq-deadline"
+      # set scheduler for SSD and eMMC
+      ACTION=="add|change", KERNEL=="sd[a-z]|mmcblk[0-9]*", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="bfq"
+      # set scheduler for rotating disks
+      ACTION=="add|change", KERNEL=="sd[a-z]", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="bfq"
+  '';
 
   # INTERCEPTION
   environment.etc."interception/ibm.yaml".text = ''
@@ -157,8 +172,11 @@
     openssh
     neofetch
     wget
-		spotify
-    wineWowPackages.stagingFull
+    spotify
+    legendary-gl
+    inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
+    winetricks
+    nur.repos.wolfangaukang.heroic
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
