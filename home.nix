@@ -29,6 +29,7 @@
     ferium
     glow
     tree
+    trash-cli
     # Gui
     apache-directory-studio
     geogebra
@@ -37,6 +38,11 @@
     polymc
     # Social
     signal-desktop
+    # Java
+    jetbrains.idea-community
+    jdk
+    kotlin
+    gradle
   ];
 
   home.stateVersion = "21.11";
