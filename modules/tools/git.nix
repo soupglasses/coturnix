@@ -16,7 +16,7 @@
         navigate = "true";
         line-numbers = "true";
         light = "false";
-        theme = "ansi";
+        theme = "OneHalfLight";
         features = "interactive";
       };
     };
