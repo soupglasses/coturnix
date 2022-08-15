@@ -12,7 +12,11 @@ in
   qt.enable = true;
   qt.platformTheme = "gnome";
   qt.style.package = pkgs.adwaita-qt;
-  qt.style.name = "adwaita-dark";
+  qt.style.name = "adwaita";
+
+  home.packages = with pkgs; [
+    adw-gtk3
+  ];
 
   dconf.settings = {
     "org/gnome/desktop/wm/preferences" = {
@@ -29,8 +33,8 @@ in
       show-weekdate = true;
     };
     "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-      gtk-theme = "Adwaita-dark";
+      color-scheme = "prefer-light";
+      gtk-theme = "adw-gtk3";
     };
     "org/gnome/nautilus/preferences" = {
       search-filter-time-type = "last_modified";
