@@ -28,6 +28,9 @@
     notifications.wall.enable = false;
   };
 
+  # Allow realtime scheduling.
+  security.rtkit.enable = true;
+
   # Default to sane I/O schedulers for the different kinds of devices.
   boot.kernelModules = [ "bfq" ];
   services.udev.extraRules = ''
