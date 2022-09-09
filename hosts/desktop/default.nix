@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./nvidia.nix
     ./modules/common.nix
     ./modules/desktops/gnome.nix
     ./modules/keyboard/interception.nix
@@ -21,13 +22,6 @@
     platformTheme = "gnome";
     style= "adwaita-dark";
   };
-
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.opengl.enable = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-
-  # For suspend/resume:
-  hardware.nvidia.powerManagement.enable = true;
 
   programs.gamemode.enable = true;
 
