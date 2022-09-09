@@ -43,11 +43,14 @@
     neovim
     vimPlugins.nvim-treesitter
     gcc
+    libreoffice
     spotify
     legendary-gl
     inputs.nix-gaming.packages.${pkgs.system}.wine-tkg
     winetricks
     nur.repos.wolfangaukang.heroic
+    easyeffects
+    obs-studio
   ];
 
   system.stateVersion = "22.05";  # Do not touch.
