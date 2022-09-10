@@ -2,7 +2,7 @@
   description = "Coturnix: My personal computer setup";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
     nur.inputs.nixpkgs.follows = "nixpkgs";
     nix-gaming.url = "github:fufexan/nix-gaming";
@@ -10,9 +10,10 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-index-database.url = "github:Mic92/nix-index-database";
+    chrome-pwa.url = "github:Luis-Hebendanz/nixos-chrome-pwa";
   };
 
-  outputs = inputs@{ self, nixpkgs, nur, home-manager, nix-index-database, ... }:
+  outputs = inputs@{ self, nixpkgs, nur, home-manager, nix-index-database, chrome-pwa, ... }:
   let
     allSystems = [ "x86_64-linux" "aarch64-linux" ];
 
@@ -67,6 +68,7 @@
               "spotify-unwrapped"
             ];
           }
+          chrome-pwa.nixosModule
           ./hosts/desktop
           ./hardware/desktop
           #home-manager.nixosModules.home-manager {

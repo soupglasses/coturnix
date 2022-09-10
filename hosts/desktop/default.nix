@@ -3,6 +3,7 @@
 {
   imports = [
     ./nvidia.nix
+    ./modules/chromium.nix
     ./modules/common.nix
     ./modules/desktops/gnome.nix
     ./modules/keyboard/interception.nix
