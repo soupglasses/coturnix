@@ -58,7 +58,6 @@
           }
           chrome-pwa.nixosModule
           ./hosts/desktop
-          ./hardware/desktop
        ];
       };
     };

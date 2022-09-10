@@ -2,6 +2,8 @@
 
 {
   imports = [
+    ./hardware-configuration.nix
+
     ./modules/common.nix
     ./modules/chromium.nix
     ./modules/spell.nix
