@@ -7,9 +7,14 @@
 
   programs.chromium.enable = true;
   programs.chromium.extensions = [
-    "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
+    "cjpalhdlnbpafiamejdnhcphjbkeiagm" # Ublock Origin
+    "hkgfoiooedgoejojocmhlaklaeopbecg" # Picture in Picture
   ];
+
+  # All options: https://chromeenterprise.google/policies
   programs.chromium.extraOpts = {
+
+    # Websites to automatically install as PWAs on launch.
     WebAppInstallForceList = [
       {
         create_desktop_shortcut = true;
@@ -27,6 +32,8 @@
         url = "https://www.messenger.com/";
       }
     ];
+
+    # Open all other url's inside of Firefox, my prefered browser.
     AlternativeBrowserPath = "${pkgs.firefox}/bin/firefox";
     AlternativeBrowserParameters = [ "--new-tab" "\${url}" ];
     BrowserSwitcherEnabled = true;
@@ -37,5 +44,17 @@
       "facebook.com"
     ];
     BrowserSwitcherUrlList = [ "*" ];
+
+    # Privacy Tweaks.
+    CloudReportingEnabled = false;
+    MetricsReportingEnabled = false;
+    SafeBrowsingExtendedReportingEnabled = false;
+
+    # General tweaks.
+    BookmarkBarEnabled = false;
+    BrowserGuestModeEnabled = false;
+    HttpsOnlyMode = "force_enabled";
+    PasswordManagerEnabled = false;
+    SpellcheckLanguage = [ "da" "en-US" "nb" ];
   };
 }
