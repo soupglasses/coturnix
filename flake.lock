@@ -88,6 +88,22 @@
         "type": "indirect"
       }
     },
+    "nixpkgs-nightly": {
+      "locked": {
+        "lastModified": 1662814277,
+        "narHash": "sha256-5Q92zxPoCFpFNHGTgX4dO7ASx9xivnvMTQkAjqSeuUA=",
+        "owner": "imsofi",
+        "repo": "nixpkgs",
+        "rev": "363282dc4cd1b18d73c7c8141c051c0c56454126",
+        "type": "github"
+      },
+      "original": {
+        "owner": "imsofi",
+        "ref": "pr/hunspell-dicts/norwegian",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1662019588,
@@ -126,6 +142,7 @@
         "nix-gaming": "nix-gaming",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-nightly": "nixpkgs-nightly",
         "nur": "nur"
       }
     },
