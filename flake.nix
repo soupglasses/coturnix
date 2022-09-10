@@ -8,13 +8,11 @@
     nur.inputs.nixpkgs.follows = "nixpkgs";
     nix-gaming.url = "github:fufexan/nix-gaming";
     nix-gaming.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-index-database.url = "github:Mic92/nix-index-database";
     chrome-pwa.url = "github:Luis-Hebendanz/nixos-chrome-pwa";
   };
 
-  outputs = inputs@{ self, nixpkgs, nur, home-manager, nix-index-database, chrome-pwa, ... }:
+  outputs = inputs@{ self, nixpkgs, nur, nix-index-database, chrome-pwa, ... }:
   let
     allSystems = [ "x86_64-linux" "aarch64-linux" ];
 
@@ -30,17 +28,6 @@
         nixpkgs.overlays = [
           nur.overlay
         ] ++ (nixpkgs.lib.attrValues self.overlays);
-        home-manager.sharedModules = [
-          ({ config, pkgs, ...}:
-            let inherit (pkgs.stdenv) hostPlatform; in
-            {
-              config = nixpkgs.lib.mkIf config.programs.nix-index.enable {
-                home.file."${config.xdg.cacheHome}/nix-index/files".source =
-                  nix-index-database.legacyPackages.${hostPlatform.system}.database 
-                    or nix-index-database.legacyPackages."x86_64-${hostPlatform.parsed.kernel.name}".database;
-              };
-            })
-        ];
       };
     };
   in {
@@ -72,16 +59,6 @@
           chrome-pwa.nixosModule
           ./hosts/desktop
           ./hardware/desktop
-          #home-manager.nixosModules.home-manager {
-          #  home-manager.useGlobalPkgs = true;
-          #  home-manager.useUserPackages = true;
-          #  home-manager.extraSpecialArgs = { inherit system inputs; };
-          #  home-manager.users."sofi" = {
-          #    imports = [
-          #      ./home
-          #    ];
-          #  };
-          #}
        ];
       };
     };
