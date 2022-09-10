@@ -2,10 +2,10 @@
 
 {
   imports = [
-    ./nvidia.nix
-    ./modules/chromium.nix
     ./modules/common.nix
+    ./modules/chromium.nix
     ./modules/desktops/gnome.nix
+    ./modules/hardware/nvidia.nix
     ./modules/keyboard/interception.nix
   ];
 
