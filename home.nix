@@ -30,19 +30,10 @@
     glow
     tree
     trash-cli
+    gh
     # Gui
     apache-directory-studio
     geogebra
-    kitty # TODO
-    # Games
-    polymc
-    # Social
-    signal-desktop
-    # Java
-    jetbrains.idea-community
-    jdk
-    kotlin
-    gradle
   ];
 
   home.stateVersion = "21.11";
