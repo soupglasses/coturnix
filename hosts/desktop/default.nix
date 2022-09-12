@@ -44,6 +44,7 @@
 
   environment.systemPackages = with pkgs; [
     firefox
+    xclip # needed for nvim
     neovim
     vimPlugins.nvim-treesitter
     gcc
