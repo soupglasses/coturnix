@@ -6,9 +6,9 @@
 
   home.sessionVariables = {
     FZF_DEFAULT_OPTS = builtins.concatStringsSep " " [
-      "--color=light"
-      "--color=fg:-1,bg:-1,hl:#c678dd,fg+:#ffffff,bg+:#4b5263,hl+:#d858fe"
-      "--color=info:#98c379,prompt:#61afef,pointer:#be5046,marker:#e5c07b,spinner:#61afef,header:#61afef"
+      "--color=bg+:#ccd0da,bg:#eff1f5,spinner:#dc8a78,hl:#d20f39"
+      "--color=fg:#4c4f69,header:#d20f39,info:#8839ef,pointer:#dc8a78"
+      "--color=marker:#dc8a78,fg+:#4c4f69,prompt:#8839ef,hl+:#d20f39"
     ];
   };
 }
