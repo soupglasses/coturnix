@@ -55,6 +55,5 @@
     BrowserGuestModeEnabled = false;
     HttpsOnlyMode = "force_enabled";
     PasswordManagerEnabled = false;
-    SpellcheckLanguage = [ "da" "en-US" "nb" ];
   };
 }
