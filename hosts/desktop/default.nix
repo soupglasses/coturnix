@@ -18,6 +18,8 @@
   boot.loader.systemd-boot.enable = true;
   # My poor computer cant handle EFI variables :(
   boot.loader.efi.canTouchEfiVariables = false;
+  # Enable the boot splash screen :)
+  boot.plymouth.enable = true;
 
   networking.hostName = "desktop";
 
