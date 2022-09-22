@@ -33,6 +33,7 @@
     gh
     # Gui
     apache-directory-studio
+    kitty
   ];
 
   home.stateVersion = "21.11";
