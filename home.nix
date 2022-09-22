@@ -1,4 +1,4 @@
-{ lib, pkgs, inputs, system, ... }:
+{ lib, pkgs, config, ... }:
 {
   imports = [
     # Setup
@@ -33,8 +33,12 @@
     gh
     # Gui
     apache-directory-studio
-    inputs.self.packages.${system}.kitty
-  ];
+    geogebra
+  ]; ++ (if config.targets.genericLinux.enable then [
+    nixgld.kitty
+  ] else [
+    kitty
+  ]);
 
   home.stateVersion = "21.11";
 }
