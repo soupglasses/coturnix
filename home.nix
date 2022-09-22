@@ -33,7 +33,6 @@
     gh
     # Gui
     apache-directory-studio
-    geogebra
   ];
 
   home.stateVersion = "21.11";
