@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, nixgl }:
 {
-  kitty = pkgs.callPackage ./nixgl/kitty { };
+  kitty = pkgs.callPackage ./nixgl/kitty { inherit nixgl; };
 }

@@ -1,4 +1,4 @@
-{ lib, pkgs, inputs, ... }:
+{ lib, pkgs, inputs, system, ... }:
 {
   imports = [
     # Setup
@@ -33,7 +33,7 @@
     gh
     # Gui
     apache-directory-studio
-    kitty
+    inputs.self.packages.${system}.kitty
   ];
 
   home.stateVersion = "21.11";
