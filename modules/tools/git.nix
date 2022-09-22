@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  home.packages = with pkgs; [
+    gh
+  ];
+
   programs.git = {
     enable = true;
     package = pkgs.gitAndTools.gitFull;
@@ -10,6 +14,7 @@
 
     signing.signByDefault = true;
 
+    lfs.enable = true;
     delta = {
       enable = true;
       options = {
