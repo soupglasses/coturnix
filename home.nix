@@ -2,8 +2,8 @@
 {
   imports = [
     # Setup
-    ./modules/nix-settings.nix
-    ./modules/generic-linux
+    #./modules/nix-settings.nix
+    #./modules/generic-linux
     # Configure
     ./modules/terminal
     # Tools
@@ -28,16 +28,20 @@
     asciinema
     ferium
     glow
+    tealdeer
     tree
     trash-cli
     gh
+    ripgrep
+    rsync
     # Gui
-    apache-directory-studio
     geogebra
-  ]; ++ (if config.targets.genericLinux.enable then [
+  ] ++ (if config.targets.genericLinux.enable then [
     nixgld.kitty
   ] else [
     kitty
+    signal-desktop
+    polymc
   ]);
 
   home.stateVersion = "21.11";
