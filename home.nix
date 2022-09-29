@@ -2,8 +2,8 @@
 {
   imports = [
     # Setup
-    #./modules/nix-settings.nix
-    #./modules/generic-linux
+    ./modules/nix-settings.nix
+    ./modules/generic-linux
     # Configure
     ./modules/terminal
     # Tools
