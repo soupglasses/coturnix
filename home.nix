@@ -34,6 +34,7 @@
     gh
     ripgrep
     rsync
+    moreutils  # vidir, etc.
     # Gui
     geogebra
   ] ++ (if config.targets.genericLinux.enable then [
