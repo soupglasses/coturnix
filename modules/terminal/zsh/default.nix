@@ -12,7 +12,7 @@
   programs.fzf.enableZshIntegration = true;
   services.gpg-agent.enableZshIntegration = true;
   programs.dircolors.enable = true;
-  programs.nix-index.enableZshIntegration = true;
+  programs.command-not-found.enable = false;
 
   programs.zsh = {
     enable = true;
