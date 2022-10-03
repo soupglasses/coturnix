@@ -39,6 +39,7 @@
     geogebra
   ] ++ (if config.targets.genericLinux.enable then [
     nixgld.kitty
+    nixgl.nixGLIntel
   ] else [
     kitty
     signal-desktop
