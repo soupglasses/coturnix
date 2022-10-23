@@ -37,6 +37,11 @@
     moreutils  # vidir, etc.
     # Gui
     geogebra
+    # Neovim
+    neovim
+    sumneko-lua-language-server
+    rnix-lsp
+    pyright
   ] ++ (if config.targets.genericLinux.enable then [
     nixgld.kitty
     nixgl.nixGLIntel
