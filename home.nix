@@ -38,7 +38,6 @@
     # Gui
     geogebra
     # Neovim
-    neovim
     sumneko-lua-language-server
     rnix-lsp
     pyright
