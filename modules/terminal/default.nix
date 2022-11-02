@@ -47,5 +47,6 @@
     lg = "lazygit";
     hm = "home-manager --flake .";
     hms = "hm switch";
+    k = "kubectl";
   };
 }

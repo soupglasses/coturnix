@@ -35,6 +35,7 @@
     ripgrep
     rsync
     moreutils  # vidir, etc.
+    kubectl
     # Gui
     geogebra
     # Neovim
