@@ -48,7 +48,7 @@
   ] else [
     kitty
     signal-desktop
-    polymc
+    prismlauncher
   ]);
 
   home.stateVersion = "21.11";
