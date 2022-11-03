@@ -18,33 +18,13 @@
         "type": "github"
       }
     },
-    "nix-gaming": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1662742160,
-        "narHash": "sha256-zamqdHF0Pp0AkgfDnZdLnAZTfgrTV11dYO9rDsfqfW8=",
-        "owner": "fufexan",
-        "repo": "nix-gaming",
-        "rev": "a37f98a7a81d5ffac328fac06c3f6ad17f90c7d7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "fufexan",
-        "repo": "nix-gaming",
-        "type": "github"
-      }
-    },
     "nix-index-database": {
       "locked": {
-        "lastModified": 1662265946,
-        "narHash": "sha256-K75Wj4K8KKznDKZynYBXV9zODAKjENiblu8Bf+yzdRM=",
+        "lastModified": 1667104866,
+        "narHash": "sha256-n8O2V1WcM9OdcFXmNt4NPFqvgzD/jCuOD2G1ws/eMQQ=",
         "owner": "Mic92",
         "repo": "nix-index-database",
-        "rev": "9885dc5874238f74098c0a8bcb59cdaaec4040ac",
+        "rev": "ea486da730d4c2feff9269124f8ff0d0757e8a39",
         "type": "github"
       },
       "original": {
@@ -67,33 +47,17 @@
         "type": "indirect"
       }
     },
-    "nixpkgs-nightly": {
-      "locked": {
-        "lastModified": 1662814277,
-        "narHash": "sha256-5Q92zxPoCFpFNHGTgX4dO7ASx9xivnvMTQkAjqSeuUA=",
-        "owner": "imsofi",
-        "repo": "nixpkgs",
-        "rev": "363282dc4cd1b18d73c7c8141c051c0c56454126",
-        "type": "github"
-      },
-      "original": {
-        "owner": "imsofi",
-        "ref": "pr/hunspell-dicts/norwegian",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1662019588,
-        "narHash": "sha256-oPEjHKGGVbBXqwwL+UjsveJzghWiWV0n9ogo1X6l4cw=",
-        "owner": "nixos",
+        "lastModified": 1667231093,
+        "narHash": "sha256-RERXruzBEBuf0c7OfZeX1hxEKB+PTCUNxWeB6C1jd8Y=",
+        "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "2da64a81275b68fdad38af669afeda43d401e94b",
+        "rev": "d40fea9aeb8840fea0d377baa4b38e39b9582458",
         "type": "github"
       },
       "original": {
-        "owner": "nixos",
+        "owner": "NixOS",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
@@ -101,11 +65,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1662790518,
-        "narHash": "sha256-ZRS6AfxS8pwwcc8PQLFtNchx6jwSXuz3Lxs9mOn1UX0=",
+        "lastModified": 1667496346,
+        "narHash": "sha256-n0bHzcQ/sx+E96FumgF2OeT6bbTendRDtmQHijTrQg0=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "db6631db73effeb7673f6b44e89361e6c8a42056",
+        "rev": "04d9c7bd3c4a2ce32f44cc970cc3e03d5a4aa334",
         "type": "github"
       },
       "original": {
@@ -117,10 +81,8 @@
     "root": {
       "inputs": {
         "chrome-pwa": "chrome-pwa",
-        "nix-gaming": "nix-gaming",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-nightly": "nixpkgs-nightly",
         "nur": "nur"
       }
     }
