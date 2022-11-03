@@ -8,8 +8,8 @@
     hunspellDicts.en_US-large
     hunspellDicts.da_DK
     hunspellDicts.de_DE
-    inputs.nixpkgs-nightly.legacyPackages."x86_64-linux".hunspellDicts.nb_NO
-    inputs.nixpkgs-nightly.legacyPackages."x86_64-linux".hunspellDicts.nn_NO
+    hunspellDicts.nb_NO
+    hunspellDicts.nn_NO
   ];
 
   environment.pathsToLink = [ "/share/hunspell" "/share/myspell" "/share/hyphen" ];
