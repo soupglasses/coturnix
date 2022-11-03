@@ -9,10 +9,11 @@
 
   environment.systemPackages = with pkgs.gnomeExtensions; [
     appindicator
+    impatience
   ];
 
   services.dbus.enable = true;
-  services.udev.packages = [ pkgs.gnome3.gnome-settings-daemon ];
+  services.udev.packages = [ pkgs.gnome.gnome-settings-daemon ];
 
   hardware.pulseaudio.enable = false;
 
