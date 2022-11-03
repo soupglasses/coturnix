@@ -51,10 +51,11 @@
     vimPlugins.nvim-treesitter
     gcc
     libreoffice
+    lutris
+    alsaUtils
+    alsamixer
     spotify
-    legendary-gl
-    winetricks
-    nur.repos.wolfangaukang.heroic
+    heroic
     easyeffects
     (wrapOBS { plugins = [
       obs-studio-plugins.obs-nvfbc
