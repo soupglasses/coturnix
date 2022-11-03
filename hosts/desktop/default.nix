@@ -53,7 +53,6 @@
     libreoffice
     lutris
     alsaUtils
-    alsamixer
     spotify
     heroic
     easyeffects
