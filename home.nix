@@ -32,6 +32,7 @@
     tree
     trash-cli
     gh
+    sd
     ripgrep
     rsync
     moreutils  # vidir, etc.
