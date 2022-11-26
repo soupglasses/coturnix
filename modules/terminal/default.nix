@@ -4,7 +4,6 @@
     ./bat.nix
     ./fzf.nix
     ./starship.nix
-
     ./zsh
   ];
 
@@ -45,7 +44,7 @@
     py = "python";
     ipy = "ipython";
     lg = "lazygit";
-    hm = "home-manager --flake .";
+    hm = "home-manager --flake ~/.dotfiles/home-manager";
     hms = "hm switch";
     k = "kubectl";
   };
