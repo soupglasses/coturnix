@@ -33,11 +33,13 @@
     trash-cli
     gh
     sd
+    dig
     ripgrep
     rsync
     moreutils  # vidir, etc.
     kubectl
     # Gui
+    dino
     geogebra
     # Neovim
     sumneko-lua-language-server
