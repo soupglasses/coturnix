@@ -18,8 +18,6 @@
   boot.loader.systemd-boot.enable = true;
   # My poor computer cant handle EFI variables :(
   boot.loader.efi.canTouchEfiVariables = false;
-  # Enable the boot splash screen :)
-  boot.plymouth.enable = true;
 
   networking.hostName = "desktop";
 
@@ -30,6 +28,8 @@
   };
 
   programs.gamemode.enable = true;
+
+  services.ratbagd.enable = true;
 
   programs.steam = {
     enable = true;
@@ -62,6 +62,7 @@
     ];})
     mullvad-vpn
     deluge
+    piper
   ];
 
   services.mullvad-vpn.enable = true;
