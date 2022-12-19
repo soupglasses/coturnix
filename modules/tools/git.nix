@@ -27,6 +27,10 @@
     };
 
     extraConfig = {
+      # Performance
+      core.fsmonitor = true;
+      core.untrackedcache = true;
+
       # Delta
       merge.conflictstyle = "diff3";
       diff.colorMoved = "default";
