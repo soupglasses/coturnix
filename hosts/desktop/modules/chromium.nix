@@ -31,6 +31,12 @@
         default_launch_container = "window";
         url = "https://www.messenger.com/";
       }
+      {
+        create_desktop_shortcut = true;
+        default_launch_container = "window";
+        fallback_app_name = "Pocket Casts";
+        url = "https://play.pocketcasts.com/podcasts";
+      }
     ];
 
     # Open all other url's inside of Firefox, my prefered browser.
@@ -38,6 +44,7 @@
     AlternativeBrowserParameters = [ "--new-tab" "\${url}" ];
     BrowserSwitcherEnabled = true;
     BrowserSwitcherUrlGreylist = [
+      "pocketcasts.com"
       "discord.com"
       "app.element.io"
       "messenger.com"
