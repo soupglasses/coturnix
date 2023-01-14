@@ -18,19 +18,19 @@
       fsType = "ext4";
     };
 
-  fileSystems."/mnt/pool" =
-    { device = "/dev/disk/by-uuid/0f4606e3-44e6-4087-9186-f7dea6a8a627";
-      fsType = "xfs";
-    };
-
-  fileSystems."/mnt/scrap" =
-    { device = "/dev/disk/by-uuid/860374c0-bd0a-4fa9-97d3-b18ce80fbb4b";
-      fsType = "xfs";
-    };
-
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/57F4-E38D";
       fsType = "vfat";
+    };
+
+  fileSystems."/mnt/home" =
+    { device = "/dev/disk/by-uuid/fac3a78d-1d15-4b5d-90dd-0fcd457babd5";
+      fsType = "ext4";
+    };
+
+  fileSystems."/mnt/games" =
+    { device = "/dev/disk/by-uuid/bc543dd9-0d98-4c29-bb1a-f7a62b10e592";
+      fsType = "ext4";
     };
 
   swapDevices = [ ];
@@ -42,6 +42,7 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
 
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   # high-resolution display
   hardware.video.hidpi.enable = lib.mkDefault true;
