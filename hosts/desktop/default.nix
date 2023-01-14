@@ -36,6 +36,7 @@
     remotePlay.openFirewall = true;
   };
 
+
   environment.shells = [ pkgs.zsh ];
   users.users.sofi = {
     description = "Sofi";
@@ -63,6 +64,8 @@
     mullvad-vpn
     deluge
     piper
+    mangohud
+    gimp
   ];
 
   services.mullvad-vpn.enable = true;
