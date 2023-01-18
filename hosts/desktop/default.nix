@@ -14,6 +14,10 @@
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
+  # Attempt boot even if the harddrive is offline.
+  fileSystems."/mnt/games".options = [ "nofail" ];
+  fileSystems."/mnt/home".options = [ "nofail" ];
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   # My poor computer cant handle EFI variables :(
