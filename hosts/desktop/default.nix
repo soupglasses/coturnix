@@ -70,6 +70,7 @@
     piper
     mangohud
     gimp
+    strawberry
   ];
 
   services.mullvad-vpn.enable = true;
