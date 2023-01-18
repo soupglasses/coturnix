@@ -25,11 +25,9 @@
 
   networking.hostName = "desktop";
 
-  qt5 = {
-    enable = true;
-    platformTheme = "gnome";
-    style= "adwaita-dark";
-  };
+  qt.enable = true;
+  qt.platformTheme = "gnome";
+  qt.style= "adwaita-dark";
 
   programs.gamemode.enable = true;
 
