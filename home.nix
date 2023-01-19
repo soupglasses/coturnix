@@ -1,4 +1,4 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, config, inputs, ... }:
 {
   imports = [
     # Setup
@@ -50,7 +50,7 @@
     nixgld.kitty
     nixgl.nixGLIntel
   ] else [
-    kitty
+    inputs.self.packages.${system}.kitty
     signal-desktop
     prismlauncher
   ]);
