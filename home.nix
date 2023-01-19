@@ -8,6 +8,7 @@
     ./modules/terminal
     # Tools
     ./modules/tools/comma.nix
+    ./modules/tools/elixir.nix
     ./modules/tools/git.nix
     ./modules/tools/gpg.nix
     ./modules/tools/navi
