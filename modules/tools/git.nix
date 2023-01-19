@@ -60,8 +60,7 @@
       # Shorthands
       co = "checkout";
       br = "branch";
-      ci = "commit";
-      st = "status";
+      st = "status --short --branch";
     };
   };
 }
