@@ -4,7 +4,7 @@
     enable = true;
     config = {
       style = "header,changes,numbers";
-      theme = "OneHalfLight";
+      theme = "base16";
     };
     themes = {
       tokyo-night = builtins.readFile (pkgs.fetchFromGitHub {
