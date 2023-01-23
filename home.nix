@@ -41,11 +41,8 @@
     kubectl
     # Gui
     dino
-    geogebra
-    # Neovim
-    sumneko-lua-language-server
-    rnix-lsp
-    pyright
+    #geogebra
+    nvim
   ] ++ (if config.targets.genericLinux.enable then [
     nixgld.kitty
     nixgl.nixGLIntel
