@@ -10,7 +10,7 @@
 
     userEmail = "sofi+git@mailbox.org";
     userName = "Sofi";
-    signing.key = "1B2722AF";
+    signing.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIvSBEh5IcFvQ6rrh5awQ+LljV8i1j81Q3jZAWhRSo+D";
 
     signing.signByDefault = true;
 
@@ -34,6 +34,10 @@
       # Delta
       merge.conflictstyle = "diff3";
       diff.colorMoved = "default";
+
+      # GPG ssh signing
+      gpg.format = "ssh";
+      gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
 
       blame.coloring = "highlightRecent";
       blame.date = "relative";
