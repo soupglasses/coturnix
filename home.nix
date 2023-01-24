@@ -47,7 +47,7 @@
     nixgld.kitty
     nixgl.nixGLIntel
   ] else [
-    inputs.self.packages.${system}.kitty
+    kitty
     signal-desktop
     prismlauncher
   ]);
