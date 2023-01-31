@@ -17,6 +17,6 @@
   };
 
   home.shellAliases = {
-    cat = "bat -pp";
+    cat = "bat -p";
   };
 }
