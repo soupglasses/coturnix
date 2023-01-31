@@ -3,7 +3,6 @@
   imports = [
     ./history.nix
 
-    ./plugins/fasd
     ./plugins/grc
   ];
 
@@ -13,6 +12,7 @@
   services.gpg-agent.enableZshIntegration = true;
   programs.dircolors.enable = true;
   programs.command-not-found.enable = false;
+  programs.zoxide.enable = true;
 
   programs.zsh = {
     enable = true;
