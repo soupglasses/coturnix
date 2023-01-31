@@ -3,7 +3,7 @@
   imports = [
     ./history.nix
 
-    ./plugins/grc
+    ./modules/grc
   ];
 
   # Integrations
@@ -43,12 +43,19 @@
       source ${./extras/set-title-hook.zsh}
       # Custom options for zsh-syntax-highlight.
       source ${./extras/zsh-highlight.zsh}
+
+      # Expose the l function, a combined ls and cat function.
+      autoload l
     '';
+    plugins = [{
+      name = "functions";
+      src = ./functions;
+    }];
     shellGlobalAliases = {
       # Multi-dot expansion
       "..." =  "../..";
       "...." = "../../..";
       "....." = "../../../..";
     };
-  }; 
+  };
 }
