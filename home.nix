@@ -16,6 +16,9 @@
     ./modules/gnome
   ];
 
+  # Allow nix to configure `.profile` to let session variables be configured by nix.
+  programs.bash.enable = true;
+
   programs.direnv = {
     enable = true;
     enableZshIntegration = true;

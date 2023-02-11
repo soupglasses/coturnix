@@ -5,6 +5,7 @@
     ./fzf.nix
     ./starship.nix
     ./zsh
+    ./xdg.nix
   ];
 
   home.sessionVariables = {

@@ -1,14 +1,11 @@
-{ config, lib, pkgs, ... }:
-let
-  initText = ''
-    # WORKAROUND: https://github.com/nix-community/home-manager/issues/2751
-    export EDITOR="$VISUAL"
-
+{config, ...}:
+{
+  home.sessionVariablesExtra = ''
     # Add user installed software to PATH.
     export PATH="${config.home.homeDirectory}/.local/bin:$PATH"
   '';
-in
-{
-  programs.bash.initExtra = initText;
-  programs.zsh.initExtraFirst = initText;
+  home.sessionVariables = {
+    # WORKAROUND: https://github.com/nix-community/home-manager/issues/2751
+    EDITOR="$VISUAL";
+  };
 }
