@@ -68,7 +68,7 @@
       force = "push --force-with-lease --force-if-includes";
       hist = "log --pretty='%C(auto)%h - %s %C(green)(%ar) %C(bold blue)<%an>%C(auto)%d' --graph --no-show-signature";
       parts = "add --patch";
-      rank = "shortlog -s -n --no-merges";
+      rank = "shortlog --summary --numbered --no-merges";
       redate = "rebase --committer-date-is-author-date";
       unstage = "restore --staged";
       # Shorthands
