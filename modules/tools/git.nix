@@ -35,19 +35,23 @@
       merge.conflictstyle = "diff3";
       diff.colorMoved = "default";
 
+      merge.tool = "nvimdiff";
+
       # GPG ssh signing
       gpg.format = "ssh";
       gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+      log.showSignature = true;
 
       blame.coloring = "highlightRecent";
       blame.date = "relative";
-      branch.autosetupmerge = "true";
+      branch.autosetupmerge = true;
       credential.helper = "cache --timeout 3600";
-      color.ui = "true";
+      color.ui = true;
       init.defaultbranch = "main";
-      pull.rebase = "true";
-      tag.gpgsign = "true";
-      tag.forcesignannotated = "true";
+      pull.rebase = true;
+      tag.gpgsign = true;
+      tag.forcesignannotated = true;
+      user.useConfigOnly = true;
 
       sendemail = {
         smtpserver = "/usr/bin/msmtp";
@@ -58,12 +62,17 @@
 
     aliases = {
       # QoL
-      hist = "log --pretty='%C(auto)%h - %s %C(green)(%ar) %C(bold blue)<%an>%C(auto)%d' --graph";
-      last = "log -1 HEAD";
-      unstage = "reset HEAD --";
+      aliases = "config --get-regexp alias";
+      amend = "commit --amend";
+      fix = "commit --amend --no-edit --date=now";
+      force = "push --force-with-lease --force-if-includes";
+      hist = "log --pretty='%C(auto)%h - %s %C(green)(%ar) %C(bold blue)<%an>%C(auto)%d' --graph --no-show-signature";
+      parts = "add --patch";
+      rank = "shortlog -s -n --no-merges";
+      redate = "rebase --committer-date-is-author-date";
+      unstage = "restore --staged";
       # Shorthands
-      co = "checkout";
-      br = "branch";
+      po = "!git push origin `git branch --show-current`";
       st = "status --short --branch";
     };
   };
