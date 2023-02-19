@@ -20,10 +20,12 @@
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
-  # My poor computer cant handle EFI variables :(
+  # My poor computer can't handle EFI variables :(
   boot.loader.efi.canTouchEfiVariables = false;
 
   networking.hostName = "desktop";
+
+  programs.dconf.enable = true;
 
   qt.enable = true;
   qt.platformTheme = "gnome";
@@ -69,6 +71,9 @@
     mangohud
     gimp
     strawberry
+    gnome-epub-thumbnailer
+    calibre
+    okular
   ];
 
   services.mullvad-vpn.enable = true;

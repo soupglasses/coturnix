@@ -8,14 +8,11 @@
   # slightly.
   hardware.nvidia.modesetting.enable = true;
 
-  # Patch the NVIDIA driver with https://github.com/keylase/nvidia-patch
-  # This enables NVENC and NvFBC functionality on consumer-grade GPUs.
-  #hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-  hardware.nvidia.package = pkgs.arc.packages.nvidia-patch.override {
-    nvidia_x11 = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
-
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
   services.xserver.videoDrivers = [ "nvidia" ];
+
+  # Stop hardware flickering
+  hardware.nvidia.powerManagement.enable = true;
 
 #  hardware.opengl.extraPackages = [
 #    (pkgs.runCommand "nvidia-icd" { } ''

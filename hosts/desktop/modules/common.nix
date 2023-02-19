@@ -89,7 +89,7 @@
     # Data formatters
     libxml2  # provides: xmllint
     jq
-    yq
+    yq-go
 
     # Networking
     iperf

@@ -4,17 +4,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
-    nixexprs.url = "github:imsofi/nixexprs/update-nvidia-patch";
-    nixexprs.inputs.nixpkgs.follows = "nixpkgs";
-    #nix-gaming.url = "github:fufexan/nix-gaming";
-    #nix-gaming.inputs.nixpkgs.follows = "nixpkgs";
-    nix-index-database.url = "github:Mic92/nix-index-database";
-    chrome-pwa.url = "github:Luis-Hebendanz/nixos-chrome-pwa";
   };
 
-  outputs = inputs@{ self, nixpkgs, nur, nixexprs, nix-index-database, chrome-pwa, ... }:
+  outputs = inputs@{ self, nixpkgs, nur, ... }:
   let
-
     systems = [
       "x86_64-linux"
       "x86_64-darwin"
@@ -35,12 +28,10 @@
           {
             nixpkgs.overlays = [
               nur.overlay
-              nixexprs.overlays.arc
             ] ++ (nixpkgs.lib.attrValues self.overlays);
             nixpkgs.config.packageOverrides = pkgs: { wine = (pkgs.winePackagesFor "wineWow").full; };
             nixpkgs.config.allowUnfree = true;
           }
-          chrome-pwa.nixosModule
           ./hosts/desktop
        ];
       };
