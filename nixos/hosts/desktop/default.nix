@@ -1,10 +1,7 @@
-{ config, pkgs, lib, inputs, ... }:
-
-{
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
 
-    ./modules/common.nix
     ./modules/chromium.nix
     ./modules/spell.nix
     ./modules/desktops/gnome.nix
@@ -15,8 +12,8 @@
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
   # Attempt boot even if the harddrive is offline.
-  fileSystems."/mnt/games".options = [ "nofail" ];
-  fileSystems."/mnt/home".options = [ "nofail" ];
+  fileSystems."/mnt/games".options = ["nofail"];
+  fileSystems."/mnt/home".options = ["nofail"];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -29,7 +26,7 @@
 
   qt.enable = true;
   qt.platformTheme = "gnome";
-  qt.style= "adwaita-dark";
+  qt.style = "adwaita-dark";
 
   programs.gamemode.enable = true;
 
@@ -40,20 +37,17 @@
     remotePlay.openFirewall = true;
   };
 
-
-  environment.shells = [ pkgs.zsh ];
+  environment.shells = [pkgs.zsh];
   users.users.sofi = {
     description = "Sofi";
     shell = pkgs.zsh;
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = ["wheel"];
   };
 
   environment.systemPackages = with pkgs; [
     firefox
-    xclip # needed for nvim
-    neovim
-    vimPlugins.nvim-treesitter
+    xclip
     gcc
     libreoffice
     lutris
@@ -61,11 +55,11 @@
     spotify
     heroic
     easyeffects
-    (wrapOBS { plugins = [
-      obs-studio-plugins.obs-nvfbc
-      obs-studio-plugins.obs-vkcapture
-    ];})
-    mullvad-vpn
+    (wrapOBS {
+      plugins = [
+        obs-studio-plugins.obs-vkcapture
+      ];
+    })
     deluge
     piper
     mangohud
@@ -75,9 +69,5 @@
     calibre
     okular
   ];
-
-  services.mullvad-vpn.enable = true;
-
-  system.stateVersion = "22.05";  # Do not touch.
+  system.stateVersion = "22.05"; # Do not touch.
 }
-

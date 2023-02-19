@@ -1,7 +1,12 @@
-{ config, pkgs, lib, inputs, ... }:
 {
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
-    (aspellWithDicts (d: [ d.en d.nb d.da ]))
+    (aspellWithDicts (d: [d.en d.nb d.da]))
 
     hyphen
     hunspell
@@ -12,6 +17,6 @@
     hunspellDicts.nn_NO
   ];
 
-  environment.pathsToLink = [ "/share/hunspell" "/share/myspell" "/share/hyphen" ];
+  environment.pathsToLink = ["/share/hunspell" "/share/myspell" "/share/hyphen"];
   environment.variables.DICPATH = "/run/current-system/sw/share/hunspell:/run/current-system/sw/share/hyphen";
 }

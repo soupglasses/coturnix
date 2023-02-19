@@ -1,6 +1,10 @@
-{ config, pkgs, lib, ... }: {
-
-  environment.systemPackages = [ pkgs.chromium ];
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
+  environment.systemPackages = [pkgs.chromium];
 
   programs.chromium.enable = true;
   programs.chromium.extensions = [
@@ -11,7 +15,6 @@
 
   # All options: https://chromeenterprise.google/policies
   programs.chromium.extraOpts = {
-
     # Websites to automatically install as PWAs on launch.
     WebAppInstallForceList = [
       {
@@ -45,7 +48,7 @@
 
     # Open all other url's inside of Firefox, my preferred browser.
     AlternativeBrowserPath = "${pkgs.firefox}/bin/firefox";
-    AlternativeBrowserParameters = [ "--new-tab" "\${url}" ];
+    AlternativeBrowserParameters = ["--new-tab" "\${url}"];
     BrowserSwitcherEnabled = true;
     BrowserSwitcherUrlGreylist = [
       "pocketcasts.com"
@@ -56,7 +59,7 @@
       "netflix.com"
       "teleparty.com"
     ];
-    BrowserSwitcherUrlList = [ "*" ];
+    BrowserSwitcherUrlList = ["*"];
 
     # Privacy Tweaks.
     CloudReportingEnabled = false;

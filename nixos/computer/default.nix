@@ -1,6 +1,6 @@
-{ config, pkgs, lib, ... }:
-{
-  imports = [ ./nix.nix ];
+{config, lib, ...}: {
+  _file = ./default.nix;
+  imports = [../common];
 
   boot.kernel.sysctl = {
     # Enable SysRq Magic keys.
@@ -24,15 +24,23 @@
   services.smartd = {
     enable = true;
     autodetect = true;
-    notifications.x11.enable = if config.services.xserver.enable then true else false;
+    notifications.x11.enable =
+      if config.services.xserver.enable
+      then true
+      else false;
     notifications.wall.enable = false;
   };
 
-  # Allow realtime scheduling.
-  security.rtkit.enable = true;
+  # Use pipewire for audio by default.
+  security.rtkit.enable = lib.mkDefault config.services.pipewire.enable;
+  services.pipewire = {
+    enable = lib.mkDefault true;
+    alsa.enable = lib.mkDefault true;
+    pulse.enable = lib.mkDefault true;
+  };
 
   # Default to sane I/O schedulers for the different kinds of devices.
-  boot.kernelModules = [ "bfq" ];
+  boot.kernelModules = ["bfq"];
   services.udev.extraRules = ''
     # set scheduler for NVMe
     ACTION=="add|change", KERNEL=="nvme[0-9]*", ATTR{queue/scheduler}="mq-deadline"
@@ -47,60 +55,14 @@
     SystemMaxUse=500M
   '';
 
-  # Use systemd-timesyncd NTP for syncronizing the system clock.
+  # Use systemd-timesyncd NTP for synchronizing the system clock.
   services.timesyncd.enable = true;
 
-  # Sane networking defaults.
+  # Use network-manager for networking on computers.
+  networking.useDHCP = false;
+  networking.useNetworkd = false;
   networking.networkmanager.enable = true;
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [ 25565 ];  # minecraft
-    allowedUDPPorts = [ 25565 ];  # minecraft
-  };
-
-  # List of system profile packages.
-  environment.systemPackages = with pkgs; [
-    # Management
-    fd
-    git
-    htop
-    neofetch
-    neovim
-    openssl
-    psmisc  # provides: killall, pstree, etc.
-    ripgrep  # provides: rg
-    rsync
-    tree
-    wget
-
-    # Compression & De-compression
-    atool  # provides: apack, aunpack, acat, etc.
-    bzip2
-    gnutar  # provides: tar
-    gzip
-    lz4
-    lzip
-    p7zip  # provides: 7z
-    xz
-    zip
-    unzip
-    zstd
-
-    # Data formatters
-    libxml2  # provides: xmllint
-    jq
-    yq-go
-
-    # Networking
-    iperf
-    nmap
-
-    # Hardware
-    ethtool
-    lshw
-    lsof
-    pciutils  # provides: lspci
-    smartmontools  # provides: smartctl, etc.
-    usbutils  # provides: lsusb
+  networking.networkmanager.unmanaged = [
+    "*" "except:type:wwan" "except:type:gsm"
   ];
 }
