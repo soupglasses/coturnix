@@ -10,7 +10,7 @@
 
     userEmail = "sofi+git@mailbox.org";
     userName = "Sofi";
-    signing.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIvSBEh5IcFvQ6rrh5awQ+LljV8i1j81Q3jZAWhRSo+D";
+    signing.key = "7A3B361F";
 
     signing.signByDefault = true;
 
@@ -37,8 +37,6 @@
 
       merge.tool = "nvimdiff";
 
-      # GPG ssh signing
-      gpg.format = "ssh";
       gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
       log.showSignature = true;
 
