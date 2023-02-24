@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: {
+{ config, pkgs, ...}: {
   # Steam has a soft 32-bit requirement for a lot of games.
   hardware.opengl.enable = true;
   hardware.opengl.driSupport32Bit = true;
@@ -17,6 +12,9 @@
 
   # Stop hardware flickering
   hardware.nvidia.powerManagement.enable = true;
+
+  # Enable vaapi support
+  hardware.opengl.extraPackages = with pkgs; [vaapiVdpau];
 
   #  hardware.opengl.extraPackages = [
   #    (pkgs.runCommand "nvidia-icd" { } ''

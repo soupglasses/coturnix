@@ -62,7 +62,4 @@
   networking.useDHCP = false;
   networking.useNetworkd = false;
   networking.networkmanager.enable = true;
-  networking.networkmanager.unmanaged = [
-    "*" "except:type:wwan" "except:type:gsm"
-  ];
 }
