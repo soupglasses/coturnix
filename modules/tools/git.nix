@@ -27,6 +27,11 @@
     };
 
     extraConfig = {
+      sendemail = {
+        smtpserver = "msmtp";
+        smtpserveroption = "--account git";
+        annotate = "yes";
+      };
       # Performance
       core.fsmonitor = true;
       core.untrackedcache = true;
@@ -35,27 +40,38 @@
       merge.conflictstyle = "diff3";
       diff.colorMoved = "default";
 
+      # Merging
       merge.tool = "nvimdiff";
 
-      gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
-      log.showSignature = true;
-
+      # Blame
       blame.coloring = "highlightRecent";
       blame.date = "relative";
-      branch.autosetupmerge = true;
+
+      # -- General --
+
+      # Cache credentials for an hour.
       credential.helper = "cache --timeout 3600";
-      color.ui = true;
+      # Enable colors by default to interactive terminals.
+      color.ui = "auto";
+      # When initializing a new repository, use the better name `main` for the default branch.
       init.defaultbranch = "main";
-      pull.rebase = true;
-      tag.gpgsign = true;
-      tag.forcesignannotated = true;
+      # Do not assume `user.email` and `user.name` and require them to be manually set.
       user.useConfigOnly = true;
 
-      sendemail = {
-        smtpserver = "/usr/bin/msmtp";
-        smtpserveroption = "--account git";
-        annotate = "yes";
-      };
+
+      # -- Quality of Life --
+
+      # When no upstream tracking exists, assume the `--set-upstream` option.
+      push.autoSetupRemote = true;
+      # Rebase branches on top of any fetched branches.
+      pull.rebase = true;
+
+      # -- Cryptographical Signatures --
+
+      # Use a psuedo-default folder to find allowed ssh key signatures.
+      gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+      # Show signature information by default in `git log`.
+      log.showSignature = true;
     };
 
     aliases = {
