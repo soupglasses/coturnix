@@ -7,6 +7,8 @@
     ./modules/desktops/gnome.nix
     ./modules/hardware/nvidia.nix
     ./modules/keyboard/interception.nix
+
+    ../../mixins/smartcard.nix
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
