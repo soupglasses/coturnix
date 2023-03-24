@@ -67,9 +67,7 @@
     mangohud
     gimp
     strawberry
-    gnome-epub-thumbnailer
     calibre
-    okular
   ];
   system.stateVersion = "22.05"; # Do not touch.
 }
