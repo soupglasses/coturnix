@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }: {
   services.xserver.enable = true;
@@ -14,10 +13,15 @@
       else true;
   };
 
-  environment.systemPackages = with pkgs.gnomeExtensions; [
-    appindicator
-    impatience
+  environment.systemPackages = with pkgs; [
+    gnome-epub-thumbnailer
+    gnomeExtensions.appindicator
+    gnomeExtensions.impatience
   ];
+
+  programs.evolution.enable = true;
+  #programs.evolution.plugins = with pkgs; [evolution-ews];
+  services.gnome.evolution-data-server.enable = true;
 
   services.dbus.enable = true;
   services.udev.packages = [pkgs.gnome.gnome-settings-daemon];
