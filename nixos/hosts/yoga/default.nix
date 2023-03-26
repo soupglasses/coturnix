@@ -1,14 +1,18 @@
 {pkgs, ...}:
 {
-  imports = [./hardware.nix];
+  imports = [
+    ./hardware.nix
+    ../desktop/modules/chromium.nix
+    ../desktop/modules/spell.nix
+    ../desktop/modules/desktops/gnome.nix
+    ../../mixins/smartcard.nix
+  ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "yoga";
 
-  environment.shells = [pkgs.zsh];
   users.users.sofi = {
     description = "Sofi";
-    shell = pkgs.zsh;
     isNormalUser = true;
     extraGroups = ["wheel"];
   };
