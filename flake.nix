@@ -65,18 +65,7 @@
             self.nixosModules.computer
             self.nixosModules.kernel-patching
             self.nixosModules.hardware-lenovo-yoga-7-14ARB7
-            {
-              boot.loader.systemd-boot.enable = true;
-              fileSystems."/" = { device = "/dev/sda1"; fsType = "ext4"; };
-              boot.loader.efi.canTouchEfiVariables = false;
-              networking.hostName = "yoga";
-              users.users.sofi = {
-                description = "Sofi";
-                isNormalUser = true;
-                extraGroups = ["wheel" "networkmanager"];
-              };
-              system.stateVersion = "23.05";
-            }
+            ./nixos/hosts/yoga
           ];
         };
       };
