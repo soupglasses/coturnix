@@ -45,6 +45,7 @@
     # Gui
     dino
     #geogebra
+    nvim
   ] ++ (if config.targets.genericLinux.enable then [
     nixgld.kitty
     nixgl.nixGLIntel
