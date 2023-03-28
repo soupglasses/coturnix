@@ -3,7 +3,7 @@
   imports = [
     # Setup
     ./modules/nix-settings.nix
-    ./modules/generic-linux
+    #./modules/generic-linux
     # Configure
     ./modules/terminal
     # Tools
@@ -45,7 +45,6 @@
     # Gui
     dino
     #geogebra
-    nvim
   ] ++ (if config.targets.genericLinux.enable then [
     nixgld.kitty
     nixgl.nixGLIntel
