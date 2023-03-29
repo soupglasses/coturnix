@@ -22,10 +22,8 @@
     xclip
     gcc
     libreoffice
-    lutris
     alsaUtils
     spotify
-    heroic
     piper
     gimp
     calibre

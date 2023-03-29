@@ -5,5 +5,6 @@
     ./kernel.nix
     ./sensors.nix
     ./quirks.nix
+    ./wacom.nix
   ];
 }
