@@ -17,6 +17,11 @@
     extraGroups = ["wheel"];
   };
 
+  # Firefox touchscreen support
+  environment.sessionVariables = {
+    MOZ_USE_XINPUT2 = "1";
+  };
+
   environment.systemPackages = with pkgs; [
     firefox
     xclip
