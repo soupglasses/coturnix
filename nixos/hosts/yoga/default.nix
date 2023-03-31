@@ -26,7 +26,6 @@
     spotify
     piper
     gimp
-    calibre
   ];
 
   system.stateVersion = "23.05"; # No touch.

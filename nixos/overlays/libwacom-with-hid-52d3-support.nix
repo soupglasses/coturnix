@@ -8,6 +8,7 @@ _final: prev: {
     };
     patches = old.patches or [] ++ [
       ./0001-Add-Wacom-HID-52D3-Lenovo-Yoga-7-14ARB7.patch
+      ./0002-Update-to-follow-auto-generated-standard.patch
     ];
   });
 }

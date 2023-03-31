@@ -5,4 +5,6 @@
     ./sensors.nix
     ./quirks.nix
   ];
+
+  services.xserver.wacom.enable = true;
 }
