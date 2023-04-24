@@ -63,6 +63,29 @@
   networking.useNetworkd = false;
   networking.networkmanager.enable = true;
 
+  # Use resolved for TLS + DNSSEC based DNS.
+  services.resolved.enable = true;
+  services.resolved.llmnr = "false";
+  services.resolved.dnssec = "allow-downgrade";
+  services.resolved.extraConfig = ''
+    Domains=~.
+    DNSOverTLS=opportunistic
+  '';
+
+  # Default DNS servers.
+  networking.nameservers = [
+    "1.1.1.1#cloudflare-dns.com"
+    "1.0.0.1#cloudflare-dns.com"
+    "2606:4700:4700::1111#cloudflare-dns.com"
+    "2606:4700:4700::1001#cloudflare-dns.com"
+  ];
+  services.resolved.fallbackDns = [
+    "1.1.1.1"
+    "1.0.0.1"
+    "2606:4700:4700::1111"
+    "2606:4700:4700::1001"
+  ];
+
    # wireguard trips rpfilter up
    networking.firewall.extraCommands = ''
      ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN
