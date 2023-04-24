@@ -5,16 +5,30 @@
     ../desktop/modules/chromium.nix
     ../desktop/modules/spell.nix
     ../desktop/modules/desktops/gnome.nix
+    ../desktop/modules/keyboard/interception.nix
     ../../mixins/smartcard.nix
   ];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "yoga";
 
+  virtualisation.podman.enable = true;
+
+  services.onedrive.enable = true;
+
+  programs.nix-ld.enable = true;
+
+  programs.gamemode.enable = true;
+  services.ratbagd.enable = true;
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+  };
+
   users.users.sofi = {
     description = "Sofi";
     isNormalUser = true;
-    extraGroups = ["wheel"];
+    extraGroups = ["wheel" "networkmanager"];
   };
 
   # Firefox touchscreen support
@@ -31,6 +45,10 @@
     spotify
     piper
     gimp
+    lutris
+    prismlauncher
+    foliate
+    toolbox
   ];
 
   system.stateVersion = "23.05"; # No touch.

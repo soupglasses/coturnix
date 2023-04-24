@@ -44,6 +44,12 @@
         fallback_app_name = "Netflix";
         url = "https://www.netflix.com/";
       }
+      {
+        create_desktop_shortcut = true;
+        default_launch_container = "window";
+        fallback_app_name = "Spotify Web";
+        url = "https://open.spotify.com/";
+      }
     ];
 
     # Open all other url's inside of Firefox, my preferred browser.
@@ -58,6 +64,7 @@
       "facebook.com"
       "netflix.com"
       "teleparty.com"
+      "spotify.com"
     ];
     BrowserSwitcherUrlList = ["*"];
 
