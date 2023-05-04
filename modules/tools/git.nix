@@ -85,6 +85,8 @@
       rank = "shortlog --summary --numbered --no-merges";
       redate = "rebase --committer-date-is-author-date";
       unstage = "restore --staged";
+      yeet = "push";
+      yoink = "pull";
       # Shorthands
       po = "!git push origin `git branch --show-current`";
       st = "status --short --branch";
