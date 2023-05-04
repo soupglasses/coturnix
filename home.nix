@@ -52,7 +52,7 @@
   ] else [
     kitty
     signal-desktop
-    prismlauncher
+    #prismlauncher
   ]);
 
   home.stateVersion = "21.11";
