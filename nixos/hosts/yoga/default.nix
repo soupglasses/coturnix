@@ -8,6 +8,7 @@
     ../desktop/modules/keyboard/interception.nix
     ../../mixins/smartcard.nix
   ];
+  boot.kernelParams = ["amdgpu.dcdebugmask=0x10"];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "yoga";
@@ -19,7 +20,6 @@
   programs.nix-ld.enable = true;
 
   programs.gamemode.enable = true;
-  services.ratbagd.enable = true;
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
