@@ -8,9 +8,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "nixpkgs/nixos-22.11";
 
-    nixos-generators.url = "github:nix-community/nixos-generators";
-    nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
-
     # Utilities
     flake-compat.url = "github:edolstra/flake-compat";
     flake-compat.flake = false;
