@@ -52,7 +52,8 @@
   ] else [
     kitty
     signal-desktop
-    #prismlauncher
+    prismlauncher
+    obsidian
   ]);
 
   home.stateVersion = "21.11";
