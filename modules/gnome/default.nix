@@ -5,8 +5,8 @@ let
 in
 {
   home.file.".face".source = builtins.fetchurl {
-    url = "https://avatars.githubusercontent.com/u/20756843";
-    sha256 = "0ciyqhqdr6il6y36b1n7p9d8s8cgb7hgih6dmj53lkb4hnnqsvqg";
+    url = "https://avatars.githubusercontent.com/u/20756843?v=4";
+    sha256 = "sha256:0ciyqhqdr6il6y36b1n7p9d8s8cgb7hgih6dmj53lkb4hnnqsvqg";
   };
 
   qt.enable = true;
