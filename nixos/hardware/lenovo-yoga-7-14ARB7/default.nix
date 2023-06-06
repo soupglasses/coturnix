@@ -6,5 +6,9 @@
     ./quirks.nix
   ];
 
+  boot.kernelParams = [
+    "amdgpu.dcdebugmask=0x10"
+  ];
+
   services.xserver.wacom.enable = true;
 }

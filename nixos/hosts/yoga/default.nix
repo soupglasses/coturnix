@@ -8,12 +8,14 @@
     ../desktop/modules/keyboard/interception.nix
     ../../mixins/smartcard.nix
   ];
-  boot.kernelParams = ["amdgpu.dcdebugmask=0x10"];
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "yoga";
 
-  virtualisation.podman.enable = true;
+  virtualisation.podman.enable = true; # For toolbox.
+
+  virtualisation.waydroid.enable = true;
+  virtualisation.lxd.enable = true; # For waydroid.
 
   services.onedrive.enable = true;
 
@@ -49,6 +51,7 @@
     prismlauncher
     foliate
     toolbox
+    wl-clipboard
   ];
 
   system.stateVersion = "23.05"; # No touch.

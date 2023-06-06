@@ -12,4 +12,16 @@
 
   hardware.cpu.amd.updateMicrocode = true;
   hardware.firmware = [pkgs.coturnix.tas2563-fw];
+
+
+  boot.kernelPatches = [
+    {
+      name = "drm-amd-display-fix-flickering-caused-by-S-G-mode.patch";
+      patch = pkgs.fetchpatch {
+        name = "drm-amd-display-fix-flickering-caused-by-S-G-mode.patch";
+        url = "https://gitlab.freedesktop.org/drm/amd/uploads/ebd02a1dc605110a3f28b9c4eb62c313/0001-drm-amd-display-fix-flickering-caused-by-S-G-mode.patch";
+        sha256 = "sha256-7Y5xzvxY9jXWu7BIQayKYMA9ONqE3c4ehgOg4CHg1KQ=";
+      };
+    }
+  ];
 }
