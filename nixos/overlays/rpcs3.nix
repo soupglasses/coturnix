@@ -3,7 +3,7 @@ final: prev: {
     rpcs3GitVersion = "15225-715e3856f";
     rpcs3Version = "0.0.28-15225-715e3856f";
     rpcs3Revision = "715e3856f224f4407080227d0ad6076a4ba657a1";
-    rpcs3Sha256 = "";
+    rpcs3Sha256 = "0ql7hpzz96s1yyiigb3n8pnh108s38dxxyxmx9gzadg196b66w8n";
   in {
     version = rpcs3Version;
     src = final.fetchFromGitHub {
@@ -21,5 +21,9 @@ final: prev: {
       #define RPCS3_GIT_VERSION_NO_UPDATE 1
       EOF
     '';
+    patches = [
+      ./0001-llvm-ExecutionEngine-IntelJITEvents-only-use.patch
+      ./0001-update.patch
+    ];
   });
 }

@@ -1,0 +1,19 @@
+From 0f7b7a28af6004268a2859dddfcf26d8367cd00b Mon Sep 17 00:00:00 2001
+From: Sofi <sofi+git@mailbox.org>
+Date: Thu, 22 Jun 2023 17:04:47 +0200
+Subject: [PATCH] update
+
+---
+ 3rdparty/llvm/llvm | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/3rdparty/llvm/llvm b/3rdparty/llvm/llvm
+index cd89023f7..b35b41cbc 160000
+--- a/3rdparty/llvm/llvm
++++ b/3rdparty/llvm/llvm
+@@ -1 +1 @@
+-Subproject commit cd89023f797900e4492da58b7bed36f702120011
++Subproject commit b35b41cbcac82de05245106259fb2f298c06dd26
+-- 
+2.40.1
+
