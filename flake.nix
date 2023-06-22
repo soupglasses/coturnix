@@ -5,8 +5,8 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-stable.url = "nixpkgs/nixos-23.05";
 
     # Utilities
     flake-compat.url = "github:edolstra/flake-compat";
