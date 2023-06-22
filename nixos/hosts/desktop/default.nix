@@ -69,6 +69,7 @@
     gimp
     strawberry
     calibre
+    rpcs3
   ];
   system.stateVersion = "22.05"; # Do not touch.
 }
