@@ -48,6 +48,7 @@
       nixosConfigurations = {
         desktop = self.lib.mkSystem self {
           system = "x86_64-linux";
+          overlays = builtins.attrValues self.overlays;
           modules = [
             self.nixosModules.computer
             ./nixos/hosts/desktop
@@ -62,6 +63,7 @@
         };
         yoga = self.lib.mkSystem self {
           system = "x86_64-linux";
+          overlays = builtins.attrValues self.overlays;
           modules = [
             self.nixosModules.computer
             self.nixosModules.kernel-patching
