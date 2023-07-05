@@ -1,7 +1,7 @@
 {
   description = "Coturnix: My personal computer setup";
 
-  nixConfig.allow-import-from-derivation = false; # Disable building at evaluation time.
+  nixConfig.allow-import-from-derivation = true; # NOTE: Only allow when `patches` is used.
 
   inputs = {
     # Nixpkgs
@@ -51,6 +51,13 @@
           modules = [
             self.nixosModules.computer
             ./nixos/hosts/desktop
+          ];
+          patches = [
+            # "linuxPackages.nvidiaPackages.mkDriver: init" https://github.com/NixOS/nixpkgs/pull/240075
+            (builtins.fetchurl {
+              url = "https://github.com/NixOS/nixpkgs/commit/8ef3c5b70e8aac987594dde103da016915e0d6a8.patch";
+              sha256 = "16j4irxy7kq09g7gf0n9ccjapcxxiyz15g5z88fr3zybws7i8vyy";
+            })
           ];
         };
         yoga = self.lib.mkSystem self {
