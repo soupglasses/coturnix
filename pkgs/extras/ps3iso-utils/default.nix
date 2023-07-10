@@ -1,7 +1,11 @@
-{stdenv, fetchFromGitHub}:
-
+{
+  stdenv,
+  fetchFromGitHub,
+  unstableGitUpdater,
+  lib,
+}:
 stdenv.mkDerivation {
-  name = "ps3iso-utils";
+  pname = "ps3iso-utils";
   version = "277db7de";
 
   src = fetchFromGitHub {
@@ -21,4 +25,12 @@ stdenv.mkDerivation {
     mkdir -p $out/bin
     cp bin/* $out/bin
   '';
+
+  meta = with lib; {
+    description = "Estwald's PS3ISO utilities";
+    homepage = "https://github.com/bucanero/ps3iso-utils";
+    license = licenses.gpl3Only;
+    maintainers = with maintainers; [imsofi];
+    platforms = with platforms; all;
+  };
 }
