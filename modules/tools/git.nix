@@ -81,6 +81,7 @@
       fix = "commit --amend --no-edit --date=now";
       force = "push --force-with-lease --force-if-includes";
       hist = "log --pretty='%C(auto)%h - %s %C(green)(%ar) %C(bold blue)<%an>%C(auto)%d' --graph --no-show-signature";
+      main = "!git switch `git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4`";
       parts = "add --patch";
       rank = "shortlog --summary --numbered --no-merges";
       redate = "rebase --committer-date-is-author-date";
