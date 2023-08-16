@@ -2,7 +2,6 @@
 {
   imports = [
     ./env.nix
-    ./nixgl.nix
     ./git.nix
   ];
 
