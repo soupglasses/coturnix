@@ -17,6 +17,7 @@
     gnome-epub-thumbnailer
     gnomeExtensions.appindicator
     gnomeExtensions.impatience
+    gnome.gnome-boxes
   ];
 
   programs.evolution.enable = true;
