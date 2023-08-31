@@ -76,9 +76,13 @@
     ];
   };
 
+  # Watch for changes in https://github.com/NixOS/nixpkgs/issues/248179
+  nixpkgs.config.firefox.speechSynthesisSupport = true;
+
   environment.systemPackages = with pkgs; [
     protontricks
     firefox
+    speechd
     xclip
     gcc
     libreoffice
