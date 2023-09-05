@@ -156,7 +156,7 @@
             enable = true;
             name = "codespell";
             language = "system";
-            entry = "${pkgs.codespell}/bin/codespell -L anull -- ";
+            entry = "${pkgs.codespell}/bin/codespell -L anull -L statics -- ";
             types = ["text"];
           };
         };
