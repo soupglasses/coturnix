@@ -4,6 +4,7 @@ if not ok then
 end
 
 local servers = {
+  "clangd",
 	"lua_ls",
 	"pyright",
   "nil_ls",

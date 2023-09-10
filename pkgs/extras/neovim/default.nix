@@ -62,6 +62,7 @@
     black
 
     # LSP servers
+    clang-tools
     elixir_ls
     nil
     nodePackages.pyright
