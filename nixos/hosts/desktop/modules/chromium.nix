@@ -5,6 +5,7 @@
   programs.chromium.extensions = [
     "cjpalhdlnbpafiamejdnhcphjbkeiagm" # Ublock Origin
     "hkgfoiooedgoejojocmhlaklaeopbecg" # Picture in Picture
+    "jinjaccalgkegednnccohejagnlnfdag" # Violentmonkey
   ];
 
   # All options: https://chromeenterprise.google/policies
@@ -18,7 +19,7 @@
         url = "https://discord.com/channels/@me";
         custom_name = "Discord";
         custom_icon = {
-          hash = "";
+          hash = "e94a1bb1fa28be712e5cb0068770bf9b139d4e6d0ee4cc097a668fedb2ad195d";
           url = "https://raw.githubusercontent.com/z-ffqq/Discord-BSD/853cfdd25f7f0b0dff3522863f84c2a4665a5e9b/assets/icon.png";
         };
       }
