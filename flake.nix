@@ -7,6 +7,10 @@
     # Nixpkgs
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
+    # Extra packages
+    aagl.url = "github:ezKEa/aagl-gtk-on-nix";
+    aagl.inputs.nixpkgs.follows = "nixpkgs";
+
     # Utilities
     flake-compat.url = "github:edolstra/flake-compat";
     flake-compat.flake = false;
@@ -27,6 +31,7 @@
   outputs = {
     self,
     nixpkgs,
+    aagl,
     pre-commit-hooks,
     treefmt-nix,
     devshell,
@@ -52,6 +57,7 @@
         system = "x86_64-linux";
         overlays = builtins.attrValues self.overlays;
         modules = [
+          aagl.nixosModules.default
           self.nixosModules.computer
           ./nixos/hosts/desktop
         ];

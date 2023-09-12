@@ -11,6 +11,13 @@
     ../../mixins/smartcard.nix
   ];
 
+  # Gaming
+  nix.settings = {
+    substituters = ["https://ezkea.cachix.org"];
+    trusted-public-keys = ["ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="];
+  };
+  programs.anime-game-launcher.enable = true;
+
   boot.kernelPackages = pkgs.linuxPackages_zen;
   boot.kernelParams = [
     # mitigations=off only has minimal performance improvements on Intel, as the
