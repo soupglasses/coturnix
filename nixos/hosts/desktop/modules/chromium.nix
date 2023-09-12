@@ -18,8 +18,8 @@
         url = "https://discord.com/channels/@me";
         custom_name = "Discord";
         custom_icon = {
-          hash = "3077cf399bd25ca4490b58d4871f7a2eea230ae922fe596edee89213176676b3";
-          url = "https://cdn3.iconfinder.com/data/icons/popular-services-brands-vol-2/512/discord-512.png";
+          hash = "";
+          url = "https://raw.githubusercontent.com/z-ffqq/Discord-BSD/853cfdd25f7f0b0dff3522863f84c2a4665a5e9b/assets/icon.png";
         };
       }
       {

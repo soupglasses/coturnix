@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
   services.xserver.enable = true;
@@ -20,8 +21,16 @@
     gnome.gnome-boxes
   ];
 
+  # Manually expose GStreamer plugins for GNOME Files.
+  # Watch for fix in https://github.com/NixOS/nixpkgs/issues/53631
+  environment.sessionVariables.GST_PLUGIN_SYSTEM_PATH_1_0 = lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" [
+    pkgs.gst_all_1.gst-plugins-good
+    pkgs.gst_all_1.gst-plugins-bad
+    pkgs.gst_all_1.gst-plugins-ugly
+    pkgs.gst_all_1.gst-plugins-libav
+  ];
+
   programs.evolution.enable = true;
-  #programs.evolution.plugins = with pkgs; [evolution-ews];
   services.gnome.evolution-data-server.enable = true;
 
   services.dbus.enable = true;
