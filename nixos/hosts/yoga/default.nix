@@ -36,9 +36,6 @@
 
   virtualisation.podman.enable = true; # For toolbox.
 
-  virtualisation.waydroid.enable = true;
-  virtualisation.lxd.enable = true; # For waydroid.
-
   services.onedrive.enable = true;
 
   programs.nix-ld.enable = true;
