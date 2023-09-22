@@ -27,7 +27,6 @@
     pkgs.gst_all_1.gst-plugins-good
     pkgs.gst_all_1.gst-plugins-bad
     pkgs.gst_all_1.gst-plugins-ugly
-    pkgs.gst_all_1.gst-plugins-libav
   ];
 
   programs.evolution.enable = true;
