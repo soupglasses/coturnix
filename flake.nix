@@ -66,6 +66,7 @@
         system = "x86_64-linux";
         overlays = builtins.attrValues self.overlays;
         modules = [
+          aagl.nixosModules.default
           self.nixosModules.computer
           self.nixosModules.kernel-patching
           self.nixosModules.hardware-lenovo-yoga-7-14ARB7
