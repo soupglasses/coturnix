@@ -19,6 +19,7 @@
     gnomeExtensions.appindicator
     gnomeExtensions.impatience
     gnome.gnome-boxes
+    gnome.dconf-editor
   ];
 
   # Manually expose GStreamer plugins for GNOME Files.
