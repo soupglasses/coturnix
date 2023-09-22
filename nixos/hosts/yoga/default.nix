@@ -41,6 +41,12 @@
   programs.nix-ld.enable = true;
 
   programs.gamemode.enable = true;
+
+  # Allow touchpad to be used together with keyboard presses for gaming.
+  programs.gamemode.settings.custom = {
+    start = "${pkgs.glib}/bin/gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false";
+    end = "${pkgs.glib}/bin/gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing true";
+  };
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
