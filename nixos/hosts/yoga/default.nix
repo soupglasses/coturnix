@@ -76,6 +76,7 @@
     prismlauncher
     foliate
     toolbox
+    rnote
     wl-clipboard
   ];
 
