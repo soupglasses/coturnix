@@ -1,16 +1,21 @@
 {pkgs, ...}: {
+  # Make chromium available to the system.
   environment.systemPackages = [pkgs.chromium];
 
+  # Enable management of chromium policies.
   programs.chromium.enable = true;
+
+  # Extensions to install.
   programs.chromium.extensions = [
     "cjpalhdlnbpafiamejdnhcphjbkeiagm" # Ublock Origin
     "hkgfoiooedgoejojocmhlaklaeopbecg" # Picture in Picture
     "jinjaccalgkegednnccohejagnlnfdag" # Violentmonkey
   ];
 
+  # Configure Chromium's Enterprise Policy Lists.
   # All options: https://chromeenterprise.google/policies
   programs.chromium.extraOpts = {
-    # Websites to automatically install as PWAs on launch.
+    # Websites to automatically install as PWAs.
     # Manual update: Go to "chrome://apps" --> Right click changed app --> Press "Create shortcuts".
     WebAppInstallForceList = [
       {
