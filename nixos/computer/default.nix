@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   _file = ./default.nix;
@@ -73,18 +74,21 @@
   };
 
   # Documentation: https://networkmanager.dev/docs/api/latest/NetworkManager-dispatcher.html
-  #networking.networkmanager.dispatcherScripts = [
-  #  {
-  #    # WORKAROUND: https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/issues/1109
-  #    type = "basic";
-  #    source = pkgs.writeText "vpn-prevent-leaks" ''
-  #      if [ "$NM_DISPATCHER_ACTION" = "vpn-up" ]; then
-  #        ${pkgs.systemd}/bin/resolvectl dnssec $VPN_IP_IFACE no
-  #        ${pkgs.systemd}/bin/resolvectl dnsovertls $VPN_IP_IFACE no
-  #      fi
-  #    '';
-  #  }
-  #];
+  networking.networkmanager.dispatcherScripts = [
+    {
+      # Stop resolvectl from inherenting the dnsovertls functionality from our primary configuration,
+      # then using globally configured DNS server for resolves, causing DNS related leaks.
+      # Likely a bug in resolvectl: https://github.com/systemd/systemd/issues/29005
+      # Possible future alternative: https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/issues/1109
+      type = "basic";
+      source = pkgs.writeText "vpn-prevent-leaks" ''
+        if [ "$NM_DISPATCHER_ACTION" = "vpn-up" ]; then
+          ${pkgs.systemd}/bin/resolvectl dnssec $VPN_IP_IFACE no
+          ${pkgs.systemd}/bin/resolvectl dnsovertls $VPN_IP_IFACE no
+        fi
+      '';
+    }
+  ];
 
   # Use resolved for TLS + DNSSEC based DNS.
   services.resolved.enable = true;
@@ -92,7 +96,7 @@
   services.resolved.dnssec = "allow-downgrade";
   services.resolved.extraConfig = ''
     MulticastDNS=no
-    DNSOverTLS=no
+    DNSOverTLS=opportunistic
   '';
 
   # Default DNS servers.
