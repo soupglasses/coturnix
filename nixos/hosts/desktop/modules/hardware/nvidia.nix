@@ -27,7 +27,12 @@
     persistencedSha256 = "sha256-V5Wu8a7EhwZarGsflAhEQDE9s9PjuQ3JNMU1nWvNNsQ=";
   };
 
-  # Stop hardware flickering.
+  # Allow both G-Sync and FreeSync displays to be used in their variable refresh mode seamlessly.
+  services.xserver.screenSection = ''
+    Option "MetaModes" "nvidia-auto-select +0+0 {AllowGSYNCCompatible=On}"
+  '';
+
+  # Nvidia requires this script constantly running to handle suspending.
   hardware.nvidia.powerManagement.enable = true;
 
   # Enable vaapi support.
