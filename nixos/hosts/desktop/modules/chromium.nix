@@ -54,6 +54,16 @@
           url = "https://statics.teams.cdn.office.net/hashed/favicon/prod/favicon-512x512-8d51633.png";
         };
       }
+      {
+        create_desktop_shortcut = true;
+        default_launch_container = "window";
+        url = "https://app.slack.com/client";
+        custom_name = "Slack";
+        custom_icon = {
+          hash = "c7b09eff0344ff9431c2178226a9de226f940655a9a01b288670908f7b70fc32";
+          url = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Slack_icon_2019.svg/512px-Slack_icon_2019.svg.png";
+        };
+      }
     ];
 
     # Open all other url's inside of Firefox, my preferred browser.
@@ -72,6 +82,7 @@
       "microsoft365.com"
       "adfs.srv.aau.dk"
       "signon.aau.dk"
+      "slack.com"
     ];
     BrowserSwitcherUrlList = ["*"];
 
