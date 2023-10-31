@@ -37,6 +37,7 @@ vim.opt.smartindent = true -- Make indenting smart
 vim.cmd "autocmd FileType html setlocal ts=2 sw=2 sts=2"
 vim.cmd "autocmd FileType lua setlocal ts=2 sw=2 sts=2"
 vim.cmd "autocmd FileType nix setlocal ts=2 sw=2 sts=2"
+vim.cmd "autocmd FileType c setlocal ts=2 sw=2 sts=2"
 
 -- Other Options
 vim.cmd "set iskeyword+=-"        -- Treat dash-seperated words as whole words

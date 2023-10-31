@@ -1,8 +1,7 @@
-{ pkgs, lib, ... }:
+{ lib, ... }:
 {
   imports = [
     ./history.nix
-
     ./modules/grc
   ];
 
@@ -44,8 +43,8 @@
       # Custom options for zsh-syntax-highlight.
       source ${./extras/zsh-highlight.zsh}
 
-      # Expose the l function, a combined ls and cat function.
-      autoload l
+      # Expose custom functions.
+      autoload mkdircd l
     '';
     plugins = [{
       name = "functions";
