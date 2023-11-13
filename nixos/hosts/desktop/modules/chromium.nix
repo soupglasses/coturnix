@@ -10,6 +10,7 @@
     "cjpalhdlnbpafiamejdnhcphjbkeiagm" # Ublock Origin
     "hkgfoiooedgoejojocmhlaklaeopbecg" # Picture in Picture
     "jinjaccalgkegednnccohejagnlnfdag" # Violentmonkey
+    "oocalimimngaihdkbihfgmpkcpnmlaoa" # Teleparty
   ];
 
   # Configure Chromium's Enterprise Policy Lists.
@@ -41,7 +42,6 @@
       {
         create_desktop_shortcut = true;
         default_launch_container = "window";
-        fallback_app_name = "Pocket Casts";
         url = "https://play.pocketcasts.com/podcasts";
       }
       {
@@ -64,6 +64,11 @@
           url = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Slack_icon_2019.svg/512px-Slack_icon_2019.svg.png";
         };
       }
+      {
+        create_desktop_shortcut = true;
+        default_launch_container = "window";
+        url = "https://www.netflix.com/";
+      }
     ];
 
     # Open all other url's inside of Firefox, my preferred browser.
@@ -83,6 +88,8 @@
       "adfs.srv.aau.dk"
       "signon.aau.dk"
       "slack.com"
+      "netflix.com"
+      "teleparty.com"
     ];
     BrowserSwitcherUrlList = ["*"];
 
