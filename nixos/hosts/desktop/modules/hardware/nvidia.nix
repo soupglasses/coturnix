@@ -18,18 +18,30 @@
 
   # Manually managed nvidia package. Update by fetching changes in:
   # https://github.com/NixOS/nixpkgs/blob/master/pkgs/os-specific/linux/nvidia-x11/default.nix
+  #hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.latest;
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-    version = "535.113.01";
-    sha256_64bit = "sha256-KOME2N/oG39en2BAS/OMYvyjVXjZdSLjxwoOjyMWdIE=";
-    sha256_aarch64 = "sha256-mw/p5ELGTNcM4P94soJIGqpLMBJHSPf+z9qsGnISuCk=";
-    openSha256 = "sha256-SePRFb5S2T0pOmkSGflYfJkJBjG3Dx/Z0MjwnWccfcI=";
-    settingsSha256 = "sha256-hiX5Nc4JhiYYt0jaRgQzfnmlEQikQjuO0kHnqGdDa04=";
-    persistencedSha256 = "sha256-V5Wu8a7EhwZarGsflAhEQDE9s9PjuQ3JNMU1nWvNNsQ=";
+    version = "545.29.02";
+    sha256_64bit = "sha256-RncPlaSjhvBFUCOzWdXSE3PAfRPCIrWAXyJMdLPKuIU=";
+    sha256_aarch64 = "sha256-Y2RDOuDtiIclr06gmLrPDfE5VFmFamXxiIIKtKAewro=";
+    openSha256 = "sha256-PukpOBtG5KvZKWYfJHVQO6SuToJUd/rkjpOlEi8pSmk=";
+    settingsSha256 = "sha256-zj173HCZJaxAbVV/A2sbJ9IPdT1+3yrwyxD+AQdkSD8=";
+    persistencedSha256 = "sha256-mmMi2pfwzI1WYOffMVdD0N1HfbswTGg7o57x9/IiyVU=";
+    patchFlags = ["-p1" "-d" "kernel"];
+    patches = [];
   };
 
-  # Allow both G-Sync and FreeSync displays to be used in their variable refresh mode seamlessly.
   services.xserver.screenSection = ''
+    # Allow G-Sync compatible displays to have their variable refresh-rate enabled by default.
     Option "MetaModes" "nvidia-auto-select +0+0 {AllowGSYNCCompatible=On}"
+
+    # Do not override the HorizSync/VertRefresh ranges with EDID defaults.
+    Option "UseEdidFreqs" "false"
+    # Allow overclocking connected monitors. This is overly hacky and i couldn't figure out a more clean way.
+    Option "ModeValidation" "AllowNon60hzmodesDFPModes, NoEDIDDFPMaxSizeCheck, NoVertRefreshCheck, NoHorizSyncCheck, NoMaxPClkCheck, AllowNonEdidModes, NoEdidMaxPClkCheck"
+  '';
+  services.xserver.monitorSection = ''
+    # 3440x1440 @ 115.000 Hz Reduced Blank (CVT) field rate 115.000 Hz; hsync: 174.915 kHz; pclk: 615.70 MHz
+    Modeline "3440x1440_115.00_rb2"  615.70  3440 3448 3480 3520  1440 1507 1515 1521 +hsync -vsync
   '';
 
   # Nvidia requires this script constantly running to handle suspending.
