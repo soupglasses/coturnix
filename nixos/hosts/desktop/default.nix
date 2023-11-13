@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
 
@@ -31,6 +35,9 @@
     # https://www.phoronix.com/news/Linux-Splitlock-Hurts-Gaming
     "split_lock_detect=off"
   ];
+
+  boot.extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
+  boot.extraModprobeConfig = ''options v4l2loopback devices=1 video_nr=9 exclusive_caps=1 card_label="OBS Virtual Camera"'';
 
   services.openssh = {
     enable = true;
@@ -99,8 +106,9 @@
     heroic
     easyeffects
     (wrapOBS {
-      plugins = [
-        obs-studio-plugins.obs-vkcapture
+      plugins = with obs-studio-plugins; [
+        obs-vkcapture
+        obs-pipewire-audio-capture
       ];
     })
     deluge
