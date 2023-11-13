@@ -5,7 +5,7 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Extra packages
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
@@ -60,6 +60,12 @@
           aagl.nixosModules.default
           self.nixosModules.computer
           ./nixos/hosts/desktop
+          {
+            nixpkgs.config.permittedInsecurePackages = [
+              # Due to heroic.
+              "electron-24.8.6"
+            ];
+          }
         ];
       };
       yoga = self.lib.mkSystem self {
