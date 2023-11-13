@@ -1,5 +1,4 @@
-{ config, pkgs, lib, ... }: {
-
+{pkgs, ...}: {
   security.rtkit.enable = true;
 
   hardware.bluetooth.enable = true;
@@ -14,23 +13,20 @@
     pulse.enable = true;
     jack.enable = true;
 
-    wireplumber.enable = false;
-    media-session.enable = true;
-
-    media-session.config.alsa-monitor = 
+    wireplumber.enable = true;
 
     config.pipewire = {
       "context.properties" = {
         # version < 3 clients can't handle more than 16 buffers
         "link.max-buffers" = 16;
         "default.clock.rate" = 48000;
-        "default.clock.allowed-rates" = [ 48000 ];
+        "default.clock.allowed-rates" = [48000];
         "log.level" = 0;
       };
       "context.modules" = [
         {
           name = "libpipewire-module-rtkit";
-          flags = [ "ifexists" "nofail" ];
+          flags = ["ifexists" "nofail"];
           args = {
             "nice.level" = -15;
             "rt.prio" = 88;
@@ -41,7 +37,7 @@
         {
           name = "libpipewire-module-loopback";
           args = {
-            "audio.position" = [ "FL" "FR" ];
+            "audio.position" = ["FL" "FR"];
             "capture.props" = {
               "media.class" = "Audio/Sink";
               "node.name" = "music_sink";
