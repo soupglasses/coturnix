@@ -89,7 +89,7 @@
         common = import ./nixos/common;
         computer = import ./nixos/computer;
 
-        hardware-lenovo-yoga-7-14ARB7 = import ./nixos/hardware/lenovo-yoga-7-14ARB7 {};
+        hardware-lenovo-yoga-7-14ARB7 = import ./nixos/hardware/lenovo-yoga-7-14ARB7;
       }
       // import ./nixos/modules;
 
