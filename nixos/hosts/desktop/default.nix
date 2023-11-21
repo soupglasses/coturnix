@@ -9,11 +9,31 @@
     ./modules/chromium.nix
     ./modules/spell.nix
     ./modules/desktops/gnome.nix
-    ./modules/hardware/nvidia.nix
+    #./modules/hardware/nvidia.nix
     ./modules/keyboard/interception.nix
 
     ../../mixins/smartcard.nix
   ];
+
+  # AMD GPU
+  # Ensure the correct driver is used early.
+  boot.initrd.kernelModules = ["amdgpu"];
+  # AMD X Server
+  services.xserver.enable = true;
+  services.xserver.videoDrivers = ["amdgpu"];
+  # AMD Vulkan
+  hardware.opengl.driSupport = true;
+  hardware.opengl.driSupport32Bit = true;
+  services.xserver.deviceSection = ''
+    Option "TearFree" "false"
+    Option "VariableRefresh" "true"
+  '';
+  services.xserver.exportConfiguration = true;
+
+  boot.kernel.sysctl = {
+    # Taken from SteamOS, can help with performance.
+    "vm.max_map_count" = 2147483642;
+  };
 
   # Gaming
   nix.settings = {
@@ -70,12 +90,14 @@
 
   programs.steam = {
     enable = true;
+    package = pkgs.steam.override {
+      extraEnv = {
+        MANGOHUD = true;
+        OBS_VKCAPTURE = true;
+        DXVK_HUD = "compiler";
+      };
+    };
     remotePlay.openFirewall = true;
-    #package = pkgs.steam.override {
-    #  extraLibraries = p: with p; [
-    #    (lib.getLib networkmanager) # for libnm.so
-    #  ];
-    #};
   };
 
   environment.shells = [pkgs.zsh];
@@ -117,6 +139,8 @@
     gimp
     strawberry
     calibre
+    libva-utils
+    unityhub
   ];
   system.stateVersion = "22.05"; # Do not touch.
 }
