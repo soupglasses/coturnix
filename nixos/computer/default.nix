@@ -3,7 +3,6 @@
   lib,
   ...
 }: {
-  _file = ./default.nix;
   imports = [../common];
 
   boot.kernel.sysctl = {
@@ -12,6 +11,7 @@
   };
 
   # Use a bigger font for the console.
+  console.earlySetup = true;
   console.font = "Lat2-Terminus16";
 
   # Internationalization
@@ -23,6 +23,8 @@
 
   # A DBus service that allows applications to update firmware.
   services.fwupd.enable = true;
+  # Allow microcode/firmware updates to be applied to the system.
+  hardware.enableRedistributableFirmware = true;
 
   # Check SMART health for all disks.
   services.smartd = {
