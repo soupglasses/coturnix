@@ -18,13 +18,18 @@
   # Make user-readable symlink for xorg config.
   services.xserver.exportConfiguration = true;
 
-  # Add OpenCL and VDPAU support to our hardware stack.
+  # Add OpenCL, VDPAU and AMDVLK support to our hardware stack.
   hardware.opengl.extraPackages = with pkgs; [
-    vaapiVdpau
-    libvdpau-va-gl
+    amdvlk
     rocm-opencl-icd
     rocm-opencl-runtime
   ];
+  hardware.opengl.extraPackages32 = with pkgs; [
+    driversi686Linux.amdvlk
+  ];
+
+  # Default to Mesa's RADV driver instead of AMDVLK.
+  environment.variables.AMD_VULKAN_ICD = "RADV";
 
   # Debugging tooling for vaapi.
   environment.systemPackages = with pkgs; [
