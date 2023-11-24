@@ -18,16 +18,12 @@
   # Make user-readable symlink for xorg config.
   services.xserver.exportConfiguration = true;
 
-  # Add OpenCL, VDPAU and AMDVLK support to our hardware stack.
+  # Add OpenCL and VDPAU support to our hardware stack.
   hardware.opengl.extraPackages = with pkgs; [
-    amdvlk
     vaapiVdpau
     libvdpau-va-gl
     rocm-opencl-icd
     rocm-opencl-runtime
-  ];
-  hardware.opengl.extraPackages32 = with pkgs; [
-    driversi686Linux.amdvlk
   ];
 
   # Debugging tooling for vaapi.
