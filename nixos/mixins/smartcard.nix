@@ -7,5 +7,14 @@
   hardware.gpgSmartcards.enable = true;
 
   # Add basic Yubikey support.
-  services.udev.packages = [ pkgs.yubikey-personalization ];
+  services.udev.packages = with pkgs; [
+    yubikey-personalization
+  ];
+
+  # Add user management packages
+  environment.systemPackages = with pkgs; [
+    yubikey-manager
+    yubikey-manager-qt
+    yubioath-flutter
+  ];
 }

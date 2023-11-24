@@ -59,13 +59,10 @@
         modules = [
           aagl.nixosModules.default
           self.nixosModules.computer
+          self.nixosModules.hardware-amd-gpu
+          self.nixosModules.mixins-gaming
+          self.nixosModules.mixins-smartcard
           ./nixos/hosts/desktop
-          {
-            nixpkgs.config.permittedInsecurePackages = [
-              # Due to heroic.
-              "electron-24.8.6"
-            ];
-          }
         ];
       };
       yoga = self.lib.mkSystem self {
@@ -76,6 +73,8 @@
           self.nixosModules.computer
           self.nixosModules.kernel-patching
           self.nixosModules.hardware-lenovo-yoga-7-14ARB7
+          self.nixosModules.mixins-gaming
+          self.nixosModules.mixins-smartcard
           ./nixos/hosts/yoga
         ];
       };
@@ -89,7 +88,11 @@
         common = import ./nixos/common;
         computer = import ./nixos/computer;
 
+        hardware-amd-gpu = import ./nixos/hardware/amd/gpu.nix;
         hardware-lenovo-yoga-7-14ARB7 = import ./nixos/hardware/lenovo-yoga-7-14ARB7;
+
+        mixins-gaming = import ./nixos/mixins/gaming.nix;
+        mixins-smartcard = import ./nixos/mixins/smartcard.nix;
       }
       // import ./nixos/modules;
 

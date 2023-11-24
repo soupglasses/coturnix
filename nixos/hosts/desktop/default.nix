@@ -11,57 +11,12 @@
     ./modules/desktops/gnome.nix
     #./modules/hardware/nvidia.nix
     ./modules/keyboard/interception.nix
-
-    ../../mixins/smartcard.nix
-  ];
-
-  # AMD GPU
-  # Ensure the correct driver is used early.
-  boot.initrd.kernelModules = ["amdgpu"];
-  # AMD X Server
-  services.xserver.enable = true;
-  services.xserver.videoDrivers = ["amdgpu"];
-  # AMD Vulkan
-  hardware.opengl.driSupport = true;
-  hardware.opengl.driSupport32Bit = true;
-  services.xserver.deviceSection = ''
-    Option "TearFree" "false"
-    Option "VariableRefresh" "true"
-  '';
-  services.xserver.exportConfiguration = true;
-
-  boot.kernel.sysctl = {
-    # Taken from SteamOS, can help with performance.
-    "vm.max_map_count" = 2147483642;
-  };
-
-  # Gaming
-  nix.settings = {
-    substituters = ["https://ezkea.cachix.org"];
-    trusted-public-keys = ["ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="];
-  };
-  programs.anime-game-launcher.enable = true;
-
-  boot.kernelPackages = pkgs.linuxPackages_zen;
-  boot.kernelParams = [
-    # mitigations=off only has minimal performance improvements on Intel, as the
-    # default mitigations under linux leave SMT enabled. You may check this with:
-    #   $ grep . /sys/devices/system/cpu/vulnerabilities/*
-    # From personal testing, I saw about a 1-3% penalty for keeping this on auto.
-    # https://linuxreviews.org/HOWTO_make_Linux_run_blazing_fast_(again)_on_Intel_CPUs#Performance_implications
-    "mitigations=auto"
-    # Remove artificial penalties for split locks, which is useful for games run
-    # through Proton.
-    # https://www.phoronix.com/news/Linux-Splitlock-Hurts-Gaming
-    "split_lock_detect=off"
   ];
 
   boot.extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
   boot.extraModprobeConfig = ''options v4l2loopback devices=1 video_nr=9 exclusive_caps=1 card_label="OBS Virtual Camera"'';
 
-  services.openssh = {
-    enable = true;
-  };
+  services.openssh.enable = true;
 
   programs.ns-usbloader.enable = true;
 
@@ -84,21 +39,7 @@
   qt.platformTheme = "gnome";
   qt.style = "adwaita-dark";
 
-  programs.gamemode.enable = true;
-
   services.ratbagd.enable = true;
-
-  programs.steam = {
-    enable = true;
-    package = pkgs.steam.override {
-      extraEnv = {
-        MANGOHUD = true;
-        OBS_VKCAPTURE = true;
-        DXVK_HUD = "compiler";
-      };
-    };
-    remotePlay.openFirewall = true;
-  };
 
   environment.shells = [pkgs.zsh];
   programs.zsh.enable = true;
@@ -122,24 +63,14 @@
     xclip
     gcc
     libreoffice
-    lutris
     alsaUtils
     spotify
-    heroic
     easyeffects
-    (wrapOBS {
-      plugins = with obs-studio-plugins; [
-        obs-vkcapture
-        obs-pipewire-audio-capture
-      ];
-    })
     deluge
     piper
-    mangohud
     gimp
     strawberry
     calibre
-    libva-utils
     unityhub
   ];
   system.stateVersion = "22.05"; # Do not touch.

@@ -1,9 +1,21 @@
-{pkgs, ...}: let
-in {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
-    ./amd-gpu.nix
-    ./kernel.nix
+    ../amd/gpu.nix
   ];
+
+  # Kernel
+  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_latest;
+  #boot.kernelParams = ["mem_sleep_default=deep" "amd_pstate=active"];
+  #boot.extraModulePackages = with config.boot.kernelPackages; [zenpower];
+  #boot.kernelModules = ["kvm-amd" "amd-pstate" "zenpower"];
+  #boot.blacklistedKernelModules = ["acpi_cpufreq" "k10temp"]; # Disable ACPI cpufreq (in favor of p-state), and k10temp for zenpower
+
+  # Microcode for AMD CPU.
+  hardware.cpu.amd.updateMicrocode = true;
 
   # Speakers
   hardware.i2c.enable = true;
@@ -11,7 +23,6 @@ in {
   environment.systemPackages = with pkgs; [
     i2c-tools
   ];
-
   systemd.services.yoga-bass-speaker-fix = {
     after = ["systemd-suspend.service" "systemd-hibernate.service"];
     requiredBy = ["systemd-suspend.service" "systemd-hibernate.service"];
@@ -29,9 +40,11 @@ in {
   # Automatic screen orientation
   hardware.sensor.iio.enable = true;
 
+  # Help flickering of screen due to bug in 6800U
   boot.kernelParams = [
     "amdgpu.dcdebugmask=0x10"
   ];
 
+  # Enable built-in wacom pen support
   services.xserver.wacom.enable = true;
 }
