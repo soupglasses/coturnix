@@ -89,6 +89,7 @@
         computer = import ./nixos/computer;
 
         hardware-amd-gpu = import ./nixos/hardware/amd/gpu.nix;
+        hardware-nvidia-gpu = import ./nixos/hardware/nvidia/gpu.nix;
         hardware-lenovo-yoga-7-14ARB7 = import ./nixos/hardware/lenovo-yoga-7-14ARB7;
 
         mixins-gaming = import ./nixos/mixins/gaming.nix;

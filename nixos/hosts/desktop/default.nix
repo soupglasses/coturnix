@@ -9,7 +9,6 @@
     ./modules/chromium.nix
     ./modules/spell.nix
     ./modules/desktops/gnome.nix
-    #./modules/hardware/nvidia.nix
     ./modules/keyboard/interception.nix
   ];
 
