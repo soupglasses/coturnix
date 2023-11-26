@@ -89,6 +89,7 @@
     strawberry
     calibre
     unityhub
+    mpv
   ];
   system.stateVersion = "22.05"; # Do not touch.
 }
