@@ -12,6 +12,24 @@
     ./modules/keyboard/interception.nix
   ];
 
+  fonts.packages = with pkgs; [
+    cantarell-fonts
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-cjk-serif
+    noto-fonts-emoji
+    liberation_ttf
+    dejavu_fonts
+  ];
+  fonts.fontDir.enable = true;
+  fonts.fontconfig.enable = true;
+  fonts.fontconfig.defaultFonts = {
+    serif = ["DejaVu Serif" "Noto Serif CJK JP" "Noto Color Emoji"];
+    sansSerif = ["Cantarell" "Noto Sans CJK JP" "Noto Color Emoji"];
+    monospace = ["Comic Code Ligatures" "Noto Sans Mono CJK JP" "Noto Color Emoji"];
+    emoji = ["Noto Color Emoji"];
+  };
+
   boot.extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
   boot.extraModprobeConfig = ''options v4l2loopback devices=1 video_nr=9 exclusive_caps=1 card_label="OBS Virtual Camera"'';
 
