@@ -90,6 +90,7 @@
     calibre
     unityhub
     mpv
+    gajim
   ];
   system.stateVersion = "22.05"; # Do not touch.
 }
