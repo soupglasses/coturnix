@@ -69,6 +69,16 @@
         default_launch_container = "window";
         url = "https://www.netflix.com/";
       }
+      {
+        create_desktop_shortcut = true;
+        default_launch_container = "window";
+        url = "https://app.cinny.in";
+        custom_name = "Cinny";
+        custom_icon = {
+          hash = "e0ed571a6b12aa33e6195b6f4a2443dc0aaebd40caffb63a68bb7988a57ce218";
+          url = "https://app.cinny.in/public/android/android-chrome-512x512.png";
+        };
+      }
     ];
 
     # Open all other url's inside of Firefox, my preferred browser.
@@ -76,6 +86,7 @@
     AlternativeBrowserParameters = ["--new-tab" "\${url}"];
     BrowserSwitcherEnabled = true;
     BrowserSwitcherUrlGreylist = [
+      "cinny.in"
       "pocketcasts.com"
       "discord.com"
       "app.element.io"
