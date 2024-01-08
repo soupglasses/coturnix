@@ -13,23 +13,48 @@
     ./modules/keyboard/interception.nix
   ];
 
-  fonts.packages = with pkgs; [
-    cantarell-fonts
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-cjk-serif
-    noto-fonts-emoji
-    liberation_ttf
-    dejavu_fonts
-  ];
-  fonts.fontDir.enable = true;
-  fonts.fontconfig.enable = true;
-  fonts.fontconfig.defaultFonts = {
-    serif = ["DejaVu Serif" "Noto Serif CJK JP" "Noto Color Emoji"];
-    sansSerif = ["Cantarell" "Noto Sans CJK JP" "Noto Color Emoji"];
-    monospace = ["Comic Code Ligatures" "Noto Sans Mono CJK JP" "Noto Color Emoji"];
-    emoji = ["Noto Color Emoji"];
-  };
+  #fonts.packages = with pkgs; [
+  #  cantarell-fonts
+  #  noto-fonts
+  #  noto-fonts-cjk-sans
+  #  noto-fonts-cjk-serif
+  #  noto-fonts-emoji
+  #  liberation_ttf
+  #  dejavu_fonts
+  #];
+  #fonts.fontDir.enable = true;
+  #fonts.fontconfig.enable = true;
+  #fonts.fontconfig.defaultFonts = {
+  #  serif = ["DejaVu Serif" "Noto Serif CJK JP" "Noto Color Emoji"];
+  #  sansSerif = ["Cantarell" "Noto Sans CJK JP" "Noto Color Emoji"];
+  #  monospace = ["Comic Code Ligatures" "Noto Sans Mono CJK JP"];
+  #  emoji = ["Noto Color Emoji"];
+  #};
+  #fonts.fontconfig.localConf = ''
+  #  <?xml version="1.0" encoding="UTF-8"?>
+  #  <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
+  #  <fontconfig>
+  #    <match target="font">
+  #      <test name="family" compare="eq" ignore-blanks="true">
+  #        <string>Comic Code Ligatures</string>
+  #      </test>
+  #      <edit name="fontfeatures" mode="append">
+  #        <string>liga off</string>
+  #        <string>dlig off</string>
+  #        <string>calt off</string>
+  #        <string>clig off</string>
+  #      </edit>
+  #    </match>
+  #<match target="pattern">
+  #  <test qual="any" name="family">
+  #    <string>Fira Code</string>
+  #  </test>
+  #  <edit name="family" mode="assign" binding="same">
+  #    <string>Comic Code Ligatures</string>
+  #  </edit>
+  #</match>
+  #  </fontconfig>
+  #'';
 
   boot.extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
   boot.extraModprobeConfig = ''options v4l2loopback devices=1 video_nr=9 exclusive_caps=1 card_label="OBS Virtual Camera"'';
