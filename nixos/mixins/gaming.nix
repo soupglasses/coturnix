@@ -43,6 +43,8 @@
         obs-pipewire-audio-capture
       ];
     })
+    wineWowPackages.staging
+    r2modman
   ];
   nixpkgs.config.permittedInsecurePackages = [
     # Due to heroic.
