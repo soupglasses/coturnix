@@ -7,6 +7,7 @@
     ./hardware-configuration.nix
 
     ./modules/chromium.nix
+    ./modules/display.nix
     ./modules/spell.nix
     ./modules/desktops/gnome.nix
     ./modules/keyboard/interception.nix

@@ -11,10 +11,6 @@
   # AMD Vulkan
   hardware.opengl.driSupport = true;
   hardware.opengl.driSupport32Bit = true;
-  services.xserver.deviceSection = ''
-    Option "TearFree" "false"
-    Option "VariableRefresh" "true"
-  '';
   # Make user-readable symlink for xorg config.
   services.xserver.exportConfiguration = true;
 
