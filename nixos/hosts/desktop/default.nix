@@ -116,6 +116,8 @@
     calibre
     unityhub
     mpv
+    ffmpeg
+    yt-dlp
     gajim
   ];
   system.stateVersion = "22.05"; # Do not touch.
