@@ -56,6 +56,13 @@
       desktop = self.lib.mkSystem self {
         system = "x86_64-linux";
         overlays = builtins.attrValues self.overlays;
+        patches = [
+          # makeModulesClosure: include /lib/firmware/edid (https://github.com/NixOS/nixpkgs/pull/279789)
+          (builtins.fetchurl {
+            url = "https://github.com/nazarewk/nixpkgs/commit/44b70ebd07798d94130e87cc3edd948fd1f8aebe.patch";
+            sha256 = "1ab1dwyvq775zz5flrjd61ks3w0qnyklvmjiyzfj2agqxr9d3p9m";
+          })
+        ];
         modules = [
           aagl.nixosModules.default
           self.nixosModules.computer
