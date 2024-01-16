@@ -62,17 +62,19 @@
   '';
 
   # Use systemd-timesyncd NTP for synchronizing the system clock.
-  # TODO: Figure out a non-networking requiring solution for this.
   services.timesyncd.enable = true;
+  # Allow systemd-timesyncd to pull NTP data directly from an IP based NTP server as a fallback.
+  # This is helpful for situations when local time has shifted so much that HTTPS/DNSSEC refuse to function,
+  # leading to a catch-22.
+  services.timesyncd.extraConfig = "FallbackNTP=162.159.200.1 2606:4700:f1::1"; # time.cloudflare.com
 
   # Use network-manager for networking on computers.
   networking.useDHCP = false;
   networking.useNetworkd = false;
   networking.networkmanager.enable = true;
   networking.networkmanager.dns = "systemd-resolved";
-  networking.networkmanager.connectionConfig = {
-    "connection.dns-over-tls" = "0";
-  };
+  # Ensure DNS over TLS is disabled by default, and only used when explicitly defined (see below).
+  networking.networkmanager.connectionConfig.connection.dns-over-tls = "0";
 
   # Use resolved for DNS.
   services.resolved.enable = true;
@@ -83,11 +85,16 @@
   '';
 
   # Do not use default DNS servers. Trips up scoping for VPN connections down the line.
-  # Use `nmcli connection modify <connection> ipv4.dns "<comma-seperated dns list>"` instead.
+  # Use `nmcli connection modify <connection> ipv<4/6>.dns "<comma separated dns list>"`.
+  # For DNS over TLS, use the above command to set the DNS as a pattern of `ip-address#domain.tld`,
+  # then enable DNS over TLS with `nmcli connection modify <connection> connection.dns-over-tls 1`.
+  # Further, setting `nmcli connection modify <connection> ipv4.ignore-auto-dns 1` is a good idea to
+  # ensure that you stop broadcasting queries to the default plain-text DNS, since resolved will run
+  # all queries in parallel.
   networking.nameservers = lib.mkForce [""];
   services.resolved.fallbackDns = lib.mkForce [""];
 
-  # wireguard trips rpfilter up
+  # Wireguard trips up the default rpfilter, add exceptions for the service manually.
   networking.firewall.extraCommands = ''
     ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN
     ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN
