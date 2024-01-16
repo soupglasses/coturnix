@@ -49,6 +49,8 @@
   nixpkgs.config.permittedInsecurePackages = [
     # Due to heroic.
     "electron-24.8.6"
+    # Due to r2modman.
+    "electron-25.9.0"
   ];
 
   # Include "An Anime Game Launcher".
