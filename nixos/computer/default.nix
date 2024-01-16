@@ -74,7 +74,7 @@
   networking.networkmanager.enable = true;
   networking.networkmanager.dns = "systemd-resolved";
   # Ensure DNS over TLS is disabled by default, and only used when explicitly defined (see below).
-  networking.networkmanager.connectionConfig.connection.dns-over-tls = "0";
+  networking.networkmanager.connectionConfig."connection.dns-over-tls" = "0";
 
   # Use resolved for DNS.
   services.resolved.enable = true;
