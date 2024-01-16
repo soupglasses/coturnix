@@ -13,10 +13,13 @@
   networking.hostName = "yoga";
 
   virtualisation.podman.enable = true; # For toolbox.
+  virtualisation.libvirtd.enable = true; # For Boxes.
 
   services.onedrive.enable = true;
 
   programs.nix-ld.enable = true;
+
+  programs.ns-usbloader.enable = true;
 
   # Do not disable touchpad when keyboard is used while gaming.
   programs.gamemode.settings.custom = {
@@ -32,7 +35,7 @@
   users.users.sofi = {
     description = "Sofi";
     isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager"];
+    extraGroups = ["wheel" "networkmanager" "libvirtd"];
   };
 
   # Firefox touchscreen support
@@ -53,6 +56,7 @@
     toolbox
     rnote
     wl-clipboard
+    quintom-cursor-theme
   ];
 
   system.stateVersion = "23.05"; # No touch.
