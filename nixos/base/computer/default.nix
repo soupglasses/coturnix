@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  imports = [../simple];
+  imports = [../generic];
 
   boot.kernel.sysctl = {
     # Enable SysRq Magic keys.

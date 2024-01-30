@@ -130,7 +130,7 @@
 
     nixosModules =
       {
-        base-simple = import ./nixos/base/simple;
+        base-generic = import ./nixos/base/generic;
         base-computer = import ./nixos/base/computer;
 
         hardware-amd-gpu = import ./nixos/hardware/amd/gpu.nix;
