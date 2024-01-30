@@ -1,25 +1,56 @@
-{lib}: (
-  self: args: let
-    nixpkgs =
-      if builtins.hasAttr "patches" args && args.patches != []
+# My reimplementation of `nixpkgs.lib.nixosSystem` function:
+#
+# This reimplementation adds extra arguments for ease of use:
+# - a `patches` argument to allow patching nixpkgs.
+# - a `nixpkgs` argument to allow you to define your nixpkgs source.
+# - an `overlays` argument as a quick alias for configuring `nixpkgs.overlays`.
+# - both `unfreePackages` and `insecurePackages` as functions to easily define unfree/insecure packages.
+(
+  self: {
+    system ? null,
+    nixpkgs ? self.inputs.nixpkgs,
+    patches ? [],
+    modules ? [],
+    overlays ? [],
+    unfreePackages ? (_pkgs: []),
+    insecurePackages ? (_pkgs: []),
+    extraArgs ? {},
+  }: let
+    nixpkgs' =
+      if patches != [] && system != null
       then
-        (import self.inputs.nixpkgs {inherit (args) system;}).applyPatches {
+        # Here be dragons! Uses Import From Derivation (IFD): https://nixos.wiki/wiki/Import_From_Derivation
+        nixpkgs.legacyPackages.${system}.applyPatches {
           name = "nixpkgs-patched";
-          src = self.inputs.nixpkgs;
-          inherit (args) patches;
+          src = nixpkgs;
+          inherit patches;
         }
-      else self.inputs.nixpkgs;
+      else if patches != [] && system == null
+      then abort "Cannot patch nixpkgs without the `system` argument being defined. It is required for IFD."
+      else nixpkgs;
   in
-    import "${builtins.toString nixpkgs}/nixos/lib/eval-config.nix" {
-      inherit (args) system;
+    import (nixpkgs' + /nixos/lib/eval-config.nix) {
+      inherit system;
       modules =
-        args.modules
+        modules
         ++ [
-          {
-            # TODO: Rework this into a module using allowUnfreePredicate.
-            nixpkgs.config.allowUnfree = true;
+          ({
+            pkgs,
+            lib,
+            ...
+          }: {
+            # I am not sure why `extraArgs` got deprecated for `_module.args`.
+            _module.args = extraArgs;
 
-            nixpkgs.overlays = lib.mkIf (args ? overlays) args.overlays;
+            # Allow unfree/insecure packages to be defined as their pkgs attribute instead of by derivation name.
+            # Helpful for packages which includes their version as part of the derivation name, example being steam.
+            nixpkgs.config.allowUnfreePredicate = pkg:
+              builtins.elem (lib.getName pkg) (map lib.getName (unfreePackages pkgs));
+            nixpkgs.config.allowInsecurePredicate = pkg:
+              builtins.elem (lib.getName pkg) (map lib.getName (insecurePackages pkgs));
+
+            # Self explanatory, sets our inputted overlays as nixpkgs overlays.
+            nixpkgs.overlays = overlays;
 
             # Add hashes and dates from our flake to the NixOS version, easily see the status
             # of a machine with `nixos-version`.
@@ -30,7 +61,7 @@
                 self.shortRev or "dirty"
               }";
             system.nixos.revision = lib.mkIf (self ? rev) self.rev;
-          }
+          })
         ];
     }
 )

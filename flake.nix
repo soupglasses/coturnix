@@ -88,6 +88,14 @@
             sha256 = "0qqljjjs8kbiri01lr8l64i7142yxdvr7c3h52bzg23149g070gd";
           })
         ];
+        unfreePackages = pkgs:
+          with pkgs; [
+            steam
+            steamPackages.steam
+            steam-run
+            spotify
+            unityhub
+          ];
         modules = [
           aagl.nixosModules.default
           self.nixosModules.computer
