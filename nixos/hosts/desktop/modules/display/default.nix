@@ -5,7 +5,7 @@
     cp ${./msi1462.bin} "$out/lib/firmware/edid/msi1462.bin"
   '';
 in {
-  boot.kernelParams = ["drm.edid_firmware=edid/msi1462.bin"];
+  boot.kernelParams = ["drm.edid_firmware=DP-2:edid/msi1462.bin"];
   hardware.firmware = [edid-msi1462];
 
   services.xserver.deviceSection = ''
