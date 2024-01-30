@@ -12,8 +12,8 @@
   ];
 
   inputs = {
-    # Nixpkgs
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    systems.url = "github:nix-systems/default-linux";
 
     # Extra packages
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
@@ -39,6 +39,7 @@
   outputs = {
     self,
     nixpkgs,
+    systems,
     aagl,
     nixpkgs-xr,
     pre-commit-hooks,
@@ -46,21 +47,16 @@
     devshell,
     ...
   }: let
-    # List of each system-architecture we want to support for our packages and
-    # development shells. Does not relate to our NixOS configurations
-    # own architectures.
-    supportedSystems = [
-      "x86_64-linux"
-      "aarch64-linux"
-    ];
-
     eachSystem = f:
-      nixpkgs.lib.genAttrs supportedSystems (system:
+      nixpkgs.lib.genAttrs (import systems) (system:
         f {
           inherit system;
           pkgs = import nixpkgs {inherit system;};
         });
   in {
+    # -- NixOS Configurations --
+    # Holds the set of our NixOS configured computers.
+
     nixosConfigurations = {
       desktop = self.lib.mkSystem self {
         system = "x86_64-linux";
@@ -109,6 +105,13 @@
       yoga = self.lib.mkSystem self {
         system = "x86_64-linux";
         overlays = [self.overlays.packages];
+        unfreePackages = pkgs:
+          with pkgs; [
+            steam
+            steamPackages.steam
+            steam-run
+            spotify
+          ];
         modules = [
           aagl.nixosModules.default
           self.nixosModules.base-computer
@@ -116,14 +119,14 @@
           self.nixosModules.hardware-lenovo-yoga-7-14ARB7
           self.nixosModules.mixins-gaming
           self.nixosModules.mixins-smartcard
-          #self.nixosModules.extra-substituters
+          self.nixosModules.extra-substituters
           ./nixos/hosts/yoga
         ];
       };
     };
 
     # -- NixOS Modules --
-    # Modules define or change a set of options included in a full system configuration.
+    # Modules create or modify configurable options included in a full nixos configuration.
 
     nixosModules =
       {
@@ -151,17 +154,17 @@
       // import ./nixos/modules;
 
     # -- Packages --
-    # Our own set of packages.
+    # Exposes derivations as top level packages so others can use them.
 
     packages = eachSystem ({pkgs, ...}: import ./nixos/packages {inherit pkgs;});
 
     # -- Library --
-    # Set of common functions to be used around the flake.
+    # Holds our various functions and derivations aiding in deploying nixos.
 
     lib = import ./nixos/lib {inherit (nixpkgs) lib;};
 
     # -- Overlays --
-    # Allows modification of nixpkgs in place to add and modify its functionality.
+    # Allows modification of nixpkgs in-place, adding and modifying its functionality.
 
     overlays =
       import ./nixos/overlays
@@ -174,7 +177,7 @@
       };
 
     # -- Formatter --
-    # Abstracts all formatting tools into one command, `nix fmt`.
+    # Abstracts all formatting tools into one command, `nix fmt <location>`.
 
     formatter = eachSystem ({pkgs, ...}:
       treefmt-nix.lib.mkWrapper pkgs {
@@ -184,7 +187,7 @@
       });
 
     # -- Development Shells --
-    # Virtual shells with packages and shell hooks aiding development.
+    # Scoped environments including packages and shell-hooks to aid project development.
 
     devShells = eachSystem ({
       system,
@@ -206,7 +209,7 @@
     });
 
     # -- Tests --
-    # Tests verifying configurations and commits are correct.
+    # Verify locally that our nix configurations and file formatting is correct.
 
     checks = eachSystem ({
       system,
