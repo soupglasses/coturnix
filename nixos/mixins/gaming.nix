@@ -24,7 +24,7 @@
     enable = true;
     package = pkgs.steam.override {
       extraEnv = {
-        MANGOHUD = true;
+        # MANGOHUD = true;
         OBS_VKCAPTURE = true;
         DXVK_HUD = "compiler";
       };
@@ -46,16 +46,6 @@
     wineWowPackages.staging
     r2modman
   ];
-  nixpkgs.config.permittedInsecurePackages = [
-    # Due to heroic.
-    "electron-24.8.6"
-    # Due to r2modman.
-    "electron-25.9.0"
-  ];
 
-  # Include "An Anime Game Launcher".
-  nix.settings.substituters = ["https://ezkea.cachix.org"];
-  nix.settings.trusted-public-keys = ["ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="];
   programs.anime-game-launcher.enable = true;
-  programs.honkers-railway-launcher.enable = true;
 }
