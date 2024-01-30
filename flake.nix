@@ -1,7 +1,15 @@
 {
   description = "Coturnix: My personal computer setup";
 
-  nixConfig.allow-import-from-derivation = true; # NOTE: Only allow when `patches` is used.
+  nixConfig.allow-import-from-derivation = true; # Only allow when `patches` is used.
+  nixConfig.extra-substituters = [
+    "https://ezkea.cachix.org"
+    "https://nix-community.cachix.org"
+  ];
+  nixConfig.extra-trusted-public-keys = [
+    "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
+    "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+  ];
 
   inputs = {
     # Nixpkgs
@@ -9,7 +17,7 @@
 
     # Extra packages
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
-    aagl.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
 
     # Utilities
     flake-compat.url = "github:edolstra/flake-compat";
@@ -32,6 +40,7 @@
     self,
     nixpkgs,
     aagl,
+    nixpkgs-xr,
     pre-commit-hooks,
     treefmt-nix,
     devshell,
@@ -55,12 +64,28 @@
     nixosConfigurations = {
       desktop = self.lib.mkSystem self {
         system = "x86_64-linux";
-        overlays = builtins.attrValues self.overlays;
+        overlays = [self.overlays.packages nixpkgs-xr.overlays.default];
         patches = [
+          # nixos/monado: init (https://github.com/NixOS/nixpkgs/pull/245005)
+          (builtins.fetchurl {
+            url = "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/245005.patch"; # BAD!
+            sha256 = "080y11dwgrc6mvcr3bi6s9i7mzq4fwwhc4z5pba2519v8llqkqcq";
+          })
+          # onnxruntime: 1.15.1 -> 1.16.3 (https://github.com/NixOS/nixpkgs/pull/258392)
+          # broken dependency for opencomposite-helper
+          (builtins.fetchurl {
+            url = "https://github.com/NixOS/nixpkgs/pull/258392.patch"; # BAD!
+            sha256 = "1fz63nzrn8ipj0p729da1n5fpdcn9x3qjp2kw7zz5h6nl24g465p";
+          })
+          # compressFirmwareXz: fix symlink type check (https://github.com/NixOS/nixpkgs/pull/284487)
+          (builtins.fetchurl {
+            url = "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/284487.patch";
+            sha256 = "0dwlgqwbywyd30w72imm8imgq8xyf2f4w7ziy70zxw0dp1glppaf";
+          })
           # makeModulesClosure: include /lib/firmware/edid (https://github.com/NixOS/nixpkgs/pull/279789)
           (builtins.fetchurl {
-            url = "https://github.com/nazarewk/nixpkgs/commit/44b70ebd07798d94130e87cc3edd948fd1f8aebe.patch";
-            sha256 = "1ab1dwyvq775zz5flrjd61ks3w0qnyklvmjiyzfj2agqxr9d3p9m";
+            url = "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/279789.patch"; # BAD!
+            sha256 = "0qqljjjs8kbiri01lr8l64i7142yxdvr7c3h52bzg23149g070gd";
           })
         ];
         modules = [
@@ -69,12 +94,13 @@
           self.nixosModules.hardware-amd-gpu
           self.nixosModules.mixins-gaming
           self.nixosModules.mixins-smartcard
+          self.nixosModules.extra-substituters
           ./nixos/hosts/desktop
         ];
       };
       yoga = self.lib.mkSystem self {
         system = "x86_64-linux";
-        overlays = builtins.attrValues self.overlays;
+        overlays = [self.overlays.packages];
         modules = [
           aagl.nixosModules.default
           self.nixosModules.computer
@@ -82,6 +108,7 @@
           self.nixosModules.hardware-lenovo-yoga-7-14ARB7
           self.nixosModules.mixins-gaming
           self.nixosModules.mixins-smartcard
+          #self.nixosModules.extra-substituters
           ./nixos/hosts/yoga
         ];
       };
@@ -101,6 +128,17 @@
 
         mixins-gaming = import ./nixos/mixins/gaming.nix;
         mixins-smartcard = import ./nixos/mixins/smartcard.nix;
+
+        extra-substituters = {
+          nix.settings.substituters = [
+            "https://ezkea.cachix.org"
+            "https://nix-community.cachix.org"
+          ];
+          nix.settings.trusted-public-keys = [
+            "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
+            "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+          ];
+        };
       }
       // import ./nixos/modules;
 
