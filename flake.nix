@@ -181,7 +181,6 @@
         projectRootFile = "flake.nix";
         programs.alejandra.enable = true;
         programs.deadnix.enable = true;
-        programs.terraform.enable = true;
       });
 
     # -- Development Shells --
@@ -193,10 +192,8 @@
     }: {
       default = devshell.legacyPackages.${system}.mkShell {
         devshell = {
-          startup = {
-            motd = nixpkgs.lib.mkForce {text = "";};
-            pre-commit = {text = self.checks.${system}.pre-commit.shellHook;};
-          };
+          startup.motd = nixpkgs.lib.mkForce {text = "";};
+          startup.pre-commit.text = self.checks.${system}.pre-commit.shellHook;
           packages = with pkgs; [
             nixUnstable
             nixos-rebuild
