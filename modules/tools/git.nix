@@ -55,7 +55,7 @@
       color.ui = "auto";
       # When initializing a new repository, use the better name `main` for the default branch.
       init.defaultbranch = "main";
-      # Do not assume `user.email` and `user.name` and require them to be manually set.
+      # Do not attempt to assume `user.email` and `user.name`, require these to be manually set.
       user.useConfigOnly = true;
 
 
@@ -65,6 +65,8 @@
       push.autoSetupRemote = true;
       # Rebase branches on top of any fetched branches.
       pull.rebase = true;
+      # Sort branches by last used instead of alphabetical order.
+      branch.sort = "-committerdate";
 
       # -- Cryptographical Signatures --
 
