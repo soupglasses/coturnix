@@ -94,7 +94,7 @@
       fix = "commit --amend --no-edit --date=now";
       force = "push --force-with-lease --force-if-includes";
       hist = "log --pretty='%C(auto)%h - %s %C(green)(%ar) %C(bold blue)<%an>%C(auto)%d' --graph --no-show-signature";
-      main = "!git switch `git branch -l main master --format '%(refname:short)' | head -n1 || git ls-remote --symref origin HEAD | awk 'NR==1 { print $2; }' | sed 's!^refs/heads/!!'`";
+      main = "!f() { set -o pipefail; git switch `git branch -l main master --format '%(refname:short)' | head -n1 || git ls-remote --symref origin HEAD | awk 'NR==1 { print $2; }' | sed 's!^refs/heads/!!'`; }; f";
       parts = "add --patch";
       rank = "shortlog --summary --numbered --no-merges";
       redate = "rebase --committer-date-is-author-date";
