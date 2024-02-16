@@ -99,6 +99,7 @@
       rank = "shortlog --summary --numbered --no-merges";
       redate = "rebase --committer-date-is-author-date";
       root = "rev-parse --show-toplevel";
+      stash-rename = ''!f() { rev=$(git rev-parse $1) && git stash drop $1 || exit 1 ; git stash store -m "$2" $rev; }; f'';
       unstage = "restore --staged";
       yeet = "push";
       yoink = "pull";

@@ -1,19 +1,10 @@
-{ lib, pkgs, config, inputs, ... }:
+{ lib, pkgs, config, ... }:
 {
   imports = [
-    # Setup
-    ./modules/nix-settings.nix
-    #./modules/generic-linux
-    # Configure
-    ./modules/terminal
-    # Tools
-    ./modules/tools/comma.nix
-    ./modules/tools/elixir.nix
-    ./modules/tools/git.nix
-    ./modules/tools/gpg.nix
-    ./modules/tools/navi
-    # Gui
-    ./modules/gnome
+    #./generic-linux
+    ./nix-settings.nix
+    ./terminal/default.nix
+    ./gnome.nix
   ];
 
   # Allow nix to configure `.profile` to let session variables be configured by nix.
@@ -43,18 +34,11 @@
     moreutils  # vidir, etc.
     kubectl
     # Gui
-    dino
-    #geogebra
     nvim
-  ] ++ (if config.targets.genericLinux.enable then [
+  ] ++ lib.optionals config.targets.genericLinux.enable [
     nixgld.kitty
     nixgl.nixGLIntel
-  ] else [
-    kitty
-    signal-desktop
-    prismlauncher
-    obsidian
-  ]);
+  ];
 
   home.stateVersion = "21.11";
 }

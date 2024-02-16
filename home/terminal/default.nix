@@ -1,11 +1,16 @@
-{ pkgs, ... }:
+{ ... }:
 {
   imports = [
-    ./bat.nix
-    ./fzf.nix
-    ./starship.nix
+    ./bat
+    ./comma
+    ./elixir
+    ./fzf
+    ./git
+    ./gpg
+    ./navi
+    ./starship
     ./zsh
-    ./xdg.nix
+    ./xdg
   ];
 
   home.sessionVariables = {

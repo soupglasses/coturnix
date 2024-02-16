@@ -1,6 +1,6 @@
 {
   pkgs,
-  ...
+  lib,
 }: let
   neovimConfig = pkgs.neovimUtils.makeNeovimConfig {
     customRC = ''
@@ -19,29 +19,29 @@
       EOF
       luafile ${./config}/init.lua
     '';
-    plugins = with pkgs.vimPlugins; [
+    plugins = with pkgs.vimPlugins; lib.lists.forEach [
       # Syntax
-      {plugin = vim-pandoc-syntax;}
-      {plugin = nvim-treesitter.withAllGrammars;}
-      #}
+      vim-pandoc-syntax
+      nvim-treesitter.withAllGrammars
       # Themes
-      {plugin = catppuccin-nvim;}
+      catppuccin-nvim
 
       # UI
-      {plugin = indent-blankline-nvim;}
-      {plugin = gitsigns-nvim;}
-      {plugin = lualine-nvim;}
+      indent-blankline-nvim
+      gitsigns-nvim
+      lualine-nvim
 
       # LSP
-      {plugin = nvim-lspconfig;}
-      {plugin = fidget-nvim;}
-      {plugin = null-ls-nvim;}
+      nvim-lspconfig
+      fidget-nvim
+      null-ls-nvim
 
       # Autocomplete
-      {plugin = nvim-cmp;}
-      {plugin = cmp-nvim-lua;}
-      {plugin = cmp-nvim-lsp;}
-    ];
+      nvim-cmp
+      cmp-nvim-lua
+      cmp-nvim-lsp
+    ] (pkg: { plugin = pkg; });
+
     withRuby = false;
     withNodeJs = false;
     withPython3 = false;
