@@ -26,6 +26,7 @@
     start = "${pkgs.glib}/bin/gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing false";
     end = "${pkgs.glib}/bin/gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing true";
   };
+  #programs.gamemode.settings.gpu.amd_performance_level = "high";
 
   # Steam annoyingly does not follow normal scaling variables.
   environment.sessionVariables = {
@@ -61,7 +62,13 @@
     signal-desktop
     obsidian
     kitty
+
+    # languages (simple)
+    (python3.withPackages (p: with p; [ipython toolz more-itertools numpy sympy matplotlib]))
+    nodejs
   ];
+
+  boot.binfmt.emulatedSystems = ["aarch64-linux" "i686-linux"];
 
   system.stateVersion = "23.05"; # No touch.
 }
