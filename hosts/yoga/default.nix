@@ -57,6 +57,10 @@
     rnote
     wl-clipboard
     quintom-cursor-theme
+    dino
+    signal-desktop
+    obsidian
+    kitty
   ];
 
   system.stateVersion = "23.05"; # No touch.

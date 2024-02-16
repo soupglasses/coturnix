@@ -9,7 +9,7 @@
     ./modules/chromium.nix
     ./modules/display/default.nix
     ./modules/spell.nix
-    ./modules/vr.nix
+    #./modules/vr.nix
     ./modules/desktops/gnome.nix
     ./modules/keyboard/interception.nix
   ];
@@ -120,6 +120,10 @@
     ffmpeg
     yt-dlp
     gajim
+    dino
+    signal-desktop
+    obsidian
+    kitty
   ];
   system.stateVersion = "22.05"; # Do not touch.
 }

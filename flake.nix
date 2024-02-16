@@ -71,7 +71,7 @@
           # broken dependency for opencomposite-helper
           (builtins.fetchurl {
             url = "https://github.com/NixOS/nixpkgs/pull/258392.patch"; # BAD!
-            sha256 = "1fz63nzrn8ipj0p729da1n5fpdcn9x3qjp2kw7zz5h6nl24g465p";
+            sha256 = "15xsbvqvfcib3n5xx6jbs6gl7jahl0f15yppq94fxa5fzal0diyq";
           })
           # compressFirmwareXz: fix symlink type check (https://github.com/NixOS/nixpkgs/pull/284487)
           (builtins.fetchurl {
@@ -81,11 +81,12 @@
           # makeModulesClosure: include /lib/firmware/edid (https://github.com/NixOS/nixpkgs/pull/279789)
           (builtins.fetchurl {
             url = "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/279789.patch"; # BAD!
-            sha256 = "0qqljjjs8kbiri01lr8l64i7142yxdvr7c3h52bzg23149g070gd";
+            sha256 = "1frn7mq6121k8arjkzjxl53fd80f3d0f07s6gfbrdxfihbz8gx7c";
           })
         ];
         unfreePackages = pkgs:
           with pkgs; [
+            obsidian
             steam
             steamPackages.steam
             steam-run
@@ -93,13 +94,18 @@
             unityhub
           ];
         modules = [
+          {
+            nixpkgs.config.permittedInsecurePackages = [
+              "electron-25.9.0"
+            ];
+          }
           aagl.nixosModules.default
           self.nixosModules.base-computer
           self.nixosModules.hardware-amd-gpu
           self.nixosModules.mixins-gaming
           self.nixosModules.mixins-smartcard
           self.nixosModules.extra-substituters
-          ./nixos/hosts/desktop
+          ./hosts/desktop
         ];
       };
       yoga = self.lib.mkSystem self {
@@ -120,7 +126,7 @@
           self.nixosModules.mixins-gaming
           self.nixosModules.mixins-smartcard
           self.nixosModules.extra-substituters
-          ./nixos/hosts/yoga
+          ./hosts/yoga
         ];
       };
     };
@@ -130,15 +136,15 @@
 
     nixosModules =
       {
-        base-generic = import ./nixos/base/generic;
-        base-computer = import ./nixos/base/computer;
+        base-generic = import ./base/generic;
+        base-computer = import ./base/computer;
 
-        hardware-amd-gpu = import ./nixos/hardware/amd/gpu.nix;
-        hardware-nvidia-gpu = import ./nixos/hardware/nvidia/gpu.nix;
-        hardware-lenovo-yoga-7-14ARB7 = import ./nixos/hardware/lenovo-yoga-7-14ARB7;
+        hardware-amd-gpu = import ./hardware/amd/gpu.nix;
+        hardware-nvidia-gpu = import ./hardware/nvidia/gpu.nix;
+        hardware-lenovo-yoga-7-14ARB7 = import ./hardware/lenovo-yoga-7-14ARB7;
 
-        mixins-gaming = import ./nixos/mixins/gaming.nix;
-        mixins-smartcard = import ./nixos/mixins/smartcard.nix;
+        mixins-gaming = import ./mixins/gaming.nix;
+        mixins-smartcard = import ./mixins/smartcard.nix;
 
         extra-substituters = {
           nix.settings.substituters = [
@@ -151,28 +157,28 @@
           ];
         };
       }
-      // import ./nixos/modules;
+      // import ./modules;
 
     # -- Packages --
     # Exposes derivations as top level packages so others can use them.
 
-    packages = eachSystem ({pkgs, ...}: import ./nixos/packages {inherit pkgs;});
+    packages = eachSystem ({pkgs, ...}: import ./packages {inherit pkgs;});
 
     # -- Library --
     # Holds our various functions and derivations aiding in deploying nixos.
 
-    lib = import ./nixos/lib {inherit (nixpkgs) lib;};
+    lib = import ./lib {inherit (nixpkgs) lib;};
 
     # -- Overlays --
     # Allows modification of nixpkgs in-place, adding and modifying its functionality.
 
     overlays =
-      import ./nixos/overlays
+      import ./overlays
       // {
         packages = final: _prev: {
           coturnix =
             final.lib.recurseIntoAttrs
-            (import ./nixos/packages {inherit (final) pkgs;});
+            (import ./packages {inherit (final) pkgs;});
         };
       };
 

@@ -13,7 +13,6 @@
     modules ? [],
     overlays ? [],
     unfreePackages ? (_pkgs: []),
-    insecurePackages ? (_pkgs: []),
     extraArgs ? {},
   }: let
     nixpkgs' =
@@ -46,8 +45,6 @@
             # Helpful for packages which includes their version as part of the derivation name, example being steam.
             nixpkgs.config.allowUnfreePredicate = pkg:
               builtins.elem (lib.getName pkg) (map lib.getName (unfreePackages pkgs));
-            nixpkgs.config.allowInsecurePredicate = pkg:
-              builtins.elem (lib.getName pkg) (map lib.getName (insecurePackages pkgs));
 
             # Self explanatory, sets our inputted overlays as nixpkgs overlays.
             nixpkgs.overlays = overlays;
