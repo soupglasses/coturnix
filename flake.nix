@@ -93,12 +93,10 @@
             spotify
             unityhub
           ];
+        matchInsecurePackageNames = [
+          "electron"
+        ];
         modules = [
-          {
-            nixpkgs.config.permittedInsecurePackages = [
-              "electron-25.9.0"
-            ];
-          }
           aagl.nixosModules.default
           self.nixosModules.base-computer
           self.nixosModules.hardware-amd-gpu
@@ -113,11 +111,15 @@
         overlays = [self.overlays.packages];
         unfreePackages = pkgs:
           with pkgs; [
+            obsidian
             steam
             steamPackages.steam
             steam-run
             spotify
           ];
+        matchInsecurePackageNames = [
+          "electron"
+        ];
         modules = [
           aagl.nixosModules.default
           self.nixosModules.base-computer
