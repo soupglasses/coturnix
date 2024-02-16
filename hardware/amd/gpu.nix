@@ -14,7 +14,7 @@
   # Make user-readable symlink for xorg config.
   services.xserver.exportConfiguration = true;
 
-  # Add OpenCL, VDPAU and AMDVLK support to our hardware stack.
+  # Add OpenCL and AMDVLK support to our hardware stack.
   hardware.opengl.extraPackages = with pkgs; [
     # amdvlk
     rocm-opencl-icd
