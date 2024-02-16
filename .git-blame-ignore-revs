@@ -1,0 +1,5 @@
+# Run this command to always ignore formatting commits in `git blame`
+# git config blame.ignoreRevsFile .git-blame-ignore-revs
+
+# chore: move out of nixos folder
+08fb2814edc3c13b462725d1f890a5a1178731c7
