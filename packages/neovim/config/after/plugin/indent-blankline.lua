@@ -1,11 +1,14 @@
-local ok, indent_blankline = pcall(require, 'indent_blankline')
+local ok, ibl = pcall(require, 'ibl')
 if not ok then
   return
 end
 
-indent_blankline.setup {
-  buftype_exclude = { 'terminal', 'man', 'help', 'nofile' },
-  filetype_exclude = { 'man', 'help' },
-  bufname_exclude = { 'man', 'help' },
-  show_trailing_blankline_indent = false,
+ibl.setup {
+  exclude = {
+    buftypes = { 'terminal', 'man', 'help', 'nofile' },
+    filetypes = { 'man', 'help' },
+  },
+  whitespace = {
+    remove_blankline_trail = true,
+  },
 }
