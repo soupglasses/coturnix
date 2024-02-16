@@ -84,16 +84,15 @@
             sha256 = "1frn7mq6121k8arjkzjxl53fd80f3d0f07s6gfbrdxfihbz8gx7c";
           })
         ];
-        unfreePackages = pkgs:
-          with pkgs; [
-            obsidian
-            steam
-            steamPackages.steam
-            steam-run
-            spotify
-            unityhub
-          ];
-        matchInsecurePackageNames = [
+        unfreePackages = [
+          "obsidian"
+          "steam"
+          "steam-original"
+          "steam-run"
+          "spotify"
+          "unityhub"
+        ];
+        insecurePackages = [
           "electron"
         ];
         modules = [
@@ -109,15 +108,14 @@
       yoga = self.lib.mkSystem self {
         system = "x86_64-linux";
         overlays = [self.overlays.packages];
-        unfreePackages = pkgs:
-          with pkgs; [
-            obsidian
-            steam
-            steamPackages.steam
-            steam-run
-            spotify
-          ];
-        matchInsecurePackageNames = [
+        unfreePackages = [
+          "obsidian"
+          "steam"
+          "steam-original"
+          "steam-run"
+          "spotify"
+        ];
+        insecurePackages = [
           "electron"
         ];
         modules = [

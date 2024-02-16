@@ -12,8 +12,8 @@
     patches ? [],
     modules ? [],
     overlays ? [],
-    unfreePackages ? (_pkgs: []),
-    matchInsecurePackageNames ? [],
+    unfreePackages ? [],
+    insecurePackages ? [],
     extraArgs ? {},
   }: let
     nixpkgs' =
@@ -34,20 +34,15 @@
       modules =
         modules
         ++ [
-          ({
-            pkgs,
-            lib,
-            ...
-          }: {
+          ({lib, ...}: {
             # I am not sure why `extraArgs` got deprecated for `_module.args`.
             _module.args = extraArgs;
 
-            # Allow unfree/insecure packages to be defined as their pkgs attribute instead of by derivation name.
-            # Helpful for packages which includes their version as part of the derivation name, example being steam.
+            # Allow unfree/insecure packages to be found by their derivation name.
             nixpkgs.config.allowUnfreePredicate = pkg:
-              builtins.elem (lib.getName pkg) (map lib.getName (unfreePackages pkgs));
+              builtins.elem (lib.getName pkg) unfreePackages;
             nixpkgs.config.allowInsecurePredicate = pkg:
-              builtins.elem (pkgs.lib.getName pkg) matchInsecurePackageNames;
+              builtins.elem (lib.getName pkg) insecurePackages;
 
             # Self explanatory, sets our inputted overlays as nixpkgs overlays.
             nixpkgs.overlays = overlays;
