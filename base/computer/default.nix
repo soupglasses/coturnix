@@ -18,8 +18,8 @@
   i18n.defaultLocale = "en_DK.UTF-8";
   time.timeZone = "Europe/Copenhagen";
   console.keyMap = "no";
-  services.xserver.layout = "no";
-  services.xserver.xkbVariant = "nodeadkeys";
+  services.xserver.xkb.layout = "no";
+  services.xserver.xkb.variant = "nodeadkeys";
 
   # A DBus service that allows applications to update firmware.
   services.fwupd.enable = true;
