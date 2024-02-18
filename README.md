@@ -36,3 +36,11 @@ Figure out how to have a custom Wireguard VPN netns to link applications against
 
 - Look into zswap.
   - Inspiration: <https://github.com/kurnevsky/nixfiles/blob/4708241e8506d622f89ee03dd8cdff71114eec3b/modules/zswap.nix>
+
+## License
+
+Copyright (c) github.com/soupglasses 2022-2024.
+
+This repository is licensed under the EUPL v1.2, with extension of article 5 (compatibility clause) to any licence for distributing derivative works that have been produced by the normal use of the Work as a library.
+
+For more information, please see the attached [LICENSE](./LICENSE) file.
