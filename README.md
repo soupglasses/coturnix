@@ -7,36 +7,6 @@
 >
 > Recommended action is to link against Phenix instead, or alternatively copy the revelant code snippets (with attribution as per the LICENSE file) directly.
 
-## Future feature list
-
-### Sync
-
-- Filesync with Syncthing.
-
-### Audio
-
-- Use Pipewire to generate routable "groups".
-  - Examples: "Multimedia", "Social", "Music", "Gaming".
-  - Be able to enable/disable these for both speaker output, and choose them in OBS.
-  - Autoconfigure things like Spotify, Discord, Element, Signal, Steam to follow these groupings.
-
-### Firefox
-
-- Firefox requires `privacy.webrtc.legacyGlobalIndicator` to be set to false.
-  - Inspiration: <https://github.com/kurnevsky/nixfiles/blob/4708241e8506d622f89ee03dd8cdff71114eec3b/modules/firefox/firefox.nix>
-
-- Firefox in a Firejail: <https://nixos.wiki/wiki/Firejail>
-  - Alternatively, look into AppArmor. <https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/security/apparmor/includes.nix>
-
-### Networking
-
-Figure out how to have a custom Wireguard VPN netns to link applications against.
-
-### RAM
-
-- Look into zswap.
-  - Inspiration: <https://github.com/kurnevsky/nixfiles/blob/4708241e8506d622f89ee03dd8cdff71114eec3b/modules/zswap.nix>
-
 ## License
 
 Copyright © https://github.com/soupglasses 2022-2024
@@ -52,17 +22,19 @@ legal advice may be found at [JOINUP's pages on the EUPL](https://joinup.ec.euro
 
 ### Usage of Compatible Licences
 
-_Please note that the advice in this section is for reference purposes only and
-does not constitute legal advice._
+_Please note that the information given in this section is meant for reference
+purposes only, and does not constitute legal advice, and it further does not
+grant any additional permissions beyond what the EUPLv1.2 license describes._
 
-The Source Code from this repository can be both utilized and modified under the EUPL v1.2
-license, or alternatively, according to Article 5 of the EUPL, you have the option to select
-any of the EUPLv1.2's 'Compatible Licences'. These have been listed at the end of this section
-for convenience.
+The Source Code from this repository can be both utilized and modified under
+the EUPL v1.2 license, or alternatively, according to Article 5 of the EUPL,
+you have the option to select any of the EUPLv1.2's 'Compatible Licences'.
+These have been listed at the end of this section for convenience.
 
-Additionally, with the above license extension to Article 5 (compatibility clause) for this Work,
-you are further allowed the use this repository as a library with a project with ___any license___,
-including complete linking freedom.
+Additionally, with the above license extension to Article 5
+(the compatibility clause), you are further allowed to use this
+repository as a library in a project using ___any license___ with
+complete linking freedom.
 
 | License                                                   | Shorthand     | Applicable Version(s)                    |
 |-----------------------------------------------------------|---------------|------------------------------------------|
