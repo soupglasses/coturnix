@@ -39,8 +39,13 @@ Figure out how to have a custom Wireguard VPN netns to link applications against
 
 ## License
 
-Copyright (c) github.com/soupglasses 2022-2024.
+Copyright © https://github.com/soupglasses 2022-2024
 
-This repository is licensed under the EUPL v1.2, with extension of article 5 (compatibility clause) to any licence for distributing derivative works that have been produced by the normal use of the Work as a library.
+This repository is licensed under the EUPL v1.2, with extension of article 5
+(compatibility clause) to any licence for distributing derivative works that
+have been produced by the normal use of the Work as a library.
 
-For more information, please see the attached [LICENSE](./LICENSE) file.
+For brevity, it can be likened to a "Lesser AGPLv3" license; however, this
+is not legally binding advice. For a more comprehensive understanding of the
+license, please refer to the attached [LICENSE](./LICENSE) file. Further
+legal advice may be found at [JOINUP's pages on the EUPL](https://joinup.ec.europa.eu/collection/eupl).
