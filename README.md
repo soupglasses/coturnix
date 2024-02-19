@@ -49,3 +49,31 @@ For brevity, it can be likened to a "Lesser AGPLv3" license; however, this
 is not legally binding advice. For a more comprehensive understanding of the
 license, please refer to the attached [LICENSE](./LICENSE) file. Further
 legal advice may be found at [JOINUP's pages on the EUPL](https://joinup.ec.europa.eu/collection/eupl).
+
+### Usage of Compatible Licences
+
+_Please note that the advice in this section is for reference purposes only and
+does not constitute legal advice._
+
+The Source Code from this repository can be both utilized and modified under the EUPL v1.2
+license, or alternatively, according to Article 5 of the EUPL, you have the option to select
+any of the EUPLv1.2's 'Compatible Licences'. These have been listed at the end of this section
+for convenience.
+
+Additionally, with the above license extension to Article 5 (compatibility clause) for this Work,
+you are further allowed the use this repository as a library with a project with ___any license___,
+including complete linking freedom.
+
+| License                                                   | Shorthand     | Applicable Version(s)                    |
+|-----------------------------------------------------------|---------------|------------------------------------------|
+| GNU General Public License                                | GPL           | v. 2, v. 3                               |
+| GNU Affero General Public License                         | AGPL          | v. 3                                     |
+| Open Software License                                     | OSL           | v. 2.1, v. 3.0                           |
+| Eclipse Public License                                    | EPL           | v. 1.0                                   |
+| CeCILL                                                    | CECILL        | v. 2.0, v. 2.1                           |
+| Mozilla Public Licence                                    | MPL           | v. 2                                     |
+| GNU Lesser General Public Licence                         | LGPL          | v. 2.1, v. 3                             |
+| Creative Commons Attribution-ShareAlike                   | CC BY-SA      | v. 3.0 Unported (for non-software works) |
+| European Union Public Licence                             | EUPL          | v. 1.1, v. 1.2                           |
+| Québec Free and Open-Source Licence — Reciprocity         | LiLiQ-R       | -                                        |
+| Québec Free and Open-Source Licence — Strong Reciprocity  | LiLiQ-R+      | -                                        |
