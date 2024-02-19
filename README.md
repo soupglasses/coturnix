@@ -33,10 +33,9 @@ the EUPL v1.2 license, or alternatively, according to Article 5 of the EUPL,
 you have the option to select any of the EUPLv1.2's 'Compatible Licences'.
 These have been listed at the end of this section for convenience.
 
-Additionally, with the license extension to Article 5
-(the compatibility clause), you are further allowed to use this
-repository as a library in a project using ___any license___ with
-complete linking freedom.
+Additionally, with the license extension given to Article 5
+(compatibility clause), you are further allowed to use this repository as
+a library to your project(s) using ___any license___ of your choosing.
 
 | License                                                   | Shorthand     | Applicable Version(s)                    |
 |-----------------------------------------------------------|---------------|------------------------------------------|
