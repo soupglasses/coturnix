@@ -1,0 +1,13 @@
+% git
+
+# Create new remote branch
+git push --set-upstream origin <branch>
+
+# Delete existing remote branch
+git push origin --delete <branch>
+
+# Rebase current branch prefering current changes.
+git rebase -Xtheirs <branch>
+
+# Rebase current branch prefering upstream changes.
+git rebase -Xours <branch>

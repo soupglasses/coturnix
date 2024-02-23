@@ -1,0 +1,10 @@
+% linux
+
+# Set permissions recursively
+chmod -R 600 <path>
+
+# Remove execute permissions recursively
+chmod -R a-x <path>
+
+# Set user only read/write on directories recursively (requires execute to not already be set)
+chmod -R u=rwX,g=,o= <path>
