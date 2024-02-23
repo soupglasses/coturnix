@@ -30,6 +30,7 @@
       indent-blankline-nvim
       gitsigns-nvim
       lualine-nvim
+      neoscroll-nvim
 
       # LSP
       nvim-lspconfig
