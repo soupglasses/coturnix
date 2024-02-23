@@ -1,0 +1,236 @@
+add_newline = false
+format = "$directory$all$character"
+
+[username]
+disabled = true
+
+[hostname]
+ssh_only = true
+format = "([@$hostname]($style) )"
+style = "green"
+
+[directory]
+style = "blue"
+home_symbol = "~"
+read_only = " ro"
+truncation_symbol = "…/"
+truncation_length = 3
+truncate_to_repo = true
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+style = "bright-green"
+symbol = ""
+
+[git_status]
+conflicted = "([~${count}](red) )"
+ahead = "([⇡${count}](green) )"
+behind = "([⇣${count}](green) )"
+diverged = "([⇡${ahead_count}⇣${behind_count}](green) )"
+up_to_date = ""
+untracked = "([?${count}](blue) )"
+stashed = "([*${count}](green) )"
+modified = "([!${count}](yellow) )"
+staged = "([+${count}](yellow) )"
+renamed = "([r${count}](yellow) )"
+deleted = "([-${count}](yellow) )"
+style = "dimmed white"
+format = '([$all_status$ahead_behind]($style))'
+
+[jobs]
+symbol = "j"
+
+[nix_shell]
+#format = '[$symbol( $state)( \[$name\])]($style) '
+format = '[$symbol( $state)]($style) '
+style = "purple"
+impure_msg = ""
+pure_msg = "pure"
+symbol = "nix"
+
+[custom.virtualenv]
+command = 'printf "${VIRTUAL_ENV:+"venv"}"'
+description = "Shows when you are in a virtual environment"
+format = "([$output](purple) )"
+when = 'true'
+shell = 'bash'
+disabled = false
+
+[sudo]
+format = "[$symbol]($style) "
+style = "bright-red"
+symbol = "sudo"
+disabled = false
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
+min_time = 10_000
+
+[line_break]
+disabled = true
+
+[battery]
+full_symbol = ""
+charging_symbol = "B"
+discharging_symbol = "B"
+disabled = false
+
+[[battery.display]]
+threshold = 15
+style = "red"
+
+[[battery.display]]
+threshold = 25
+style = "yellow"
+
+[status]
+format = "[$symbol$status]($style) "
+style = "red"
+symbol = "E"
+disabled = false
+
+[character]
+success_symbol = "[%](dimmed white)"
+error_symbol = "[%](dimmed white)"
+vicmd_symbol = "[V](green)"
+
+# Disabled Modules:
+
+[c]
+symbol = "c "
+disabled = true
+
+[vagrant]
+symbol = "vagrant "
+disabled = true
+
+[lua]
+symbol = "lua "
+disabled = true
+
+[memory_usage]
+symbol = "memory "
+disabled = true
+
+[python]
+symbol = "py "
+disabled = true
+detect_extensions = []
+
+[aws]
+symbol = "aws "
+disabled = true
+
+[cobol]
+symbol = "cobol "
+disabled = true
+
+[conda]
+symbol = "conda "
+
+disabled = true
+
+[crystal]
+symbol = "cr "
+disabled = true
+
+[cmake]
+symbol = "cmake "
+disabled = true
+
+[dart]
+symbol = "dart "
+disabled = true
+
+[deno]
+symbol = "deno "
+disabled = true
+
+[dotnet]
+symbol = ".NET "
+disabled = true
+
+[docker_context]
+symbol = "docker "
+disabled = true
+
+[elixir]
+symbol = "exs "
+disabled = true
+
+[elm]
+symbol = "elm "
+disabled = true
+
+[golang]
+symbol = "go "
+disabled = true
+
+[haskell]
+symbol = "hs "
+disabled = true
+
+[hg_branch]
+symbol = "hg "
+disabled = true
+
+[java]
+symbol = "java "
+disabled = true
+
+[julia]
+symbol = "jl "
+disabled = true
+
+[kotlin]
+symbol = "kt "
+disabled = true
+
+[nodejs]
+symbol = "nodejs "
+disabled = true
+
+[nim]
+symbol = "nim "
+disabled = true
+
+[ocaml]
+symbol = "ml "
+disabled = true
+
+[package]
+symbol = "pkg "
+disabled = true
+
+[perl]
+symbol = "pl "
+disabled = true
+
+[php]
+symbol = "php "
+disabled = true
+
+[pulumi]
+symbol = "pulumi "
+disabled = true
+
+[purescript]
+symbol = "purs "
+disabled = true
+
+[ruby]
+symbol = "rb "
+disabled = true
+
+[rust]
+symbol = "rs "
+disabled = true
+
+[scala]
+symbol = "scala "
+disabled = true
+
+[swift]
+symbol = "swift "
+disabled = true

@@ -1,8 +1,6 @@
-{ ... }:
-{
+{...}: {
   imports = [
     ./bat
-    ./comma
     ./elixir
     ./fzf
     ./git
@@ -50,7 +48,7 @@
     py = "python";
     ipy = "ipython";
     lg = "lazygit";
-    hm = "home-manager --flake ~/.dotfiles/home-manager";
+    hm = "home-manager --flake ~/.coturnix";
     hms = "hm switch";
     k = "kubectl";
   };

@@ -15,6 +15,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/default-linux";
 
+    # Home Manager
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
     # Extra packages
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
     nixpkgs-xr.url = "github:nix-community/nixpkgs-xr";
@@ -40,6 +44,7 @@
     self,
     nixpkgs,
     systems,
+    home-manager,
     aagl,
     nixpkgs-xr,
     pre-commit-hooks,
@@ -51,7 +56,10 @@
       nixpkgs.lib.genAttrs (import systems) (system:
         f {
           inherit system;
-          pkgs = import nixpkgs {inherit system;};
+          pkgs = import nixpkgs {
+            inherit system;
+            overlays = [self.overlays.packages];
+          };
         });
   in {
     # -- NixOS Configurations --
@@ -60,7 +68,7 @@
     nixosConfigurations = {
       desktop = self.lib.mkSystem self {
         system = "x86_64-linux";
-        overlays = [self.overlays.packages nixpkgs-xr.overlays.default];
+        overlays = [nixpkgs-xr.overlays.default];
         patches = [
           # nixos/monado: init (https://github.com/NixOS/nixpkgs/pull/245005)
           (builtins.fetchurl {
@@ -107,7 +115,6 @@
       };
       yoga = self.lib.mkSystem self {
         system = "x86_64-linux";
-        overlays = [self.overlays.packages];
         unfreePackages = [
           "obsidian"
           "steam"
@@ -130,6 +137,24 @@
         ];
       };
     };
+
+    # -- Home Configurations --
+    # Holds user-spessific dotfile configuration.
+
+    legacyPackages = eachSystem ({pkgs, ...}: {
+      homeConfigurations = pkgs.lib.recurseIntoAttrs {
+        sofi = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            ./home/default.nix
+            rec {
+              home.username = "sofi";
+              home.homeDirectory = "/home/${home.username}";
+            }
+          ];
+        };
+      };
+    });
 
     # -- NixOS Modules --
     # Modules create or modify configurable options included in a full nixos configuration.
@@ -206,6 +231,7 @@
           packages = with pkgs; [
             nixUnstable
             nixos-rebuild
+            pkgs.home-manager
             # Formatters
             alejandra
             deadnix

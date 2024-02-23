@@ -47,6 +47,13 @@
             # Self explanatory, sets our inputted overlays as nixpkgs overlays.
             nixpkgs.overlays = overlays;
 
+            # Set the system nixpkgs as our preferred flake registry.
+            nix.registry.nixpkgs.flake = nixpkgs';
+            environment.etc."nix/inputs/nixpkgs".source = "${nixpkgs'}";
+            # WARNING: Setting `nix-path` in `nix.conf` currently overrides $NIX_PATH globally.
+            # Issue: https://github.com/NixOS/nix/issues/9574
+            nix.settings.nix-path = lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
+
             # Add hashes and dates from our flake to the NixOS version, easily see the status
             # of a machine with `nixos-version`.
             system.nixos.versionSuffix =

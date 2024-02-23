@@ -1,8 +1,10 @@
-{ lib, pkgs, config, ... }:
 {
+  lib,
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
-    #./generic-linux
-    ./nix-settings.nix
     ./terminal/default.nix
     ./gnome.nix
   ];
@@ -16,29 +18,31 @@
     nix-direnv.enable = true;
   };
 
-  home.packages = with pkgs; [
-    # Requirements
-    home-manager
-    # Cli
-    asciinema
-    ferium
-    glow
-    tealdeer
-    tree
-    trash-cli
-    gh
-    sd
-    dig
-    ripgrep
-    rsync
-    moreutils  # vidir, etc.
-    kubectl
-    # Gui
-    nvim
-  ] ++ lib.optionals config.targets.genericLinux.enable [
-    nixgld.kitty
-    nixgl.nixGLIntel
-  ];
+  home.packages = with pkgs;
+    [
+      # Requirements
+      home-manager
+      # Cli
+      asciinema
+      ferium
+      glow
+      tealdeer
+      tree
+      trash-cli
+      gh
+      sd
+      dig
+      ripgrep
+      rsync
+      moreutils # vidir, etc.
+      kubectl
+      # Gui
+      coturnix.nvim
+    ]
+    ++ lib.optionals config.targets.genericLinux.enable [
+      nixgld.kitty
+      nixgl.nixGLIntel
+    ];
 
   home.stateVersion = "21.11";
 }
