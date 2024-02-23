@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
     gh
+    git-filter-repo
     git-extras
   ];
 
