@@ -51,6 +51,8 @@
   extraPackages = with pkgs; [
     # Generic
     codespell
+    git
+    gcc
     # Elixir
     elixir
     # Lua
@@ -75,7 +77,18 @@
     wrapperArgs = pkgs.lib.escapeShellArgs neovimConfig.wrapperArgs + " " + extraWrapperArgs;
   })).overrideAttrs (prev: {
     passthru = prev.passthru // {
-      tests = pkgs.callPackage ./tests.nix { inherit neovim-drv; };
+      tests.smoke = pkgs.runCommand "neovim-drv-smoke-test" {} ''
+        export HOME=$TMPDIR
+        export LC_ALL=C.UTF-8
+        ${neovim-drv}/bin/nvim --headless +checkhealth +write!$out +quitall! -e
+        echo "--- CHECKHEALTH RESULTS ---"
+        cat $out
+        if grep -q ERROR $out; then
+          echo "--- ERRORS FOUND ---"
+          grep -A 5 ERROR $out
+          exit 1
+        fi
+      '';
     };
   });
 in neovim-drv
