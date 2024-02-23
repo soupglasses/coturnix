@@ -13,17 +13,14 @@ vim.api.nvim_exec([[
   au BufEnter term://* setlocal nonumber
 ]], false)
 
--- Toggle a line at column 80
-vim.api.nvim_exec([[
-  let g:line80=0
-  function! ToggleLine80()
-    if g:line80
-      set colorcolumn=0
-      let g:line80=0
+function Line(pos)
+    pos = pos or ''
+    if vim.api.nvim_get_option_value('colorcolumn', {scope = "local"}) == tostring(pos) then
+        vim.api.nvim_set_option_value('colorcolumn', '', {scope = "local"})
     else
-      set colorcolumn=80
-      let g:line80=1
-    endif
-  endfunction
-  command Line80 :call ToggleLine80()
-]], false)
+        vim.api.nvim_set_option_value('colorcolumn', tostring(pos), {scope = "local"})
+    end
+end
+vim.cmd("command! -nargs=? Line lua Line(<args>)")
+vim.cmd("command! Line80 lua Line(80)")
+vim.cmd("command! Line100 lua Line(100)")
