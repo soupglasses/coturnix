@@ -7,6 +7,13 @@
 >
 > Recommended action is to link against Phenix instead, or alternatively copy the revelant code snippets (with attribution as per the LICENSE file) directly.
 
+## Documentation
+
+- [Configuration: Home Manager](home/README.md)
+- [Editor: Neovim](docs/nvim.md)
+- [Package Manager: Nix](docs/nix.md)
+- [Shell: Zsh](docs/zsh.md)
+
 ## License
 
 Copyright © https://github.com/soupglasses 2022-2024
