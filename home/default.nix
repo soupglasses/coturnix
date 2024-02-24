@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./bat
     ./elixir
@@ -79,6 +83,8 @@
     py = "python";
     ipy = "ipython";
     lg = "lazygit";
+    nr = "sudo nixos-rebuild --flake ${config.home.homeDirectory}/.coturnix";
+    nrs = "nr switch";
     hm = "home-manager --flake ~/.coturnix";
     hms = "hm switch";
     k = "kubectl";
