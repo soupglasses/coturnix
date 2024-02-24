@@ -73,20 +73,9 @@
           # nixos/monado: init (https://github.com/NixOS/nixpkgs/pull/245005)
           (builtins.fetchurl {
             url = "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/245005.patch"; # BAD!
-            sha256 = "080y11dwgrc6mvcr3bi6s9i7mzq4fwwhc4z5pba2519v8llqkqcq";
+            sha256 = "1rq7qbfp8fr0vj4nkzj4czqjc0s1kk7bncin3am1sas8b1j9inrc";
           })
-          # onnxruntime: 1.15.1 -> 1.16.3 (https://github.com/NixOS/nixpkgs/pull/258392)
-          # broken dependency for opencomposite-helper
-          (builtins.fetchurl {
-            url = "https://github.com/NixOS/nixpkgs/pull/258392.patch"; # BAD!
-            sha256 = "15xsbvqvfcib3n5xx6jbs6gl7jahl0f15yppq94fxa5fzal0diyq";
-          })
-          # compressFirmwareXz: fix symlink type check (https://github.com/NixOS/nixpkgs/pull/284487)
-          (builtins.fetchurl {
-            url = "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/284487.patch";
-            sha256 = "0dwlgqwbywyd30w72imm8imgq8xyf2f4w7ziy70zxw0dp1glppaf";
-          })
-          # makeModulesClosure: include /lib/firmware/edid (https://github.com/NixOS/nixpkgs/pull/279789)
+          # nixos/hardware.display: init module (https://github.com/NixOS/nixpkgs/pull/279789)
           (builtins.fetchurl {
             url = "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/279789.patch"; # BAD!
             sha256 = "1frn7mq6121k8arjkzjxl53fd80f3d0f07s6gfbrdxfihbz8gx7c";
