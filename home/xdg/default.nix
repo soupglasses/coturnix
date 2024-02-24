@@ -1,19 +1,23 @@
-{config, lib, pkgs, ...}:
-let
-variables = {
-  _JAVA_OPTIONS= "-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java";
-  ANDROID_HOME="$XDG_DATA_HOME/android";
-  CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv";
-  GRADLE_USER_HOME="$XDG_DATA_HOME/gradle";
-  IPYTHONDIR="$XDG_CONFIG_HOME/ipython";
-  JULIA_DEPOT_PATH= "$XDG_DATA_HOME/julia:$JULIA_DEPOT_PATH";
-  PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc";
-  SQLITE_HISTORY = "$XDG_CACHE_HOME/sqlite_history";
-  WINEPREFIX = "$XDG_DATA_HOME/wine";
-  XCOMPOSECACHE = "$XDG_CACHE_HOME/X11/xcompose";
-  ZDOTDIR = "$HOME/.config/zsh";
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  variables = {
+    _JAVA_OPTIONS = "-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java";
+    ANDROID_HOME = "$XDG_DATA_HOME/android";
+    CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
+    GRADLE_USER_HOME = "$XDG_DATA_HOME/gradle";
+    IPYTHONDIR = "$XDG_CONFIG_HOME/ipython";
+    JULIA_DEPOT_PATH = "$XDG_DATA_HOME/julia:$JULIA_DEPOT_PATH";
+    PYTHONSTARTUP = "$XDG_CONFIG_HOME/python/pythonrc";
+    SQLITE_HISTORY = "$XDG_CACHE_HOME/sqlite_history";
+    WINEPREFIX = "$XDG_DATA_HOME/wine";
+    XCOMPOSECACHE = "$XDG_CACHE_HOME/X11/xcompose";
+    ZDOTDIR = "$HOME/.config/zsh";
   };
-in{
+in {
   xdg.enable = true;
 
   # File produced by following `xdg-ninja`'s output.

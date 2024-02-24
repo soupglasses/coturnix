@@ -6,8 +6,8 @@ git push --set-upstream origin <branch>
 # Delete existing remote branch
 git push origin --delete <branch>
 
-# Rebase current branch prefering current changes.
+# Rebase current branch preferring current changes.
 git rebase -Xtheirs <branch>
 
-# Rebase current branch prefering upstream changes.
+# Rebase current branch preferring upstream changes.
 git rebase -Xours <branch>

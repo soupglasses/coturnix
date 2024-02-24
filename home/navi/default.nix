@@ -1,4 +1,3 @@
-{ config, lib, pkgs, ... }:
 {
   programs.navi = {
     enable = true;
@@ -26,11 +25,11 @@
           "${./cheats}"
         ];
       };
-      shell = { command = "zsh"; };
+      shell = {command = "zsh";};
     };
   };
 
-	home.shellAliases = {
-		cheat = "navi --print";
-	};
+  home.shellAliases = {
+    cheat = "navi --print";
+  };
 }

@@ -1,9 +1,11 @@
-{ lib, pkgs, ... }:
-let
+{
+  lib,
+  pkgs,
+  ...
+}: let
   inherit (lib.hm.gvariant) mkArray mkTuple type;
   mkStrArray = mkArray type.string;
-in
-{
+in {
   home.file.".face".source = builtins.fetchurl {
     url = "https://avatars.githubusercontent.com/u/20756843?v=4";
     sha256 = "sha256:0ciyqhqdr6il6y36b1n7p9d8s8cgb7hgih6dmj53lkb4hnnqsvqg";
@@ -40,26 +42,26 @@ in
       search-filter-time-type = "last_modified";
     };
     "org/gnome/desktop/input-sources" = {
-      sources = [ (mkTuple [ "xkb" "no+nodeadkeys" ]) ];
+      sources = [(mkTuple ["xkb" "no+nodeadkeys"])];
     };
     "org/gnome/desktop/input-sources" = {
-      xkb-options = mkStrArray [ "lv3:ralt_switch" "nbsp:none" ];
+      xkb-options = mkStrArray ["lv3:ralt_switch" "nbsp:none"];
     };
     "org/gnome/desktop/wm/keybindings" = {
-      maximize = mkStrArray [ "<Super>w" ];
-      unmaximize = mkStrArray [ "<Super>s" ];
-      switch-windows = mkStrArray [ "<Alt>Tab" ];
-      switch-windows-backward = mkStrArray [ "<Shift><Alt>Tab" ];
-      switch-applications = mkStrArray [ ];
-      switch-applications-backward = mkStrArray [ ];
+      maximize = mkStrArray ["<Super>w"];
+      unmaximize = mkStrArray ["<Super>s"];
+      switch-windows = mkStrArray ["<Alt>Tab"];
+      switch-windows-backward = mkStrArray ["<Shift><Alt>Tab"];
+      switch-applications = mkStrArray [];
+      switch-applications-backward = mkStrArray [];
     };
     "org/gnome/mutter/keybindings" = {
-      toggle-tiled-left = mkStrArray [ "<Super>a" ];
-      toggle-tiled-right = mkStrArray [ "<Super>d" ];
+      toggle-tiled-left = mkStrArray ["<Super>a"];
+      toggle-tiled-right = mkStrArray ["<Super>d"];
     };
     "org/gnome/shell/keybindings" = {
-      toggle-application-view = mkStrArray [ ];
-      toggle-overview = mkStrArray [ ];
+      toggle-application-view = mkStrArray [];
+      toggle-overview = mkStrArray [];
     };
   };
 }

@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{lib, ...}: {
   imports = [
     ./history.nix
     ./modules/grc
@@ -46,13 +45,15 @@
       # Expose custom functions.
       autoload mkdircd l
     '';
-    plugins = [{
-      name = "functions";
-      src = ./functions;
-    }];
+    plugins = [
+      {
+        name = "functions";
+        src = ./functions;
+      }
+    ];
     shellGlobalAliases = {
       # Multi-dot expansion
-      "..." =  "../..";
+      "..." = "../..";
       "...." = "../../..";
       "....." = "../../../..";
     };

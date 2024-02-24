@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   programs.zsh = {
     history = {

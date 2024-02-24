@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     gh
     git-filter-repo
@@ -65,7 +64,6 @@
       init.defaultbranch = "main";
       # Do not attempt to assume `user.email` and `user.name`, require these options to be manually set.
       user.useConfigOnly = true;
-
 
       # -- Quality of Life --
 

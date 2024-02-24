@@ -146,7 +146,7 @@
         sofi = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
-            ./home/default.nix
+            ./home
             rec {
               home.username = "sofi";
               home.homeDirectory = "/home/${home.username}";
