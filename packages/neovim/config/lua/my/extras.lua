@@ -14,13 +14,11 @@ vim.api.nvim_exec([[
 ]], false)
 
 function Line(pos)
-    pos = pos or ''
-    if vim.api.nvim_get_option_value('colorcolumn', {scope = "local"}) == tostring(pos) then
-        vim.api.nvim_set_option_value('colorcolumn', '', {scope = "local"})
-    else
-        vim.api.nvim_set_option_value('colorcolumn', tostring(pos), {scope = "local"})
-    end
+  pos = pos or ''
+  if vim.api.nvim_get_option_value('colorcolumn', {scope = "local"}) == tostring(pos) then
+    pos = '' -- When reusing the same value, unset the colorcolumn instead.
+  end
+  vim.api.nvim_set_option_value('colorcolumn', tostring(pos), {scope = "local"})
 end
 vim.cmd("command! -nargs=? Line lua Line(<args>)")
 vim.cmd("command! Line80 lua Line(80)")
-vim.cmd("command! Line100 lua Line(100)")
