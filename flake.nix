@@ -94,7 +94,7 @@
         ];
         modules = [
           aagl.nixosModules.default
-          self.nixosModules.base-computer
+          self.nixosModules.variant-computer
           self.nixosModules.hardware-amd-gpu
           self.nixosModules.mixins-gaming
           self.nixosModules.mixins-smartcard
@@ -116,7 +116,7 @@
         ];
         modules = [
           aagl.nixosModules.default
-          self.nixosModules.base-computer
+          self.nixosModules.variant-computer
           self.nixosModules.kernel-patching
           self.nixosModules.hardware-lenovo-yoga-7-14ARB7
           self.nixosModules.mixins-gaming
@@ -150,8 +150,8 @@
 
     nixosModules =
       {
-        base-generic = import ./base/generic;
-        base-computer = import ./base/computer;
+        variant-generic = import ./variant/generic;
+        variant-computer = import ./variant/computer;
 
         hardware-amd-gpu = import ./hardware/amd/gpu.nix;
         hardware-nvidia-gpu = import ./hardware/nvidia/gpu.nix;
