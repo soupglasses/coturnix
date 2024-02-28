@@ -70,14 +70,16 @@
         system = "x86_64-linux";
         overlays = [nixpkgs-xr.overlays.default];
         patches = [
-          # nixos/monado: init (https://github.com/NixOS/nixpkgs/pull/245005)
-          (builtins.fetchurl {
-            url = "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/245005.patch"; # BAD!
+          # nixos/monado: init - https://nixpk.gs/pr-tracker.html?pr=245005
+          (self.lib.fetchPatchFromNixpkgs {
+            from = "33020597a32dcbd30cde7128336e9312a8104e98";
+            to = "3f7e9baeebab425f44caa19de37f004724c9c0fc";
             sha256 = "1rq7qbfp8fr0vj4nkzj4czqjc0s1kk7bncin3am1sas8b1j9inrc";
           })
-          # nixos/hardware.display: init module (https://github.com/NixOS/nixpkgs/pull/279789)
-          (builtins.fetchurl {
-            url = "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/279789.patch"; # BAD!
+          # nixos/hardware.display: init module - https://nixpk.gs/pr-tracker.html?pr=279789
+          (self.lib.fetchPatchFromNixpkgs {
+            from = "f503294ee626eba5304d99f00f7297284050450b";
+            to = "5632715fb0a3579cf57e04096391061a293a37f7";
             sha256 = "1frn7mq6121k8arjkzjxl53fd80f3d0f07s6gfbrdxfihbz8gx7c";
           })
         ];

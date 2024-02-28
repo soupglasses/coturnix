@@ -29,8 +29,9 @@ writeShellScriptBin "genpatch" ''
   pr_title=$(echo $response | ${jq}/bin/jq -r '.title')
   cat << EOF
   # $pr_title - https://nixpk.gs/pr-tracker.html?pr=$pr_number
-  (builtins.fetchurl {
-    url = "$patch_url";
+  (self.lib.fetchPatchFromNixpkgs {
+    from = "$base_commit";
+    to = "$latest_commit";
     sha256 = "$sha256_sum";
   })
   EOF
