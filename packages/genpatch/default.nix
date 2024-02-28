@@ -22,13 +22,14 @@ writeShellScriptBin "genpatch" ''
 
   latest_commit=$(echo $response | ${jq}/bin/jq -r '.head.sha')
   base_commit=$(echo $response | ${jq}/bin/jq -r '.base.sha')
+  last_updated_at=$(echo $response | ${jq}/bin/jq -r '.updated_at')
 
   patch_url="https://github.com/NixOS/nixpkgs/compare/$base_commit...$latest_commit.patch"
   sha256_sum=$(${nix}/bin/nix-prefetch-url --quiet $patch_url)
 
   pr_title=$(echo $response | ${jq}/bin/jq -r '.title')
   cat << EOF
-  # $pr_title - https://nixpk.gs/pr-tracker.html?pr=$pr_number
+  # $pr_title [''${last_updated_at:0:10}] - https://nixpk.gs/pr-tracker.html?pr=$pr_number
   (self.lib.fetchPatchFromNixpkgs {
     from = "$base_commit";
     to = "$latest_commit";
