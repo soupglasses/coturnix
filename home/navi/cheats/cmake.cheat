@@ -1,0 +1,13 @@
+% cmake
+
+# generate the makefiles into build
+cmake -S . -B build
+
+# build the cmake makefiles in build
+cmake --build build
+
+# run test binaries cmake marked in build
+ctest --test-dir build
+
+# generate and link compile_commands.json to root
+CMAKE_EXPORT_COMPILE_COMMANDS=ON cmake . -B build && ln -s build/compile_commands.json .

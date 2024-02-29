@@ -1,0 +1,7 @@
+% make
+
+# build all makefiles in subfolder
+make -C <build>
+
+# run all test binaries inside subfolder
+make test -C <build>
