@@ -40,6 +40,8 @@
       source ${./extras/copypaste.zsh}
       # Allow quick editing of files with edit, e(dit), e(edit)i(nterative).
       source ${./extras/edit.zsh}
+      # Replace multiple dots (...) to path (../..) automatically.
+      source ${./extras/replace-multiple-dots.zsh}
       # Dynamic window title that changes on directory/command.
       source ${./extras/set-title-hook.zsh}
       # Custom options for zsh-syntax-highlight.
@@ -54,11 +56,5 @@
         src = ./functions;
       }
     ];
-    shellGlobalAliases = {
-      # Multi-dot expansion
-      "..." = "../..";
-      "...." = "../../..";
-      "....." = "../../../..";
-    };
   };
 }
