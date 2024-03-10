@@ -18,7 +18,9 @@ function edit {
         shift # Remove the first argument "query"
         my_file=$(fzf --preview 'bat --style=numbers --color=always --line-range :500 {}' --select-1 --exit-0 --query "${@:-}" | head -n1)
     elif [[ $# -gt 0 ]]; then
-        edit query $@ # Allow shorthand for query.
+        popd >/dev/null
+        edit query $@
+        return $?
     else
         echo "Usage: edit PATTERN | edit filter PATTERN | edit query PATTERN"
         popd >/dev/null
