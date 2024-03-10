@@ -5,12 +5,13 @@
   ];
 
   # Integrations
-  programs.starship.enableZshIntegration = true;
-  programs.fzf.enableZshIntegration = true;
+  programs.starship.enableZshIntegration = true; # Fancy pants prompt.
+  programs.atuin.enableZshIntegration = true; # For shared history and CTRL-R.
+  programs.fzf.enableZshIntegration = true; # For Fuzzy find CTRL-T and ALT-C.
   services.gpg-agent.enableZshIntegration = true;
   programs.dircolors.enable = true;
   programs.command-not-found.enable = false;
-  programs.zoxide.enable = true;
+  programs.zoxide.enable = true; # For `z` support. TODO: Might fit better elsewhere.
 
   programs.zsh = {
     enable = true;

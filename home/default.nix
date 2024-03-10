@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    ./atuin
     ./bat
     ./elixir
     ./fzf
