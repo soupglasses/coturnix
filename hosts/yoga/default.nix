@@ -33,8 +33,11 @@
     STEAM_FORCE_DESKTOPUI_SCALING = "2";
   };
 
+  environment.shells = [pkgs.zsh];
+  programs.zsh.enable = true;
   users.users.sofi = {
     description = "Sofi";
+    shell = pkgs.zsh;
     isNormalUser = true;
     extraGroups = ["wheel" "networkmanager" "libvirtd"];
   };
