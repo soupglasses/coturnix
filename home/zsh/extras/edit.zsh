@@ -11,20 +11,20 @@ function edit {
     pushd "$search_root" >/dev/null || return
 
     local my_file
-    if [[ "$1" == "filter" ]]; then
+    if [[ "$1" == "--filter" || "$1" == "-f" ]]; then
         shift # Remove the first argument "filter"
         my_file=$(fzf --filter "$@" | head -n1)
-    elif [[ "$1" == "query" ]]; then
+    elif [[ "$1" == "--query" || "$1" == "-q" ]]; then
         shift # Remove the first argument "query"
         my_file=$(fzf --preview 'bat --style=numbers --color=always --line-range :500 {}' --select-1 --exit-0 --query "${@:-}" | head -n1)
-    elif [[ $# -gt 0 ]]; then
-        popd >/dev/null
-        edit query $@
-        return $?
-    else
-        echo "Usage: edit PATTERN | edit filter PATTERN | edit query PATTERN"
+    elif [[ "$1" == "--help" || "$1" == "-h" ]]; then
+        echo "Usage: edit [PATTERN] | edit [--filter, -f] [PATTERN] | edit [--query, -q] [PATTERN]"
         popd >/dev/null
         return 1
+    else
+        popd >/dev/null
+        edit --query $@
+        return $?
     fi
 
     if [[ -z "$my_file" ]]; then
@@ -37,9 +37,9 @@ function edit {
 }
 
 function e {
-    edit filter $@
+    edit --filter $@
 }
 
 function ei {
-    edit query $@
+    edit --query $@
 }
