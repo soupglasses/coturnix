@@ -38,13 +38,15 @@
       source ${./extras/autols.zsh}
       # Window-system independent copy/paste functions.
       source ${./extras/copypaste.zsh}
+      # Allow quick editing of files with edit, e(dit), e(edit)i(nterative).
+      source ${./extras/edit.zsh}
       # Dynamic window title that changes on directory/command.
       source ${./extras/set-title-hook.zsh}
       # Custom options for zsh-syntax-highlight.
       source ${./extras/zsh-highlight.zsh}
 
       # Expose custom functions.
-      autoload mkdircd l
+      autoload mkdircd l edit e ei
     '';
     plugins = [
       {
