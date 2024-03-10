@@ -4,9 +4,12 @@
     ./modules/grc
   ];
 
+  # History
+  programs.atuin.enableZshIntegration = true; # For shared history and CTRL-R.
+  programs.atuin.flags = ["--disable-up-arrow"]; # Use our own custom implementation.
+
   # Integrations
   programs.starship.enableZshIntegration = true; # Fancy pants prompt.
-  programs.atuin.enableZshIntegration = true; # For shared history and CTRL-R.
   programs.fzf.enableZshIntegration = true; # For Fuzzy find CTRL-T and ALT-C.
   services.gpg-agent.enableZshIntegration = true;
   programs.dircolors.enable = true;
@@ -34,6 +37,8 @@
       source ${./extras/comp-init/colored-tab-complete.zsh}
     '';
     initExtra = ''
+      # Custom implementation of up-search to use atuin's database.
+      source ${./extras/atuin-up-arrow.zsh}
       # Run ls after every cd command.
       source ${./extras/autols.zsh}
       # Window-system independent copy/paste functions.

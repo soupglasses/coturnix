@@ -11,8 +11,8 @@
     initExtra = ''
       setopt APPEND_HISTORY
       setopt INC_APPEND_HISTORY
-      bindkey "^[[A" up-line-or-search
-      bindkey "^[[B" down-line-or-search
     '';
+    # bindkey "^[[A" up-line-or-search
+    # bindkey "^[[B" down-line-or-search
   };
 }
