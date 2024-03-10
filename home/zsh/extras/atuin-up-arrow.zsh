@@ -1,4 +1,8 @@
 #!/usr/bin/env zsh
+# SPDX-FileCopyrightText: 2023 Sophie Tyalie
+# SPDX-FileCopyrightText: 2023 @Nezteb
+# SPDX-License-Identifier: BSD-3-Clause
+
 ##############################################################################
 #
 # Copyright (c) 2023 Sophie Tyalie
