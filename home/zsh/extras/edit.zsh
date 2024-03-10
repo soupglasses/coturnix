@@ -16,7 +16,7 @@ function edit {
         my_file=$(fzf --filter "$@" | head -n1)
     elif [[ "$1" == "query" ]]; then
         shift # Remove the first argument "query"
-        my_file=$(fzf --select-1 --exit-0 --query "${@:-}" | head -n1)
+        my_file=$(fzf --preview 'bat --style=numbers --color=always --line-range :500 {}' --select-1 --exit-0 --query "${@:-}" | head -n1)
     elif [[ $# -gt 0 ]]; then
         edit query $@ # Allow shorthand for query.
     else
