@@ -2,3 +2,9 @@
 
 # Update only one dependency of a flake.lock file
 nix flake lock --update-input=<dependency>
+
+# Delete all cached derivations made by direnv
+ls -l /nix/var/nix/gcroots/auto/ | grep "/.direnv/" | awk '{print $11}' | xargs rm -rf
+
+# Clean up old nix generations from drive
+home-manager expire-generations "" && sudo bash -c "nix-collect-garbage -d && /run/current-system/bin/switch-to-configuration boot"
