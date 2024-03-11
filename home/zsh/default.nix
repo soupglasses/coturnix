@@ -53,7 +53,7 @@
       source ${./extras/zsh-highlight.zsh}
 
       # Expose custom functions.
-      autoload mkdircd l edit e ei
+      autoload mkdircd l edit e
     '';
     plugins = [
       {
