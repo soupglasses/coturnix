@@ -17,6 +17,11 @@
     ./xdg
   ];
 
+  # User side nix garbage collection for home-manager related generations.
+  nix.gc.automatic = true;
+  nix.gc.frequency = "weekly";
+  nix.gc.options = "--delete-older-than 21d";
+
   # Allow nix to configure `.profile` to let session variables be configured by nix.
   programs.bash.enable = true;
 

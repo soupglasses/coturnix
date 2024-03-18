@@ -9,7 +9,7 @@
   # Automatically garbage collect the nix store.
   nix.gc.automatic = true;
   nix.gc.dates = "weekly";
-  nix.gc.options = "--delete-older-than 14d";
+  nix.gc.options = "--delete-older-than 21d";
 
   # Allow nix to free derivations as a last resort if the drive fills up.
   nix.settings.min-free = lib.mkDefault (100 * 1024 * 1024); # 100 MiB
