@@ -83,7 +83,7 @@
       # Use a psuedo-default folder to find allowed ssh key signatures.
       gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
       # Show signature information by default in `git log`.
-      log.showSignature = true;
+      log.showSignature = false;
     };
 
     aliases = {
