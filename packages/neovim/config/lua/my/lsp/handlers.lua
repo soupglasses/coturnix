@@ -13,7 +13,7 @@ M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
 
 M.setup = function()
 	vim.diagnostic.config({
-		virtual_text = true, -- disable virtual text
+		virtual_text = true,
 		update_in_insert = false,
 		underline = true,
 		severity_sort = true,
@@ -47,7 +47,6 @@ local function lsp_keymaps(bufnr)
   nmap('<leader>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
-
   -- Create `:Format` for the local buffer
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()

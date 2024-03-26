@@ -19,29 +19,30 @@
       EOF
       luafile ${./config}/init.lua
     '';
-    plugins = with pkgs.vimPlugins; lib.lists.forEach [
-      # Syntax
-      vim-pandoc-syntax
-      nvim-treesitter.withAllGrammars
-      # Themes
-      catppuccin-nvim
+    plugins = with pkgs.vimPlugins;
+      lib.lists.forEach [
+        # Syntax
+        vim-pandoc-syntax
+        nvim-treesitter.withAllGrammars
+        # Themes
+        catppuccin-nvim
 
-      # UI
-      indent-blankline-nvim
-      gitsigns-nvim
-      lualine-nvim
-      neoscroll-nvim
+        # UI
+        indent-blankline-nvim
+        gitsigns-nvim
+        lualine-nvim
+        neoscroll-nvim
 
-      # LSP
-      nvim-lspconfig
-      fidget-nvim
-      null-ls-nvim
+        # LSP
+        nvim-lspconfig
+        fidget-nvim
+        null-ls-nvim
 
-      # Autocomplete
-      nvim-cmp
-      cmp-nvim-lua
-      cmp-nvim-lsp
-    ] (pkg: { plugin = pkg; });
+        # Autocomplete
+        nvim-cmp
+        cmp-nvim-lua
+        cmp-nvim-lsp
+      ] (pkg: {plugin = pkg;});
 
     withRuby = false;
     withNodeJs = false;
@@ -70,25 +71,32 @@
     nil
     nodePackages.pyright
     lua-language-server
+    emmet-ls
   ];
   extraWrapperArgs = ''--suffix PATH : "${pkgs.lib.makeBinPath extraPackages}"'';
 
-  neovim-drv = (pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped (neovimConfig // {
-    wrapperArgs = pkgs.lib.escapeShellArgs neovimConfig.wrapperArgs + " " + extraWrapperArgs;
-  })).overrideAttrs (prev: {
-    passthru = prev.passthru // {
-      tests.smoke = pkgs.runCommand "neovim-drv-smoke-test" {} ''
-        export HOME=$TMPDIR
-        export LC_ALL=C.UTF-8
-        ${neovim-drv}/bin/nvim --headless +checkhealth +write!$out +quitall! -e
-        echo "--- CHECKHEALTH RESULTS ---"
-        cat $out
-        if grep -q ERROR $out; then
-          echo "--- ERRORS FOUND ---"
-          grep -A 5 ERROR $out
-          exit 1
-        fi
-      '';
-    };
-  });
-in neovim-drv
+  neovim-drv =
+    (pkgs.wrapNeovimUnstable pkgs.neovim-unwrapped (neovimConfig
+      // {
+        wrapperArgs = pkgs.lib.escapeShellArgs neovimConfig.wrapperArgs + " " + extraWrapperArgs;
+      }))
+    .overrideAttrs (prev: {
+      passthru =
+        prev.passthru
+        // {
+          tests.smoke = pkgs.runCommand "neovim-drv-smoke-test" {} ''
+            export HOME=$TMPDIR
+            export LC_ALL=C.UTF-8
+            ${neovim-drv}/bin/nvim --headless +checkhealth +write!$out +quitall! -e
+            echo "--- CHECKHEALTH RESULTS ---"
+            cat $out
+            if grep -q ERROR $out; then
+              echo "--- ERRORS FOUND ---"
+              grep -A 5 ERROR $out
+              exit 1
+            fi
+          '';
+        };
+    });
+in
+  neovim-drv

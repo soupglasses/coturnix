@@ -9,6 +9,7 @@ local servers = {
 	"pyright",
   "nil_ls",
   "elixirls",
+  "emmet_ls",
 }
 
 for _, server in pairs(servers) do
