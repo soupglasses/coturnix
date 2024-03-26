@@ -1,3 +1,3 @@
 {
-  gnome-vrr = import ./gnome-vrr.nix;
+  gnome-drm = import ./gnome-drm.nix;
 }
