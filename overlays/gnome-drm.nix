@@ -13,7 +13,7 @@
   });
   gnome = prev.gnome.overrideScope (_gnome_final: gnome_prev: {
     mutter = gnome_prev.mutter.overrideAttrs (mutter_attrs: {
-      version = "46.alpha";
+      version = "45.0";
       src = final.fetchurl {
         url = "https://gitlab.gnome.org/GNOME/mutter/-/archive/affc8c56964e30b0227732b08fb307ec93cc745c/mutter-affc8c56964e30b0227732b08fb307ec93cc745c.tar.gz";
         sha256 = "sha256-JoQND07TOZG45yU+51MAaC89Arxcgg30wfU48QEtz48=";
