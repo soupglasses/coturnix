@@ -48,6 +48,11 @@ impure_msg = ""
 pure_msg = "pure"
 symbol = "nix"
 
+[guix_shell]
+format = '[$symbol( $state)]($style) '
+style = "purple"
+symbol = "guix"
+
 [custom.virtualenv]
 command = 'printf "${VIRTUAL_ENV:+"venv"}"'
 description = "Shows when you are in a virtual environment"
