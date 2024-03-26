@@ -62,6 +62,8 @@
 
   services.openssh.enable = true;
 
+  services.guix.enable = true;
+
   programs.ns-usbloader.enable = true;
 
   boot.binfmt.emulatedSystems = ["aarch64-linux" "i686-linux"];
