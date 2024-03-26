@@ -46,14 +46,12 @@ function edit {
     case "$toggle" in
         --help | -h)
             echo "Usage: edit [PATTERN] | edit [--filter, -f] [PATTERN] | edit [--query, -q] [PATTERN]"
-            popd >/dev/null
-            return 1
+            popd >/dev/null; return 1
             ;;
         --filter | -f)
             if [[ -z "$args" ]]; then
                 echo "Missing pattern."
-                popd >/dev/null
-                return 1
+                popd >/dev/null; return 1
             fi
             my_file=$(fzf --filter "$args" | head -n1)
             ;;
@@ -62,15 +60,13 @@ function edit {
            ;;
         *)
             if [[ -n "$toggle" ]]; then echo "Unknown argument: $toggle"; fi
-            popd >/dev/null
-            return 1
+            popd >/dev/null; return 1
             ;;
     esac
 
     if [[ -z "$my_file" ]]; then
         echo "No file selected, exiting..."
-        popd >/dev/null
-        return 1
+        popd >/dev/null; return 1
     fi
 
     $EDITOR "$my_file"
