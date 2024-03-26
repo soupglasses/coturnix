@@ -15,6 +15,10 @@
   virtualisation.podman.enable = true; # For toolbox.
   virtualisation.libvirtd.enable = true; # For Boxes.
 
+  services.telepathy.enable = true;
+
+  services.guix.enable = true;
+
   services.onedrive.enable = true;
 
   programs.nix-ld.enable = true;
@@ -65,6 +69,8 @@
     signal-desktop
     obsidian
     kitty
+    krita
+    gnome.polari
 
     # languages (simple)
     (python3.withPackages (p: with p; [ipython toolz more-itertools numpy sympy matplotlib]))
