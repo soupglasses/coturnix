@@ -5,6 +5,9 @@ vim.cmd [[
   augroup END
 ]]
 
+-- Make neovim recognize SystemD service files.
+vim.cmd "autocmd BufNewFile,BufRead *.service* set ft=systemd"
+
 -- Set column to 72 for git commits
 vim.cmd "autocmd filetype gitcommit set colorcolumn=72"
 
