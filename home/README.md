@@ -41,7 +41,7 @@ nix's builtin `builtins.readFile PATH` which will write your file's
 contents into the generated file directly.
 
 But once these changes are done, it should now be possible to run `nix-shell`.
-It will install `nixUnstable` for flake support together with `home-manager`
+It will install `nixVersions.latest` for flake support together with `home-manager`
 for you. Once its complete, you can run:
 
 ```bash

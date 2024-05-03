@@ -4,7 +4,7 @@
   ...
 }: {
   # Use unstable nix package.
-  nix.package = pkgs.nixUnstable;
+  nix.package = pkgs.nixVersions.latest;
 
   # Automatically garbage collect the nix store.
   nix.gc.automatic = true;

@@ -221,7 +221,7 @@
           startup.motd = nixpkgs.lib.mkForce {text = "";};
           startup.pre-commit.text = self.checks.${system}.pre-commit.shellHook;
           packages = with pkgs; [
-            nixUnstable
+            nixVersions.latest
             nixos-rebuild
             pkgs.home-manager
             # Formatters
