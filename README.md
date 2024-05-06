@@ -29,20 +29,33 @@ For a more comprehensive understanding of the EUPL v1.2 license, please refer to
 the attached [LICENSE](./LICENSE) file. Further advice may be found at
 [Joinup's EUPL page](https://joinup.ec.europa.eu/collection/eupl).
 
-### Usage of Compatible Licences
+### Usage of LICENSE
 
-_Please note that the information given in this section is meant for reference
-purposes only, and does not constitute legal advice, and it further does not
-grant any additional permissions beyond what the EUPLv1.2 license describes._
+_WARNING: Please note that the information given in this section is meant for
+___reference purposes only___, and does not constitute legal advice. This section
+further does not grant any additional permissions beyond what the relevant
+LICENSE file(s) describe or to the above license statement._
 
-The Source Code from this repository can be both utilized and modified under
-the EUPL v1.2 license, or alternatively, according to Article 5 of the EUPL,
-you have the option to select any of the EUPLv1.2's 'Compatible Licences'.
-These have been listed at the end of this section for convenience.
+#### Usage as a Library
 
-Additionally, with the license extension given to Article 5
-(compatibility clause), you are further allowed to use this repository as
-a library to your project(s) using ___any license___ of your choosing.
+With the license extension given to Article 5 (compatibility clause), you are
+allowed to use this repository as a library to with your project(s) using
+___any license___ of your choosing. The EUPL further guarantees linking freedom,
+so how you decide to include this as a library is up to you.
+
+#### Usage of Compatible Licensing
+
+The Source Code from this repository can be utilized and modified
+under the EUPL v1.2 license, or alternatively, you can choose any of it's
+'Compatible Licences' described in Article 5. These and their supported
+versions have been listed at the end of this section.
+
+REWORD this to sound like you may take subsections of the code here (with relevant attribution)
+or otherwise use the project.
+
+you MAY take parts of the code and relicense it into your bigger project.
+You MAY NOT take the whole project and relicense it.
+
 
 | License                                                   | Shorthand     | Applicable Version(s)                    |
 |-----------------------------------------------------------|---------------|------------------------------------------|
