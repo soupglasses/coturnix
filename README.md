@@ -56,6 +56,7 @@ appropriate attribution. However, you're not allowed to take the entire project
 and relicense it as FSF states is possible. For why, see:
 [JOINUP: But ultimately, how copyleft is the EUPL?](https://joinup.ec.europa.eu/collection/eupl/discussion/ultimately-how-copyleft-eupl)
 
+#### Compatible Licences
 
 | License                                                   | Shorthand     | Applicable Version(s)                    |
 |-----------------------------------------------------------|---------------|------------------------------------------|
