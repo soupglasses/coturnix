@@ -48,13 +48,13 @@ so how you decide to include this as a library is up to you.
 The Source Code from this repository can be utilized and modified
 under the EUPL v1.2 license, or alternatively, you can choose any of it's
 'Compatible Licences' described in Article 5. These and their supported
-versions have been listed at the end of this section.
+versions have been listed at the end of this section for convenience.
 
-REWORD this to sound like you may take subsections of the code here (with relevant attribution)
-or otherwise use the project.
-
-you MAY take parts of the code and relicense it into your bigger project.
-You MAY NOT take the whole project and relicense it.
+In brief, you are able to extract portions of the code from this repository and
+use them under your larger project using a "Compatible License" along with
+appropriate attribution. However, you're not allowed to take the entire project
+and relicense it as FSF states is possible. For why, see here:
+https://joinup.ec.europa.eu/collection/eupl/discussion/ultimately-how-copyleft-eupl
 
 
 | License                                                   | Shorthand     | Applicable Version(s)                    |
