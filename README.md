@@ -53,8 +53,8 @@ versions have been listed at the end of this section for convenience.
 In brief, you are able to extract portions of the code from this repository and
 use them under your larger project using a "Compatible License" along with
 appropriate attribution. However, you're not allowed to take the entire project
-and relicense it as FSF states is possible. For why, see here:
-https://joinup.ec.europa.eu/collection/eupl/discussion/ultimately-how-copyleft-eupl
+and relicense it as FSF states is possible. For why, see:
+[JOINUP: But ultimately, how copyleft is the EUPL?](https://joinup.ec.europa.eu/collection/eupl/discussion/ultimately-how-copyleft-eupl)
 
 
 | License                                                   | Shorthand     | Applicable Version(s)                    |
