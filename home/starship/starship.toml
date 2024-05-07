@@ -40,6 +40,12 @@ format = '([$all_status$ahead_behind]($style))'
 [jobs]
 symbol = "j"
 
+[container]
+symbol = ""
+style = "bold red dimmed"
+format = '([($symbol )\[$name\]]($style) )'
+disabled = false
+
 [nix_shell]
 #format = '[$symbol( $state)( \[$name\])]($style) '
 format = '[$symbol( $state)]($style) '
