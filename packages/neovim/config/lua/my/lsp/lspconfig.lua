@@ -5,6 +5,7 @@ end
 
 local servers = {
   "clangd",
+  "crystalline",
 	"lua_ls",
 	"pyright",
   "nil_ls",

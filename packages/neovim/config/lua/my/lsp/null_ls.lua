@@ -13,12 +13,6 @@ null_ls.setup({
     -- Generic
     diagnostics.codespell.with({ extra_args = { "-L crate" } }),
     diagnostics.trail_space,
-    -- Elixir
-    formatting.mix,
-    -- Lua
-    formatting.stylua,
-    -- Nix
-    formatting.alejandra,
     diagnostics.deadnix.with({ ignore_stderr = true }),
     code_actions.statix,
     -- Python

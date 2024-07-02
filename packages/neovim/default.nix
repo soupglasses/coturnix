@@ -22,6 +22,17 @@
     plugins = with pkgs.vimPlugins;
       lib.lists.forEach [
         # Syntax
+        (pkgs.vimUtils.buildVimPlugin {
+          pname = "vim-crystal";
+          version = "2023-05-21";
+          src = pkgs.fetchFromGitHub {
+            owner = "jlcrochet";
+            repo = "vim-crystal";
+            rev = "fbaa42625303838a9be860250323364fe5658b0c";
+            sha256 = "sha256-BSo/mDymFxBQjx6Gbcewji0Yv/Vs4QVw1BtcAG3FFOA=";
+          };
+          meta.homepage = "https://github.com/jlcrochet/vim-crystal/";
+        })
         vim-pandoc-syntax
         nvim-treesitter.withAllGrammars
         # Themes
@@ -53,13 +64,9 @@
     # Generic
     codespell
     git
+    # C/C++
     gcc
-    # Elixir
-    elixir
-    # Lua
-    stylua
     # Nix
-    alejandra
     deadnix
     statix
     # Python
@@ -67,9 +74,10 @@
 
     # LSP servers
     clang-tools
+    crystalline
     elixir_ls
     nil
-    nodePackages.pyright
+    pyright
     lua-language-server
     emmet-ls
   ];
