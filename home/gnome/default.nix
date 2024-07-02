@@ -12,7 +12,7 @@ in {
   };
 
   qt.enable = true;
-  qt.platformTheme = "gnome";
+  qt.platformTheme.name = "adwaita";
   qt.style.package = pkgs.adwaita-qt;
   qt.style.name = "adwaita-dark";
 

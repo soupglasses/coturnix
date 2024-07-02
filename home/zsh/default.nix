@@ -21,7 +21,7 @@
     prezto.enable = lib.mkForce false;
     enableCompletion = true;
     completionInit = "autoload -U compinit && compinit -i"; # Ignore insecure loads. For distrobox support.
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
     defaultKeymap = "emacs";
     initExtraFirst = ''
       unsetopt AUTOCD
