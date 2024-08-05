@@ -75,6 +75,13 @@
     # languages (simple)
     (python3.withPackages (p: with p; [ipython toolz more-itertools numpy sympy matplotlib]))
     nodejs
+
+    # C++ Project Build Dependencies
+    gcc
+    gnumake
+    cmake
+
+    coturnix.steinwurf-tasker
   ];
 
   boot.binfmt.emulatedSystems = ["aarch64-linux" "i686-linux"];

@@ -106,7 +106,7 @@
       };
       yoga = self.lib.mkSystem self {
         system = "x86_64-linux";
-        overlays = [self.overlays.gnome-drm];
+        overlays = [self.overlays.packages];
         unfreePackages = [
           "obsidian"
           "steam"
