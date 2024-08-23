@@ -8,8 +8,7 @@
         -- Remove per user configuration
         vim.opt.rtp:remove(table.concat({vim.call("stdpath", "data"), "site"}, "/"))
         vim.opt.rtp:remove(table.concat({vim.call("stdpath", "data"), "site", "after"}, "/"))
-        vim.opt.rtp:remove(vim.call("stdpath", "config"))
-        vim.opt.rtp:remove(table.concat({vim.call("stdpath", "config"), "after"}, "/"))
+        vim.opt.rtp:remove(vim.call("stdpath", "config")) vim.opt.rtp:remove(table.concat({vim.call("stdpath", "config"), "after"}, "/"))
 
         -- Add in our user configuration
         vim.opt.rtp:prepend("${./config}")
@@ -40,6 +39,7 @@
 
         # UI
         indent-blankline-nvim
+        git-conflict-nvim
         gitsigns-nvim
         lualine-nvim
         neoscroll-nvim
