@@ -59,6 +59,14 @@
     PYTHONDONTWRITEBYTECODE = 1;
     VIRTUAL_ENV_DISABLE_PROMPT = 1;
     PYTHONBREAKPOINT = "ipdb.set_trace";
+    CC = "clang";
+    CXX = "clang++";
+    CMAKE_BUILD_TYPE = "Debug";
+    CMAKE_GENERATOR = "Ninja";
+    CMAKE_C_COMPILER_LAUNCHER = "ccache";
+    CMAKE_CXX_COMPILER_LAUNCHER = "ccache";
+    CMAKE_C_LINKER_LAUNCHER = "mold;-run";
+    CMAKE_CXX_LINKER_LAUNCHER = "mold;-run";
   };
 
   programs.dircolors.enable = true;
