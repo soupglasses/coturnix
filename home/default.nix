@@ -18,6 +18,8 @@
   ];
 
   # User side nix garbage collection for home-manager related generations.
+  nix.enable = true;
+  nix.package = pkgs.lix;
   nix.gc.automatic = true;
   nix.gc.frequency = "weekly";
   nix.gc.options = "--delete-older-than 21d";
