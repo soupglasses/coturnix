@@ -8,7 +8,7 @@
 in {
   home.file.".face".source = builtins.fetchurl {
     url = "https://avatars.githubusercontent.com/u/20756843";
-    sha256 = "1fz7mhvhc5k6agwmy97cwac6ci0i30jigracx26cirq8kir4nidm";
+    sha256 = "0m0k67ajjch566qm0184r2wymzmlqr6gzjjybgka5qg7nqj189zf";
   };
 
   qt.enable = true;
