@@ -49,9 +49,9 @@
     ripgrep
     rsync
     moreutils # vidir, etc.
-    kubectl
     # Gui
     coturnix.nvim
+    coturnix.steinwurf-tasker
   ];
 
   home.sessionVariables = {
@@ -61,8 +61,8 @@
     PYTHONDONTWRITEBYTECODE = 1;
     VIRTUAL_ENV_DISABLE_PROMPT = 1;
     PYTHONBREAKPOINT = "ipdb.set_trace";
-    CC = "clang";
-    CXX = "clang++";
+    CMAKE_C_COMPILER = "clang";
+    CMAKE_CXX_COMPILER = "clang++";
     CMAKE_BUILD_TYPE = "Debug";
     CMAKE_GENERATOR = "Ninja";
     CMAKE_C_COMPILER_LAUNCHER = "ccache";
