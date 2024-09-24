@@ -42,7 +42,7 @@
         git-conflict-nvim
         gitsigns-nvim
         lualine-nvim
-        neoscroll-nvim
+        #neoscroll-nvim
 
         # LSP
         nvim-lspconfig
