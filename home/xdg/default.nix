@@ -5,7 +5,6 @@
   ...
 }: let
   variables = {
-    _JAVA_OPTIONS = "-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java";
     ANDROID_HOME = "$XDG_DATA_HOME/android";
     CUDA_CACHE_PATH = "$XDG_CACHE_HOME/nv";
     GRADLE_USER_HOME = "$XDG_DATA_HOME/gradle";
