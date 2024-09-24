@@ -131,6 +131,7 @@
           inherit pkgs;
           modules = [
             ./home
+            ./home/generic-linux
             rec {
               home.username = "sofie";
               home.homeDirectory = "/home/${home.username}";
