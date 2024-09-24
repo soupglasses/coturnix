@@ -99,7 +99,7 @@
     lg = "lazygit";
     nr = "sudo nixos-rebuild --flake ${config.home.homeDirectory}/.coturnix";
     nrs = "nr switch";
-    hm = "home-manager --flake ~/.coturnix";
+    hm = "home-manager --flake ~/.coturnix#`whoami`";
     hms = "hm switch";
     k = "kubectl";
   };
