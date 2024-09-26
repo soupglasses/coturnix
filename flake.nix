@@ -7,6 +7,13 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/default-linux";
 
+    # System Manager
+    system-manager.url = "github:numtide/system-manager";
+    system-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nix-system-graphics.url = "github:soupglasses/nix-system-graphics";
+    nix-system-graphics.inputs.nixpkgs.follows = "nixpkgs";
+    nix-system-graphics.inputs.system-manager.follows = "system-manager";
+
     # Home Manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -36,6 +43,8 @@
     self,
     nixpkgs,
     systems,
+    system-manager,
+    nix-system-graphics,
     home-manager,
     aagl,
     nixpkgs-xr,
@@ -120,6 +129,21 @@
           ./hosts/yoga
         ];
       };
+    };
+
+    # -- System Configurations --
+    systemConfigs.default = system-manager.lib.makeSystemConfig {
+      modules = [
+        nix-system-graphics.systemModules.default
+        ({...}: {
+          config = {
+            nixpkgs.hostPlatform = "x86_64-linux";
+            system-manager.allowAnyDistro = true;
+            system-graphics.enable = true;
+            system-graphics.enable32Bit = true;
+          };
+        })
+      ];
     };
 
     # -- Home Configurations --
@@ -221,6 +245,7 @@
           packages = with pkgs; [
             lix
             nixos-rebuild
+            system-manager.packages.${system}.system-manager
             pkgs.home-manager
             # Formatters
             alejandra
