@@ -8,11 +8,10 @@
     systems.url = "github:nix-systems/default-linux";
 
     # System Manager
-    system-manager.url = "github:numtide/system-manager";
+    system-manager.url = "github:soupglasses/system-manager-lite";
     system-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-system-graphics.url = "github:soupglasses/nix-system-graphics";
     nix-system-graphics.inputs.nixpkgs.follows = "nixpkgs";
-    nix-system-graphics.inputs.system-manager.follows = "system-manager";
 
     # Home Manager
     home-manager.url = "github:nix-community/home-manager";
@@ -59,7 +58,7 @@
           inherit system;
           pkgs = import nixpkgs {
             inherit system;
-            overlays = [self.overlays.packages];
+            overlays = [self.overlays.packages system-manager.overlays.default];
           };
         });
   in {
@@ -245,7 +244,7 @@
           packages = with pkgs; [
             lix
             nixos-rebuild
-            system-manager.packages.${system}.system-manager
+            pkgs.system-manager
             pkgs.home-manager
             # Formatters
             alejandra
