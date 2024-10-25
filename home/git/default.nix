@@ -13,8 +13,8 @@
     enable = true;
     package = pkgs.gitAndTools.gitFull;
 
-    userEmail = "sofi+git@mailbox.org";
-    userName = "Sofi";
+    userEmail = "sofie+git@mailbox.org";
+    userName = "Sofie";
     signing.key = "7A3B361F";
 
     signing.signByDefault = true;
