@@ -78,6 +78,7 @@
     elixir_ls
     nil
     pyright
+    ruby-lsp
     lua-language-server
     emmet-ls
   ];

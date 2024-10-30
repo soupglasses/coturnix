@@ -11,6 +11,7 @@ local servers = {
   "nil_ls",
   "elixirls",
   "emmet_ls",
+  "ruby_lsp",
 }
 
 for _, server in pairs(servers) do
